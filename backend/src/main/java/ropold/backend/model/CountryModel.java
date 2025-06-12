@@ -13,7 +13,6 @@ public record CountryModel(
         int roadNetworkLengthInKm,
         double averageAnnualTemperatureInC,
         int annualPrecipitationInMm,
-        boolean isActive,
         String githubId,
         String imageUrl
 ) {
