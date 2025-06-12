@@ -104,7 +104,7 @@ public class CountryController {
             @AuthenticationPrincipal OAuth2User authentication) throws IOException {
 
         String authenticatedUserId = authentication.getName();
-        CountryModel existingCountry = countryService.getQuestionById(id);
+        CountryModel existingCountry = countryService.getCountryById(id);
 
         if (!authenticatedUserId.equals(existingCountry.githubId())) {
             throw new AccessDeniedException("You do not have permission to update this country.");
