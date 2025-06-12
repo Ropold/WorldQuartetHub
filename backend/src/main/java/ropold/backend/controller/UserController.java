@@ -36,8 +36,8 @@ public class UserController {
 
     @GetMapping("/favorites")
     public List<CountryModel> getUserFavorites(@AuthenticationPrincipal OAuth2User authentication) {
-        List<String> favoritePieceImageIds = appUserService.getUserFavoriteCountries(authentication.getName());
-        return countryService.getCountriesByIds(favoritePieceImageIds);
+        List<String> favoriteCountriesIds = appUserService.getUserFavoriteCountries(authentication.getName());
+        return countryService.getCountriesByIds(favoriteCountriesIds);
     }
 
     @GetMapping("/me/my-countries/{githubId}")

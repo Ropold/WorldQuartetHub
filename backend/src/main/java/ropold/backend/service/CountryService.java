@@ -69,5 +69,13 @@ public class CountryService {
         countryRepository.deleteById(id);
     }
 
+    public List<CountryModel> getCountriesByIds(List<String> favoriteCountriesIds) {
+        return countryRepository.findAllById(favoriteCountriesIds);
+    }
 
+    public List<CountryModel> getCountriesForGithubUser(String githubId) {
+        return countryRepository.findAll().stream()
+                .filter(countryModel -> countryModel.githubId().equals(githubId))
+                .toList();
+    }
 }
