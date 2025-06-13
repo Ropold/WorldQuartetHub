@@ -1,11 +1,13 @@
 package ropold.backend.service;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ropold.backend.model.CountryModel;
 import ropold.backend.repository.CountryRepository;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class CountryServiceTest {
@@ -55,6 +57,48 @@ class CountryServiceTest {
 
         countryModels = List.of(countryModel1, countryModel2);
         when(countryRepository.findAll()).thenReturn(countryModels);
+    }
+
+    @Test
+    void testGetAllCountries() {
+        List<CountryModel> result = countryService.getAllCountries();
+        assertEquals(countryModels, result);
+    }
+
+    @Test
+    void testGetCountryById() {
+        CountryModel expectedCountry = countryModels.getFirst();
+        when(countryRepository.findById(expectedCountry.id())).thenReturn(java.util.Optional.of(expectedCountry));
+        CountryModel result = countryService.getCountryById(expectedCountry.id());
+        assertEquals(expectedCountry, result);
+    }
+
+    @Test
+    void testAddCountry(){
+
+    }
+
+    @Test
+    void testUpdateCountry(){
+
+    }
+
+    @Test
+    void testDeleteCountry(){
+
+    }
+
+    @Test
+    void testGetCountriesForGithubUser(){
+
+    }
+
+    @Test
+    void testGetCountriesByIds() {
+        List<String> ids = List.of("1", "2");
+        when(countryRepository.findAllById(ids)).thenReturn(countryModels);
+        List<CountryModel> result = countryService.getCountriesByIds(ids);
+        assertEquals(countryModels, result);
     }
 
 
