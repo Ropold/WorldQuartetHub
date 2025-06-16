@@ -11,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ropold.backend.model.AppUser;
@@ -157,14 +156,53 @@ class AppUserControllerTest {
     }
 
     @Test
-    void TestGetUserFavorites_ShouldReturnUserFavorites() throws Exception{
-
+    void TestGetUserFavorites_ShouldReturnUserFavorites() throws Exception {
+        mockMvc.perform(get("/api/users/favorites")
+                        .with(oidcLogin().idToken(i -> i.claim("sub", "user"))))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                [{
+                    "id":"2",
+                    "countryName":"Frankreich",
+                    "capitalCity":"Paris",
+                    "populationInMillions":67.5,
+                    "populationDensityPerKm2":122,
+                    "capitalCityPopulation":2161000,
+                    "gdpPerCapitaInUSD":43500,
+                    "forestAreaPercentage":31,
+                    "totalAreaInKm2":551695,
+                    "roadNetworkLengthInKm":1040000,
+                    "averageAnnualTemperatureInC":11.7,
+                    "annualPrecipitationInMm":850,
+                    "githubId":"user",
+                    "imageUrl":"http://example.com/country2.jpg"
+                }]
+            """, true));
     }
 
     @Test
-    @WithMockUser(username = "user")
     void getUserFavorites_shouldReturnUserFavorites() throws Exception {
-
+        mockMvc.perform(get("/api/users/favorites")
+                        .with(oidcLogin().idToken(i -> i.claim("sub", "user"))))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+            [{
+                "id":"2",
+                "countryName":"Frankreich",
+                "capitalCity":"Paris",
+                "populationInMillions":67.5,
+                "populationDensityPerKm2":122,
+                "capitalCityPopulation":2161000,
+                "gdpPerCapitaInUSD":43500,
+                "forestAreaPercentage":31,
+                "totalAreaInKm2":551695,
+                "roadNetworkLengthInKm":1040000,
+                "averageAnnualTemperatureInC":11.7,
+                "annualPrecipitationInMm":850,
+                "githubId":"user",
+                "imageUrl":"http://example.com/country2.jpg"
+            }]
+            """, true));
     }
 
     @Test
