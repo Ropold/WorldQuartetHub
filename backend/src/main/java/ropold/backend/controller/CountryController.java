@@ -13,7 +13,7 @@ import ropold.backend.service.CloudinaryService;
 import ropold.backend.service.CountryService;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/world-quartet-hub")
@@ -26,6 +26,21 @@ public class CountryController {
     @GetMapping
     public List<CountryModel> getAllCountries() {
         return countryService.getAllCountries();
+    }
+
+    @GetMapping("/deal/{count}")
+    public Map<String, List<CountryModel>> dealUserAndCpuCards(@PathVariable int count) {
+        List<CountryModel> all = new ArrayList<>(countryService.getAllCountries());
+        Collections.shuffle(all);
+        int total = Math.min(count * 2, all.size());
+        List<CountryModel> selected = all.subList(0, total);
+        List<CountryModel> user = selected.subList(0, count);
+        List<CountryModel> cpu = selected.subList(count, total);
+
+        Map<String, List<CountryModel>> result = new HashMap<>();
+        result.put("user", user);
+        result.put("cpu", cpu);
+        return result;
     }
 
     @GetMapping("/{id}")
