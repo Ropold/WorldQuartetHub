@@ -111,6 +111,18 @@ class CountryControllerIntegrationTest {
     }
 
     @Test
+    void testDealUserAndCpuCards_shouldReturnUserAndCpuCards() throws Exception {
+        mockMvc.perform(get("/api/world-quartet-hub/deal/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.user").isArray())
+                .andExpect(jsonPath("$.cpu").isArray())
+                .andExpect(jsonPath("$.user.length()").value(1))
+                .andExpect(jsonPath("$.cpu.length()").value(1))
+                .andExpect(jsonPath("$.user[0].countryName").exists())
+                .andExpect(jsonPath("$.cpu[0].countryName").exists());
+    }
+
+    @Test
     void testGetCountryById_shouldReturnCountry() throws Exception {
         mockMvc.perform(get("/api/world-quartet-hub/1"))
                 .andExpect(status().isOk())
