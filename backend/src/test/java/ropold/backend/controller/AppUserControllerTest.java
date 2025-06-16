@@ -206,6 +206,48 @@ class AppUserControllerTest {
     }
 
     @Test
+    void testGetCountriesForGithubUser_shouldReturnCountries() throws Exception {
+        mockMvc.perform(get("/api/users/me/my-countries/user"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+            [
+                {
+                    "id":"1",
+                    "countryName":"Deutschland",
+                    "capitalCity":"Berlin",
+                    "populationInMillions":83.2,
+                    "populationDensityPerKm2":233,
+                    "capitalCityPopulation":3769000,
+                    "gdpPerCapitaInUSD":51600,
+                    "forestAreaPercentage":33,
+                    "totalAreaInKm2":357582,
+                    "roadNetworkLengthInKm":644480,
+                    "averageAnnualTemperatureInC":8.5,
+                    "annualPrecipitationInMm":700,
+                    "githubId":"user",
+                    "imageUrl":"http://example.com/country1.jpg"
+                },
+                {
+                    "id":"2",
+                    "countryName":"Frankreich",
+                    "capitalCity":"Paris",
+                    "populationInMillions":67.5,
+                    "populationDensityPerKm2":122,
+                    "capitalCityPopulation":2161000,
+                    "gdpPerCapitaInUSD":43500,
+                    "forestAreaPercentage":31,
+                    "totalAreaInKm2":551695,
+                    "roadNetworkLengthInKm":1040000,
+                    "averageAnnualTemperatureInC":11.7,
+                    "annualPrecipitationInMm":850,
+                    "githubId":"user",
+                    "imageUrl":"http://example.com/country2.jpg"
+                }
+            ]
+            """, true));
+    }
+
+    @Test
     void addQuestionToFavorites_shouldAddQuestionAndReturnFavorites() throws Exception {
         AppUser userBefore = appUserRepository.findById("user").orElseThrow();
         Assertions.assertFalse(userBefore.favoriteCountries().contains("1"));
