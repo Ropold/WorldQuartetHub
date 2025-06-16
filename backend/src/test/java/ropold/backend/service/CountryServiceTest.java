@@ -121,7 +121,8 @@ class CountryServiceTest {
                 "http://example.com/updated_country1.jpg"
         );
 
-        when(countryRepository.findById("1")).thenReturn(java.util.Optional.of(countryModels.get(0)));
+        when(countryRepository.findById("1")).thenReturn(java.util.Optional.of(countryModels.getFirst()));
+        when(idService.generateRandomId()).thenReturn("1");
         when(countryRepository.save(updatedCountry)).thenReturn(updatedCountry);
 
         CountryModel result = countryService.updateCountry(updatedCountry);
