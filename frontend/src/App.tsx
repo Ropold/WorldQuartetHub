@@ -53,7 +53,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
             <Route element={<ProtectedRoute user={user}/>}>
-                <Route path="/profile/*" element={<Profile />} />
+                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails}  />} />
             </Route>
         </Routes>
         <Footer />

@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./styles/Navbar.css";
+import "./styles/Buttons.css"
 import headerLogo from "../assets/world-quartet-original.jpg"
 
 type NavbarProps = {
