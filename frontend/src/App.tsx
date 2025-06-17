@@ -9,10 +9,13 @@ import Profile from "./components/Profile.tsx";
 import type {UserDetails} from "./components/model/UserDetailsModel.ts";
 import Footer from "./components/Footer.tsx";
 import Navbar from "./components/Navbar.tsx";
+import type {CountryModel} from "./components/model/CountryModel.ts";
+import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+    const [favorites, setFavorites] = useState<string[]>([]);
 
     function getUser() {
         axios.get("/api/users/me")
@@ -36,6 +39,37 @@ export default function App() {
             });
     }
 
+    function getAppUserFavorites(){
+        axios.get<CountryModel[]>(`/api/users/favorites`)
+            .then((response) => {
+                const favoriteIds = response.data.map((country) => country.id);
+                setFavorites(favoriteIds);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    function toggleFavorite(countryId: string) {
+        const isFavorite = favorites.includes(countryId);
+
+        if (isFavorite) {
+            axios.delete(`/api/users/favorites/${countryId}`)
+                .then(() => {
+                    setFavorites((prevFavorites) =>
+                        prevFavorites.filter((id) => id !== countryId)
+                    );
+                })
+                .catch((error) => console.error(error));
+        } else {
+            axios.post(`/api/users/favorites/${countryId}`)
+                .then(() => {
+                    setFavorites((prevFavorites) => [...prevFavorites, countryId]);
+                })
+                .catch((error) => console.error(error));
+        }
+    }
+
     useEffect(() => {
         getUser();
     }, []);
@@ -43,6 +77,7 @@ export default function App() {
     useEffect(() => {
         if(user !== "anonymousUser"){
             getUserDetails();
+            getAppUserFavorites();
         }
     }, [user]);
 
@@ -52,6 +87,7 @@ export default function App() {
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
+            <Route path="/list-of-all-countries" element={<ListOfAllCountries favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails}  />} />
             </Route>
