@@ -247,10 +247,10 @@ import ytPic from "../../assets/flags/yt.svg";
 import zaPic from "../../assets/flags/za.svg";
 import zmPic from "../../assets/flags/zm.svg";
 import zwPic from "../../assets/flags/zw.svg";
-import engPic from "../../assets/flags/eng.svg";
-import nirPic from "../../assets/flags/nir.svg";
-import sctPic from "../../assets/flags/sct.svg";
-import walPic from "../../assets/flags/wal.svg";
+import engPic from "../../assets/flags/gb-eng.svg";
+import nirPic from "../../assets/flags/gb-nir.svg";
+import sctPic from "../../assets/flags/gb-sct.svg";
+import wlsPic from "../../assets/flags/gb-wls.svg";
 import xkPic from "../../assets/flags/xk.svg";
 import euPic from "../../assets/flags/eu.svg";
 
@@ -507,12 +507,12 @@ export const flagImages: Record<string, string> = {
     eng: engPic,
     nir: nirPic,
     sct: sctPic,
-    wal: walPic,
+    wls: wlsPic,
     xk: xkPic,
     eu: euPic
 };
 
-const countryNameToIsoCode: Record<string, string> = {
+export const countryNameToIsoCode: Record<string, string> = {
     "Andorra": "ad",
     "Afghanistan": "af",
     "Aland Islands": "ax",
@@ -762,7 +762,7 @@ const countryNameToIsoCode: Record<string, string> = {
     "Vietnam": "vn",
     "Virgin Islands, British": "vg",
     "Virgin Islands, U.S.": "vi",
-    "Wales": "wal",
+    "Wales": "wls",
     "Wallis and Futuna Islands": "wf",
     "Western Sahara": "eh",
     "Yemen": "ye",
