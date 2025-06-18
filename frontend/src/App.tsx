@@ -87,7 +87,7 @@ export default function App() {
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
-            <Route path="/list-of-all-countries" element={<ListOfAllCountries favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+            <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails}  />} />
             </Route>
