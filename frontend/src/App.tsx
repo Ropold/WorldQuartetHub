@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar.tsx";
 import type {CountryModel} from "./components/model/CountryModel.ts";
 import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 import Details from "./components/Details.tsx";
+import Play from "./components/Play.tsx";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
@@ -88,6 +89,7 @@ export default function App() {
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
+            <Route path="/play" element={<Play/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route path="/country/:id" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
