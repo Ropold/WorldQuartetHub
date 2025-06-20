@@ -74,6 +74,15 @@ class CountryServiceTest {
     }
 
     @Test
+    void testGetCountryByName() {
+        String countryName = "Deutschland";
+        CountryModel expectedCountry = countryModels.getFirst();
+        when(countryRepository.findByCountryNameIgnoreCase(countryName)).thenReturn(java.util.Optional.of(expectedCountry));
+        CountryModel result = countryService.getCountryByName(countryName);
+        assertEquals(expectedCountry, result);
+    }
+
+    @Test
     void testAddCountry(){
         CountryModel countryModel3 = new CountryModel(
                 null,

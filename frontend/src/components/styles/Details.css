@@ -1,0 +1,11 @@
+.details-container {
+    padding: 1rem;
+}
+
+.details-image {
+    max-width: 300px;
+    max-height: 200px;
+    margin-top: 1rem;
+    border: 2px solid black; /* Border um das Bild */
+    border-radius: 5px;
+}

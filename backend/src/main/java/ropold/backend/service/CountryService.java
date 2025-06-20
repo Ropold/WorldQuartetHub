@@ -25,6 +25,11 @@ public class CountryService {
                 .orElseThrow(() -> new RuntimeException("Country not found"));
     }
 
+    public CountryModel getCountryByName(String countryName) {
+        return countryRepository.findByCountryNameIgnoreCase(countryName)
+                .orElseThrow(() -> new CountryNotFoundException("No Country found with name: " + countryName));
+    }
+
     public CountryModel addCountry(CountryModel countryModel) {
         CountryModel newCountryModel = new CountryModel(
                 idService.generateRandomId(),
