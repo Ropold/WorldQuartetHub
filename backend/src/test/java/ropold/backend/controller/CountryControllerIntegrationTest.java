@@ -21,7 +21,6 @@ import ropold.backend.model.AppUser;
 import ropold.backend.model.CountryModel;
 import ropold.backend.repository.AppUserRepository;
 import ropold.backend.repository.CountryRepository;
-import ropold.backend.service.CountryService;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,9 +49,6 @@ class CountryControllerIntegrationTest {
 
     @Autowired
     private CountryRepository countryRepository;
-
-    @MockBean
-    private CountryService countryService;
 
     @BeforeEach
     void setUp() {
