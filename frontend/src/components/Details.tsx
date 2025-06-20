@@ -14,15 +14,15 @@ export default function Details(props: Readonly<DetailsProps>) {
 
     const [country, setCountry] = useState<CountryModel>(DefaultCountry);
     const [githubUser, setGithubUser] = useState<UserDetails>(DefaultUserDetails);
-    const { id } = useParams<{ id: string }>();
+    const { countryName } = useParams<{ countryName: string }>();
 
     useEffect(() => {
-        if (!id) return;
+        if (!countryName) return;
         axios
-            .get(`/api/world-quartet-hub/${id}`)
+            .get(`/api/world-quartet-hub/country/${countryName}`)
             .then((response) => setCountry(response.data))
             .catch((error) => console.error("Error fetching Country details", error));
-    }, [id]);
+    }, [countryName]);
 
     const fetchGithubUsername = async () => {
         try {

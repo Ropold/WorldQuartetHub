@@ -131,7 +131,7 @@ class CountryControllerIntegrationTest {
 
     @Test
     void testGetCountryByName_shouldReturnCountry() throws Exception {
-        mockMvc.perform(get("/api/world-quartet-hub/country-name/frankreich"))
+        mockMvc.perform(get("/api/world-quartet-hub/country/frankreich"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.countryName").value("Frankreich"));
     }

@@ -19,7 +19,7 @@ export default function CountryCard(props: Readonly<CountryCardProps>){
     const flagSrc = isoCode ? flagImages[isoCode] : null;
 
     const handleCardClick = () => {
-        navigate(`/country/${props.country.id}`);
+        navigate(`/country/${props.country.countryName}`);
     }
 
     const isFavorite = props.favorites.includes(props.country.id);

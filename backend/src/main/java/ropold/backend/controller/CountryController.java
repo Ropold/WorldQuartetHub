@@ -52,7 +52,7 @@ public class CountryController {
         return country;
     }
 
-    @GetMapping("country-name/{countryName}")
+    @GetMapping("country/{countryName}")
     public CountryModel getCountryByName(@PathVariable String countryName) {
         CountryModel country = countryService.getCountryByName(countryName);
         if (country == null) {
