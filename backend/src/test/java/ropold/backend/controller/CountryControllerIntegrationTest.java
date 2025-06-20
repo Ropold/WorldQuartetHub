@@ -144,6 +144,13 @@ class CountryControllerIntegrationTest {
     }
 
     @Test
+    void testGetCountryByName_shouldReturnNotFound() throws Exception {
+        mockMvc.perform(get("/api/world-quartet-hub/country/999"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("No Country found with name: 999"));
+    }
+
+    @Test
     void testPostCountry_shouldCreateCountry() throws Exception {
         OAuth2User mockOAuth2User = mock(OAuth2User.class);
         when(mockOAuth2User.getName()).thenReturn("user");
