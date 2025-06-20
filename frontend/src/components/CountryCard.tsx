@@ -25,7 +25,7 @@ export default function CountryCard(props: Readonly<CountryCardProps>){
     const isFavorite = props.favorites.includes(props.country.id);
 
     return (
-        <div className="question-card" onClick={handleCardClick}>
+        <div className="country-card" onClick={handleCardClick}>
             <h3>{props.country.countryName}</h3>
             <img
                 src={flagSrc ?? props.country.imageUrl ?? undefined}

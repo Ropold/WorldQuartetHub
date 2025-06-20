@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import SearchBar from "./SearchBar.tsx";
 import CountryCard from "./CountryCard.tsx";
+import "./styles/CountryCard.css"
 
 type ListOfAllCountriesProps = {
     user: string;
