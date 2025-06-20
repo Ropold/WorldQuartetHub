@@ -55,7 +55,6 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
             <SearchBar
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
-                allCountries={allCountries}
             />
             <div className="country-card-container">
                 {filteredCountries.map((c:CountryModel) => (

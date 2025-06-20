@@ -1,0 +1,21 @@
+.search-bar {
+    margin: 20px auto 0 auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex; /* Setzt alle Kinder in eine Zeile */
+    align-items: center; /* Zentriert sie vertikal */
+    gap: 10px; /* Abstand zwischen den Elementen */
+    width: 600px;
+    height: auto; /* Höhe dynamisch halten */
+}
+
+.search-input {
+    width: 72%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s ease;
+}

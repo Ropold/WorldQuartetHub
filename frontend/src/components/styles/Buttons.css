@@ -81,6 +81,11 @@
     background-color: #555;
 }
 
+.button-grey {
+    background-color: #999;
+    cursor: default;
+}
+
 #button-delete {
     background-color: #ff9999;
 }
