@@ -52,6 +52,15 @@ public class CountryController {
         return country;
     }
 
+    @GetMapping("country-name/{countryName}")
+    public CountryModel getCountryByName(@PathVariable String countryName) {
+        CountryModel country = countryService.getCountryByName(countryName);
+        if (country == null) {
+            throw new CountryNotFoundException("No Country found with name: " + countryName);
+        }
+        return country;
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
     public CountryModel addCountry(
