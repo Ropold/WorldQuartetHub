@@ -14,6 +14,7 @@ import ropold.backend.service.CountryService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,7 +36,7 @@ class ExceptionHandlerTest {
 
     @Test
     void whenCountryNotFoundException_thenReturnsNotFound() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/world-quartet-hub/{id}", "non-existing-id"))
+        mockMvc.perform(get("/api/world-quartet-hub/{id}", "non-existing-id"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message").value("No Country found with id: non-existing-id"));
     }
@@ -44,7 +45,7 @@ class ExceptionHandlerTest {
     void whenRuntimeException_thenReturnsInternalServerError() throws Exception {
         when(countryService.getCountryById(any())).thenThrow(new RuntimeException("Unexpected error"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/world-quartet-hub/{id}", "any-id"))
+        mockMvc.perform(get("/api/world-quartet-hub/{id}", "any-id"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.message").value("Unexpected error"));
 
@@ -55,9 +56,27 @@ class ExceptionHandlerTest {
     void whenAccessDeniedException_thenReturnsForbidden() throws Exception {
         when(countryService.getCountryById(any())).thenThrow(new AccessDeniedException("Access denied"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/world-quartet-hub/{id}", "any-id"))
+        mockMvc.perform(get("/api/world-quartet-hub/{id}", "any-id"))
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.message").value("Access denied"));
+    }
+
+    @Test
+    void testGetCountryById_shouldReturnNotFound() throws Exception {
+        when(countryService.getCountryById("999")).thenReturn(null);
+
+        mockMvc.perform(get("/api/world-quartet-hub/999"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("No Country found with id: 999"));
+    }
+
+    @Test
+    void testGetCountryByName_shouldReturnNotFound() throws Exception {
+        when(countryService.getCountryByName("NonExistentCountry")).thenReturn(null);
+
+        mockMvc.perform(get("/api/world-quartet-hub/country/NonExistentCountry"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("No Country found with name: NonExistentCountry"));
     }
 
 }

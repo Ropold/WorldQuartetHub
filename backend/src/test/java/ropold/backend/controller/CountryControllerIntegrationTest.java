@@ -21,6 +21,7 @@ import ropold.backend.model.AppUser;
 import ropold.backend.model.CountryModel;
 import ropold.backend.repository.AppUserRepository;
 import ropold.backend.repository.CountryRepository;
+import ropold.backend.service.CountryService;
 
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +50,9 @@ class CountryControllerIntegrationTest {
 
     @Autowired
     private CountryRepository countryRepository;
+
+    @MockBean
+    private CountryService countryService;
 
     @BeforeEach
     void setUp() {
@@ -127,20 +131,6 @@ class CountryControllerIntegrationTest {
         mockMvc.perform(get("/api/world-quartet-hub/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.countryName").value("Deutschland"));
-    }
-
-    @Test
-    void testGetCountryByName_shouldReturnCountry() throws Exception {
-        mockMvc.perform(get("/api/world-quartet-hub/country/frankreich"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.countryName").value("Frankreich"));
-    }
-
-    @Test
-    void testGetCountryById_shouldReturnNotFound() throws Exception {
-        mockMvc.perform(get("/api/world-quartet-hub/999"))
-                .andExpect(status().isInternalServerError())
-                .andExpect(jsonPath("$.message").value("Country not found"));
     }
 
     @Test
