@@ -93,7 +93,7 @@ export default function App() {
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
-                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails}  />} />
+                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             </Route>
         </Routes>
         <Footer />

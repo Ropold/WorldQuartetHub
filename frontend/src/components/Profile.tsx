@@ -7,6 +7,8 @@ import Favorites from "./Favorites.tsx";
 type ProfileProps = {
     user: string;
     userDetails: UserDetails | null;
+    favorites: string[];
+    toggleFavorite: (questionId: string) => void;
 }
 
 export default function Profile(props:Readonly<ProfileProps>) {
@@ -74,7 +76,7 @@ export default function Profile(props:Readonly<ProfileProps>) {
 
                 {activeTab === "add-country" && <AddCountryCard/>}
                 {activeTab === "my-countries" && <MyCountries/>}
-                {activeTab === "favorites" && <Favorites/>}
+                {activeTab === "favorites" && <Favorites user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>}
             </div>
         </>
     );
