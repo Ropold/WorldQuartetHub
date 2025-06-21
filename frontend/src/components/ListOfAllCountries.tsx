@@ -1,4 +1,3 @@
-import axios from "axios";
 import type {CountryModel} from "./model/CountryModel.ts";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
@@ -10,10 +9,11 @@ type ListOfAllCountriesProps = {
     user: string;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
+    allCountries: CountryModel[];
+    getAllCountries: () => void;
 }
 
 export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesProps>) {
-    const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filteredCountries, setFilteredCountries] = useState<CountryModel[]>([]);
 
@@ -23,20 +23,6 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
         window.scroll(0, 0);
     }, [location]);
 
-    function getAllCountries() {
-        axios.get("/api/world-quartet-hub")
-            .then((response) => {
-                setAllCountries(response.data as CountryModel[]);
-            })
-            .catch((error) => {
-                console.error("Error fetching countries:", error);
-            });
-    }
-
-    useEffect(() => {
-        getAllCountries();
-    }, []);
-
     function filterCountries(countries: CountryModel[], query: string): CountryModel[] {
         return countries.filter(country =>
             country.countryName.toLowerCase().includes(query.toLowerCase()) ||
@@ -45,10 +31,8 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
     }
 
     useEffect(() => {
-        setFilteredCountries(filterCountries(allCountries, searchQuery));
-    }, [allCountries, searchQuery]);
-
-
+        setFilteredCountries(filterCountries(props.allCountries, searchQuery));
+    }, [props.allCountries, searchQuery]);
 
     return(
         <>

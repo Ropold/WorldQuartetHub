@@ -3,10 +3,14 @@ import {useEffect, useState} from "react";
 import AddCountryCard from "./AddCountryCard.tsx";
 import MyCountries from "./MyCountries.tsx";
 import Favorites from "./Favorites.tsx";
+import type {CountryModel} from "./model/CountryModel.ts";
 
 type ProfileProps = {
     user: string;
     userDetails: UserDetails | null;
+    handleNewCountrySubmit: (newCountry: CountryModel) => void;
+    handleUpdateCountry: (updatedCountry: CountryModel) => void;
+    handleDeleteCountry: (countryId: string) => void;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
 }
@@ -75,7 +79,7 @@ export default function Profile(props:Readonly<ProfileProps>) {
                 )}
 
                 {activeTab === "add-country" && <AddCountryCard/>}
-                {activeTab === "my-countries" && <MyCountries/>}
+                {activeTab === "my-countries" && <MyCountries user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite} isEditing={isEditing} setIsEditing={setIsEditing} handleUpdateCountry={props.handleUpdateCountry} handleDeleteCountry={props.handleDeleteCountry}/>}
                 {activeTab === "favorites" && <Favorites user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>}
             </div>
         </>
