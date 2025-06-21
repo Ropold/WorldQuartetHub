@@ -1,5 +1,5 @@
 import type {CountryModel} from "./model/CountryModel.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 type MyQuestionsProps = {
@@ -30,7 +30,7 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                 console.error("Error fetching countries:", error);
             });
     }
-    useState(() => {
+    useEffect(() => {
         getUserCountries();
     });
 
@@ -123,16 +123,16 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                     setUserCountries((prev) =>
                         prev.filter((c) => c.id !== countryToDelete)
                     );
-                    setCountryToDelete(null);
-                    setShowPopup(false);
                 })
                 .catch((error) => {
                     console.error("Error deleting question:", error);
                     alert("An unexpected error occurred. Please try again.");
+                })
+                .finally(() => {
+                    setCountryToDelete(null);
+                    setShowPopup(false);
                 });
         }
-        setCountryToDelete(null);
-        setShowPopup(false);
     }
 
     return (
