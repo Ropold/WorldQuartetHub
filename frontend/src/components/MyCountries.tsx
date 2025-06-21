@@ -1,6 +1,9 @@
 import type {CountryModel} from "./model/CountryModel.ts";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import CountryCard from "./CountryCard.tsx";
+import "./styles/AddCountryCard.css";
+import "./styles/Popup.css";
 
 type MyQuestionsProps = {
     user: string;
@@ -34,7 +37,7 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
         getUserCountries();
     });
 
-    function handleEditCountry(countryId: string) {
+    function handleEditToggle(countryId: string) {
         const countryToEdit = userCountries.find(country => country.id === countryId);
         if (countryToEdit) {
             setEditData(countryToEdit);
@@ -136,6 +139,77 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
     }
 
     return (
-        <h2>My Countries</h2>
-    )
+        <div>
+            {props.isEditing ? (
+                <div className="edit-form">
+                    <h2>Edit Country</h2>
+                    <form onSubmit={handleSaveEdit}>
+                        <label>
+                            countryName:
+                            <input
+                                className="input-small"
+                                type="text"
+                                value={editData?.countryName ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, countryName: e.target.value })}
+                            />
+                        </label>
+
+                        <div>
+                            <label>
+                                Image:
+                                <input type="file" onChange={onFileChange} />
+                                {image && (
+                                    <img
+                                        src={URL.createObjectURL(image)}
+                                        alt={editData?.countryName ?? "Preview"}
+                                        className="image-preview"
+                                    />
+                                )}
+                            </label>
+                            <button className="button-group-button" type="button" onClick={() => { setImage(null); setImageChanged(true); setImageDeleted(true); }}>Entferne Bild</button>
+                        </div>
+
+
+                        <div className="space-between">
+                            <button className="button-group-button" type="submit">Save Changes</button>
+                            <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            ) : (
+                <div className="country-card-container">
+                    {userCountries.length > 0 ? (
+                        userCountries.map((c) => (
+                            <div key={c.id}>
+                                <CountryCard
+                                    country={c}
+                                    user={props.user}
+                                    favorites={props.favorites}
+                                    toggleFavorite={props.toggleFavorite}
+                                    showButtons={true}
+                                    handleEditToggle={handleEditToggle}
+                                    handleDeleteClick={handleDeleteClick}
+                                />
+                            </div>
+                        ))
+                    ) : (
+                        <p>No Questions found for this user.</p>
+                    )}
+                </div>
+            )}
+
+            {showPopup && (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <h3>Confirm Deletion</h3>
+                        <p>Are you sure you want to delete this question?</p>
+                        <div className="popup-actions">
+                            <button onClick={handleConfirmDelete} className="popup-confirm">Yes, Delete</button>
+                            <button onClick={handleCancel} className="popup-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }
