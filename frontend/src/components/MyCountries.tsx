@@ -153,6 +153,100 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                                 onChange={(e) => setEditData({ ...editData!, countryName: e.target.value })}
                             />
                         </label>
+                        <label>
+                            capitalCity:
+                            <input
+                                className="input-small"
+                                type="text"
+                                value={editData?.capitalCity ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, capitalCity: e.target.value })}
+                            />
+                        </label>
+                        <label>
+                            populationInMillions:
+                            <input
+                                className="input-small"
+                                type="number"
+                                step="0.1"
+                                value={editData?.populationInMillions ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, populationInMillions: parseFloat(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            populationDensityPerKm2:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.populationDensityPerKm2 ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, populationDensityPerKm2: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            capitalCityPopulation:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.capitalCityPopulation ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, capitalCityPopulation: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            gdpPerCapitaInUSD:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.gdpPerCapitaInUSD ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, gdpPerCapitaInUSD: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            forestAreaPercentage:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.forestAreaPercentage ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, forestAreaPercentage: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            totalAreaInKm2:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.totalAreaInKm2 ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, totalAreaInKm2: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            roadNetworkLengthInKm:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.roadNetworkLengthInKm ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, roadNetworkLengthInKm: parseInt(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            averageAnnualTemperatureInC:
+                            <input
+                                className="input-small"
+                                type="number"
+                                step="0.1"
+                                value={editData?.averageAnnualTemperatureInC ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, averageAnnualTemperatureInC: parseFloat(e.target.value) })}
+                            />
+                        </label>
+                        <label>
+                            annualPrecipitationInMm:
+                            <input
+                                className="input-small"
+                                type="number"
+                                value={editData?.annualPrecipitationInMm ?? ""}
+                                onChange={(e) => setEditData({ ...editData!, annualPrecipitationInMm: parseInt(e.target.value) })}
+                            />
+                        </label>
+
+
 
                         <div>
                             <label>
