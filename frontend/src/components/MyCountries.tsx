@@ -141,9 +141,9 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
     return (
         <div>
             {props.isEditing ? (
-                <div className="edit-form">
+                <div>
                     <h2>Edit Country</h2>
-                    <form onSubmit={handleSaveEdit}>
+                    <form className="edit-form" onSubmit={handleSaveEdit}>
                         <label>
                             countryName:
                             <input
@@ -186,6 +186,7 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                             <input
                                 className="input-small"
                                 type="number"
+                                step="1000"
                                 value={editData?.capitalCityPopulation ?? ""}
                                 onChange={(e) => setEditData({ ...editData!, capitalCityPopulation: parseInt(e.target.value) })}
                             />
@@ -246,29 +247,27 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                             />
                         </label>
 
-
-
-                        <div>
-                            <label>
-                                Image:
-                                <input type="file" onChange={onFileChange} />
-                                {image && (
-                                    <img
-                                        src={URL.createObjectURL(image)}
-                                        alt={editData?.countryName ?? "Preview"}
-                                        className="image-preview"
-                                    />
-                                )}
-                            </label>
-                            <button className="button-group-button" type="button" onClick={() => { setImage(null); setImageChanged(true); setImageDeleted(true); }}>Entferne Bild</button>
-                        </div>
-
-
-                        <div className="space-between">
-                            <button className="button-group-button" type="submit">Save Changes</button>
-                            <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
-                        </div>
                     </form>
+                    <div className="margin-top-20">
+                        <label>
+                            Image:
+                            <input type="file" onChange={onFileChange} />
+                            {image && (
+                                <img
+                                    src={URL.createObjectURL(image)}
+                                    alt={editData?.countryName ?? "Preview"}
+                                    className="image-preview"
+                                />
+                            )}
+                        </label>
+                        <button className="button-group-button" type="button" onClick={() => { setImage(null); setImageChanged(true); setImageDeleted(true); }}>Entferne Bild</button>
+                    </div>
+
+
+                    <div className="space-between">
+                        <button className="button-group-button" type="submit">Save Changes</button>
+                        <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
+                    </div>
                 </div>
             ) : (
                 <div className="country-card-container">
