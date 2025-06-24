@@ -22,7 +22,6 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
     const [averageAnnualTemperatureInC, setAverageAnnualTemperatureInC] = useState<number>(0);
     const [annualPrecipitationInMm, setAnnualPrecipitationInMm] = useState<number>(0);
     const [image, setImage] = useState<File | null>(null);
-    const [imageUrl, setImageUrl] = useState<string>("");
 
     const navigate = useNavigate();
 
@@ -61,6 +60,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                 },
             })
             .then((response) => {
+                props.handleNewCountrySubmit(response.data);
                 navigate(`/country/${response.data.countryName}`);
             })
             .catch((error) => {
@@ -73,7 +73,6 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
         if (e.target.files) {
             const file = e.target.files[0];
             setImage(file);
-            setImageUrl("temp-image")
         }
     }
 
