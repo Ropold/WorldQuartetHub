@@ -143,7 +143,8 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
             {props.isEditing ? (
                 <div>
                     <h2>Edit Country</h2>
-                    <form className="edit-form" onSubmit={handleSaveEdit}>
+                    <form onSubmit={handleSaveEdit}>
+                        <div className="edit-form">
                         <label>
                             countryName:
                             <input
@@ -246,8 +247,8 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                                 onChange={(e) => setEditData({ ...editData!, annualPrecipitationInMm: parseInt(e.target.value) })}
                             />
                         </label>
+                    </div>
 
-                    </form>
                     <div className="margin-top-20">
                         <label>
                             Image:
@@ -268,6 +269,7 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                         <button className="button-group-button" type="submit">Save Changes</button>
                         <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
                     </div>
+                    </form>
                 </div>
             ) : (
                 <div className="country-card-container">
