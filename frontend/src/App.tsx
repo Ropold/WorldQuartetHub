@@ -13,6 +13,7 @@ import type {CountryModel} from "./components/model/CountryModel.ts";
 import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 import Details from "./components/Details.tsx";
 import Play from "./components/Play.tsx";
+import HighScore from "./components/HighScore.tsx";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
@@ -122,6 +123,7 @@ export default function App() {
             <Route path="/play" element={<Play/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+            <Route path="/high-score" element={<HighScore/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
             </Route>

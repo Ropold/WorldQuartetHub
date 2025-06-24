@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import "./styles/Navbar.css";
 import "./styles/Buttons.css"
 import headerLogo from "../assets/world-quartet-original.jpg"
+import highScoreLogo from "../assets/highscore-logo.jpg"
 
 type NavbarProps = {
     getUser: () => void;
@@ -57,16 +58,16 @@ export default function Navbar(props: Readonly<NavbarProps>) {
                 <img src={headerLogo} alt="All Countries Logo" className="logo-image" />
             </div>
 
-            {/*<div*/}
-            {/*    className="clickable-header"*/}
-            {/*    id="button-high-score"*/}
-            {/*    onClick={() => {*/}
-            {/*        navigate("/high-score");*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    <h2 className="header-title">High Score</h2>*/}
-            {/*    <img src={highScoreLogo} alt="High Score Logo" className="logo-image" />*/}
-            {/*</div>*/}
+            <div
+                className="clickable-header"
+                id="button-high-score"
+                onClick={() => {
+                    navigate("/high-score");
+                }}
+            >
+                <h2 className="header-title">High Score</h2>
+                <img src={highScoreLogo} alt="High Score Logo" className="logo-image" />
+            </div>
 
 
             {props.user !== "anonymousUser" ? (
