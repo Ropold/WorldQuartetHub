@@ -4,8 +4,10 @@ import axios from "axios";
 import CountryCard from "./CountryCard.tsx";
 import "./styles/AddCountryCard.css";
 import "./styles/Popup.css";
+import {useLocation} from "react-router-dom";
+import SearchBar from "./SearchBar.tsx";
 
-type MyQuestionsProps = {
+type MyCountriesProps = {
     user: string;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
@@ -15,7 +17,7 @@ type MyQuestionsProps = {
     handleDeleteCountry: (countryId: string) => void;
 }
 
-export default function MyCountries(props: Readonly<MyQuestionsProps>) {
+export default function MyCountries(props: Readonly<MyCountriesProps>) {
     const [userCountries, setUserCountries] = useState<CountryModel[]>([]);
     const [editData, setEditData] = useState<CountryModel | null>(null);
     const [image, setImage] = useState<File | null>(null);
@@ -23,6 +25,26 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
     const [showPopup, setShowPopup] = useState(false);
     const [imageChanged, setImageChanged] = useState(false);
     const [imageDeleted, setImageDeleted] = useState(false);
+
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [filteredCountries, setFilteredCountries] = useState<CountryModel[]>([]);
+
+    const location = useLocation();
+
+    function filterCountries(countries: CountryModel[], query: string): CountryModel[] {
+        return countries.filter(country =>
+            country.countryName.toLowerCase().includes(query.toLowerCase()) ||
+            country.capitalCity.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+
+    useEffect(() => {
+        setFilteredCountries(filterCountries(userCountries, searchQuery));
+    }, [userCountries, searchQuery]);
+
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, [location]);
 
     function getUserCountries() {
         axios.get(`/api/users/me/my-countries/${props.user}`)
@@ -272,25 +294,34 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                     </form>
                 </div>
             ) : (
-                <div className="country-card-container">
-                    {userCountries.length > 0 ? (
-                        userCountries.map((c) => (
-                            <div key={c.id}>
-                                <CountryCard
-                                    country={c}
-                                    user={props.user}
-                                    favorites={props.favorites}
-                                    toggleFavorite={props.toggleFavorite}
-                                    showButtons={true}
-                                    handleEditToggle={handleEditToggle}
-                                    handleDeleteClick={handleDeleteClick}
-                                />
-                            </div>
-                        ))
-                    ) : (
-                        <p>No Questions found for this user.</p>
-                    )}
-                </div>
+                <>
+                    <div>
+                        <SearchBar
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
+                        />
+                    </div>
+
+                    <div className="country-card-container">
+                        {userCountries.length > 0 ? (
+                            filteredCountries.map((c) => (
+                                <div key={c.id}>
+                                    <CountryCard
+                                        country={c}
+                                        user={props.user}
+                                        favorites={props.favorites}
+                                        toggleFavorite={props.toggleFavorite}
+                                        showButtons={true}
+                                        handleEditToggle={handleEditToggle}
+                                        handleDeleteClick={handleDeleteClick}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <p>No Questions found for this user.</p>
+                        )}
+                    </div>
+                </>
             )}
 
             {showPopup && (
@@ -306,5 +337,6 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
                 </div>
             )}
         </div>
+
     );
 }
