@@ -35,7 +35,7 @@ export default function MyCountries(props: Readonly<MyQuestionsProps>) {
     }
     useEffect(() => {
         getUserCountries();
-    });
+    }, []);
 
     function handleEditToggle(countryId: string) {
         const countryToEdit = userCountries.find(country => country.id === countryId);
