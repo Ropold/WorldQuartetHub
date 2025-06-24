@@ -36,14 +36,16 @@ export default function Profile(props:Readonly<ProfileProps>) {
                     <button className={activeTab === "profile" ? "active-profile-button" : "button-group-button"}
                             onClick={() => setActiveTab("profile")}>Profil of Github
                     </button>
-                    <button className={activeTab === "add-country" ? "active-profile-button" : "button-group-button"}
-                            onClick={() => setActiveTab("add-country")}>Add new Country
-                    </button>
-                    <button className={activeTab === "my-countries" ? "active-profile-button" : "button-group-button"}
-                            onClick={() => setActiveTab("my-countries")}>My Countries
-                    </button>
                     <button className={activeTab === "favorites" ? "active-profile-button" : "button-group-button"}
                             onClick={() => setActiveTab("favorites")}>Favorites
+                    </button>
+                    <button className={activeTab === "add-country" ? "active-profile-button" : "button-group-button"}
+                            onClick={() => setActiveTab("add-country")}
+                            disabled={props.user !== "154427648"}>Add new Country
+                    </button>
+                    <button className={activeTab === "my-countries" ? "active-profile-button" : "button-group-button"}
+                            onClick={() => {setActiveTab("my-countries"); setIsEditing(false)} }
+                            disabled={props.user !== "154427648"}>My Countries
                     </button>
                 </div>
             </div>
@@ -78,7 +80,7 @@ export default function Profile(props:Readonly<ProfileProps>) {
                     </>
                 )}
 
-                {activeTab === "add-country" && <AddCountryCard/>}
+                {activeTab === "add-country" && <AddCountryCard user={props.user} handleNewCountrySubmit={props.handleNewCountrySubmit}/>}
                 {activeTab === "my-countries" && <MyCountries user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite} isEditing={isEditing} setIsEditing={setIsEditing} handleUpdateCountry={props.handleUpdateCountry} handleDeleteCountry={props.handleDeleteCountry}/>}
                 {activeTab === "favorites" && <Favorites user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>}
             </div>
