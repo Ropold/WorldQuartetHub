@@ -26,7 +26,7 @@ export default function Welcome(props:Readonly<WelcomeProps>){
         <>
             <h2>World Quartet Hub</h2>
             <p>{getLanguageForWelcome(props.language)}</p>
-            <div className="image-wrapper">
+            <div className="image-wrapper margin-top-20">
                 <img
                     src={welcomePic}
                     alt="Welcome to Word Link Hub"
