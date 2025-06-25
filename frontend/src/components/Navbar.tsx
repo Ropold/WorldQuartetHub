@@ -51,6 +51,31 @@ export default function Navbar(props: Readonly<NavbarProps>) {
         }
     }
 
+    function getLanguageForAllCountries(code: string): string {
+        switch (code) {
+            case "en": return "All Countries";
+            case "de": return "Alle Länder";
+            case "pl": return "Wszystkie Kraje";
+            case "es": return "Todos los Países";
+            case "fr": return "Tous les Pays";
+            case "it": return "Tutti i Paesi";
+            case "ru": return "Все Страны";
+            default: return code;
+        }
+    }
+
+    function getLanguageForPlay(code: string): string {
+        switch (code) {
+            case "en": return "Play";
+            case "de": return "Spielen";
+            case "pl": return "Graj";
+            case "es": return "Jugar";
+            case "fr": return "Jouer";
+            case "it": return "Gioca";
+            case "ru": return "Играть";
+            default: return code;
+        }
+    }
 
     return (
         <nav className="navbar">
@@ -62,7 +87,7 @@ export default function Navbar(props: Readonly<NavbarProps>) {
                     navigate("/play");
                 }}
             >
-                <h2 className="header-title">Play</h2>
+                <h2 className="header-title">{getLanguageForPlay(props.language)}</h2>
                 <img src={headerLogo} alt="World Quartet Hub Logo" className="logo-image" />
             </div>
 
@@ -72,7 +97,7 @@ export default function Navbar(props: Readonly<NavbarProps>) {
                     navigate("/list-of-all-countries");
                 }}
             >
-                <h2 className="header-title">All Countries</h2>
+                <h2 className="header-title">{getLanguageForAllCountries(props.language)}</h2>
                 <img src={headerLogo} alt="All Countries Logo" className="logo-image" />
             </div>
 
