@@ -1,19 +1,22 @@
-import axios from "axios";
 import type {CountryModel} from "./model/CountryModel.ts";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import SearchBar from "./SearchBar.tsx";
 import CountryCard from "./CountryCard.tsx";
 import "./styles/CountryCard.css"
+import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
+import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
 
 type ListOfAllCountriesProps = {
     user: string;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
+    allCountries: CountryModel[];
+    getAllCountries: () => void;
+    language: string;
 }
 
 export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesProps>) {
-    const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [filteredCountries, setFilteredCountries] = useState<CountryModel[]>([]);
 
@@ -23,31 +26,17 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
         window.scroll(0, 0);
     }, [location]);
 
-    function getAllCountries() {
-        axios.get("/api/world-quartet-hub")
-            .then((response) => {
-                setAllCountries(response.data as CountryModel[]);
-            })
-            .catch((error) => {
-                console.error("Error fetching countries:", error);
-            });
+    function filterCountries(countries: CountryModel[], query: string, language: string): CountryModel[] {
+        return countries.filter(country => {
+            const name = translatedCountryNames[country.countryName]?.[language]?.toLowerCase() || "";
+            const capital = translatedCapitalCities[country.capitalCity]?.[language]?.toLowerCase() || "";
+            return name.includes(query.toLowerCase()) || capital.includes(query.toLowerCase());
+        });
     }
 
     useEffect(() => {
-        getAllCountries();
-    }, []);
-
-    function filterCountries(countries: CountryModel[], query: string): CountryModel[] {
-        return countries.filter(country =>
-            country.countryName.toLowerCase().includes(query.toLowerCase()) ||
-            country.capitalCity.toLowerCase().includes(query.toLowerCase())
-        );
-    }
-
-    useEffect(() => {
-        setFilteredCountries(filterCountries(allCountries, searchQuery));
-    }, [allCountries, searchQuery]);
-
+        setFilteredCountries(filterCountries(props.allCountries, searchQuery, props.language));
+    }, [props.allCountries, searchQuery, props.language]);
 
 
     return(
@@ -65,6 +54,7 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
                     user={props.user}
                     favorites={props.favorites}
                     toggleFavorite={props.toggleFavorite}
+                    language={props.language}
                 />
                 ))}
             </div>

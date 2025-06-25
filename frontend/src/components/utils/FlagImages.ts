@@ -512,6 +512,16 @@ export const flagImages: Record<string, string> = {
     eu: euPic
 };
 
+export const LanguagesImages: Record<string, string> = {
+    de: dePic,
+    en: gbPic,
+    pl: plPic,
+    es: esPic,
+    fr: frPic,
+    it: itPic,
+    ru: ruPic,
+};
+
 export const countryNameToIsoCode: Record<string, string> = {
     "Andorra": "ad",
     "Afghanistan": "af",

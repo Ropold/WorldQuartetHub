@@ -4,6 +4,7 @@
     gap: 20px;
     justify-content: center;
     margin: 0 auto; /* Horizontal zentrieren */
+    max-width: 1400px;
 }
 
 .country-card {
@@ -12,8 +13,8 @@
     width: 150px;
     border: 2px solid #66b3ff; /* Schwarze, 5px dicke Border */
     border-radius: 12px;
-    padding: 20px;
-    margin: 20px;
+    padding: 10px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

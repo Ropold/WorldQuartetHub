@@ -3,14 +3,20 @@ import {useNavigate} from "react-router-dom";
 import "./styles/Navbar.css";
 import "./styles/Buttons.css"
 import headerLogo from "../assets/world-quartet-original.jpg"
+import highScoreLogo from "../assets/highscore-logo.jpg"
+import * as React from "react";
+import {LanguagesImages} from "./utils/FlagImages.ts";
 
 type NavbarProps = {
+    user: string;
     getUser: () => void;
     getUserDetails: () => void;
-    user: string;
+    language: string;
+    setLanguage: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function Navbar(props: Readonly<NavbarProps>) {
+    const [showLanguagePopup, setShowLanguagePopup] = React.useState(false);
 
     const navigate = useNavigate();
 
@@ -30,6 +36,19 @@ export default function Navbar(props: Readonly<NavbarProps>) {
             .catch((error) => {
                 console.error("Logout failed:", error);
             });
+    }
+
+    function getLanguageName(code: string): string {
+        switch (code) {
+            case "en": return "English";
+            case "de": return "Deutsch";
+            case "pl": return "Polski";
+            case "es": return "Español";
+            case "fr": return "Français";
+            case "it": return "Italiano";
+            case "ru": return "Русский";
+            default: return code;
+        }
     }
 
 
@@ -57,16 +76,65 @@ export default function Navbar(props: Readonly<NavbarProps>) {
                 <img src={headerLogo} alt="All Countries Logo" className="logo-image" />
             </div>
 
-            {/*<div*/}
-            {/*    className="clickable-header"*/}
-            {/*    id="button-high-score"*/}
-            {/*    onClick={() => {*/}
-            {/*        navigate("/high-score");*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    <h2 className="header-title">High Score</h2>*/}
-            {/*    <img src={highScoreLogo} alt="High Score Logo" className="logo-image" />*/}
-            {/*</div>*/}
+            <div
+                className="clickable-header"
+                onClick={() => setShowLanguagePopup(true)}
+            >
+                <h2 className="header-title">{getLanguageName(props.language)}</h2>
+                <img src={LanguagesImages[props.language]} alt="Language Logo" className="logo-image" />
+            </div>
+
+            {showLanguagePopup && (
+                <div
+                    className="popup-overlay"
+                    onClick={() => setShowLanguagePopup(false)}
+                >
+                    <div
+                        className="popup-content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <h2>Select Language</h2>
+                        <div className="popup-language-options">
+                            {["en", "de", "pl", "es", "fr", "it", "ru"].map((lang) => (
+                                <button
+                                    key={lang}
+                                    className="language-option-button"
+                                    onClick={() => {
+                                        props.setLanguage(lang);
+                                        setShowLanguagePopup(false);
+                                    }}
+                                >
+                                    <img
+                                        src={LanguagesImages[lang]}
+                                        alt={lang}
+                                        className="language-flag"
+                                    />
+                                    {getLanguageName(lang)}
+                                </button>
+                            ))}
+                        </div>
+                        <button
+                            className="popup-cancel margin-top-20"
+                            onClick={() => setShowLanguagePopup(false)}
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            )}
+
+
+
+            <div
+                className="clickable-header"
+                id="button-high-score"
+                onClick={() => {
+                    navigate("/high-score");
+                }}
+            >
+                <h2 className="header-title">High Score</h2>
+                <img src={highScoreLogo} alt="High Score Logo" className="logo-image" />
+            </div>
 
 
             {props.user !== "anonymousUser" ? (

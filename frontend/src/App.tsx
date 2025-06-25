@@ -13,11 +13,15 @@ import type {CountryModel} from "./components/model/CountryModel.ts";
 import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 import Details from "./components/Details.tsx";
 import Play from "./components/Play.tsx";
+import HighScore from "./components/HighScore.tsx";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const [favorites, setFavorites] = useState<string[]>([]);
+    const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
+
+    const [language, setLanguage] = useState<string>("en");
 
     function getUser() {
         axios.get("/api/users/me")
@@ -38,6 +42,16 @@ export default function App() {
             .catch((error) => {
                 console.error(error);
                 setUserDetails(null);
+            });
+    }
+
+    function getAllCountries() {
+        axios.get("/api/world-quartet-hub")
+            .then((response) => {
+                setAllCountries(response.data as CountryModel[]);
+            })
+            .catch((error) => {
+                console.error("Error fetching countries:", error);
             });
     }
 
@@ -74,6 +88,7 @@ export default function App() {
 
     useEffect(() => {
         getUser();
+        getAllCountries();
     }, []);
 
     useEffect(() => {
@@ -83,17 +98,36 @@ export default function App() {
         }
     }, [user]);
 
+    function handleNewCountrySubmit(newCountry: CountryModel) {
+        setAllCountries((prevCountries) => [...prevCountries, newCountry]);
+    }
+
+    function handleUpdateCountry(updatedCountry: CountryModel) {
+        setAllCountries((prev) =>
+            prev.map((country) =>
+                country.id === updatedCountry.id ? updatedCountry : country
+            )
+        );
+    }
+
+    function handleDeleteCountry(deletedId: string) {
+        setAllCountries((prev) =>
+            prev.filter((country) => country.id !== deletedId)
+        );
+    }
+
   return (
     <>
-        <Navbar getUser={getUser} getUserDetails={getUserDetails} user={user}/>
+        <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
             <Route path="/play" element={<Play/>} />
-            <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
-            <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+            <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
+            <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
+            <Route path="/high-score" element={<HighScore/>} />
             <Route element={<ProtectedRoute user={user}/>}>
-                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails}  />} />
+                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             </Route>
         </Routes>
         <Footer />

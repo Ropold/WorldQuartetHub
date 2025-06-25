@@ -6,11 +6,15 @@ import {useParams} from "react-router-dom";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
 import "./styles/Details.css";
 import "./styles/Profile.css"
+import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
+import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
+import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
 
 type DetailsProps = {
     user: string;
     favorites: string[];
     toggleFavorite: (countryId: string) => void;
+    language: string;
 }
 
 export default function Details(props: Readonly<DetailsProps>) {
@@ -49,17 +53,21 @@ export default function Details(props: Readonly<DetailsProps>) {
     return (
         <>
             <div className="details-container">
-                <h2>{country.countryName}</h2>
-                <p><strong>capitalCity:</strong> {country.capitalCity}</p>
-                <p><strong>populationInMillions:</strong> {country.populationInMillions}</p>
-                <p><strong>populationDensityPerKm2:</strong> {country.populationDensityPerKm2}</p>
-                <p><strong>capitalCityPopulation:</strong> {country.capitalCityPopulation}</p>
-                <p><strong>gdpPerCapitaInUSD:</strong> {country.gdpPerCapitaInUSD}</p>
-                <p><strong>forestAreaPercentage:</strong> {country.forestAreaPercentage}</p>
-                <p><strong>totalAreaInKm2:</strong> {country.totalAreaInKm2}</p>
-                <p><strong>roadNetworkLengthInKm:</strong> {country.roadNetworkLengthInKm}</p>
-                <p><strong>averageAnnualTemperatureInC:</strong> {country.averageAnnualTemperatureInC}</p>
-                <p><strong>annualPrecipitationInMm:</strong> {country.annualPrecipitationInMm}</p>
+                <h2>
+                    {translatedCountryNames[country.countryName]?.[props.language] ?? country.countryName}
+                </h2>
+                <p> <strong>{translatedModelInfo.capitalCity[props.language] || "Capital City"}: </strong>
+                    {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
+                </p>
+                <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions}</p>
+                <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2}</p>
+                <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation}</p>
+                <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD}</p>
+                <p><strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {country.forestAreaPercentage}</p>
+                <p><strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {country.totalAreaInKm2}</p>
+                <p><strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {country.roadNetworkLengthInKm}</p>
+                <p><strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {country.averageAnnualTemperatureInC}</p>
+                <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm}</p>
 
                 {country.imageUrl && (
                     <img
