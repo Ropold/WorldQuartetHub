@@ -121,7 +121,7 @@ export default function App() {
         <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
         <Routes>
             <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Welcome/>}/>
+            <Route path="/" element={<Welcome language={language}/>}/>
             <Route path="/play" element={<Play/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
