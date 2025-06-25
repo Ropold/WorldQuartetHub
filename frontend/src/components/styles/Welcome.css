@@ -4,13 +4,14 @@
     max-width: 500px; /* Maximalbreite auf 600px begrenzen */
     margin-top: 25px;
     padding: 5px;
+    border-radius: 100px; /* Abgerundete Ecken */
     transition: transform 1s ease, box-shadow 1s ease; /* Beide Effekte haben die gleiche Dauer und beginnen gleichzeitig */
 }
 
 .logo-welcome:hover {
     border: 5px solid #388e3c; /* Schwarze, 5px dicke Border */
     transform: scale(1.03); /* Skaliert das Bild leicht beim Hover */
-    border-radius: 10px; /* Abgerundete Ecken */
+    border-radius: 100px; /* Abgerundete Ecken */
     box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.8); /* Leichter Schatten bei Hover */
     cursor: pointer;
 }
