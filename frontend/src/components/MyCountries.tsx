@@ -15,6 +15,7 @@ type MyCountriesProps = {
     setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
     handleUpdateCountry: (updatedCountry: CountryModel) => void;
     handleDeleteCountry: (countryId: string) => void;
+    language: string;
 }
 
 export default function MyCountries(props: Readonly<MyCountriesProps>) {
@@ -314,6 +315,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                                         showButtons={true}
                                         handleEditToggle={handleEditToggle}
                                         handleDeleteClick={handleDeleteClick}
+                                        language={props.language}
                                     />
                                 </div>
                             ))

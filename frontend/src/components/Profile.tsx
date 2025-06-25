@@ -13,6 +13,7 @@ type ProfileProps = {
     handleDeleteCountry: (countryId: string) => void;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
+    language: string;
 }
 
 export default function Profile(props:Readonly<ProfileProps>) {
@@ -80,8 +81,8 @@ export default function Profile(props:Readonly<ProfileProps>) {
                     </>
                 )}
 
-                {activeTab === "add-country" && <AddCountryCard user={props.user} handleNewCountrySubmit={props.handleNewCountrySubmit}/>}
-                {activeTab === "my-countries" && <MyCountries user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite} isEditing={isEditing} setIsEditing={setIsEditing} handleUpdateCountry={props.handleUpdateCountry} handleDeleteCountry={props.handleDeleteCountry}/>}
+                {activeTab === "add-country" && <AddCountryCard user={props.user} handleNewCountrySubmit={props.handleNewCountrySubmit} language={props.language}/>}
+                {activeTab === "my-countries" && <MyCountries user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite} isEditing={isEditing} setIsEditing={setIsEditing} handleUpdateCountry={props.handleUpdateCountry} handleDeleteCountry={props.handleDeleteCountry} language={props.language}/>}
                 {activeTab === "favorites" && <Favorites user={props.user} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>}
             </div>
         </>

@@ -2,10 +2,12 @@ import type {CountryModel} from "./model/CountryModel.ts";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
 
 type AddCountryCardProps = {
     user: string;
     handleNewCountrySubmit: (newCountry: CountryModel) => void;
+    language: string;
 }
 
 export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
@@ -82,7 +84,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
             <form onSubmit={handleSubmit}>
                 <div className="edit-form">
                 <label>
-                    Country Name:
+                    {translatedModelInfo.countryName[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -91,7 +93,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Capital City:
+                    {translatedModelInfo.capitalCity[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -100,7 +102,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Population in Millions:
+                    {translatedModelInfo.populationInMillions[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -109,7 +111,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Population Density per Km²:
+                    {translatedModelInfo.populationDensityPerKm2[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -118,7 +120,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Capital City Population:
+                    {translatedModelInfo.capitalCityPopulation[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -127,7 +129,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    GDP per Capita in USD:
+                    {translatedModelInfo.gdpPerCapitaInUSD[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -136,7 +138,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Forest Area Percentage:
+                    {translatedModelInfo.forestAreaPercentage[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -145,7 +147,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Total Area in Km²:
+                    {translatedModelInfo.totalAreaInKm2[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -154,7 +156,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Road Network Length in Km:
+                    {translatedModelInfo.roadNetworkLengthInKm[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -163,7 +165,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Av. Annual Temperature in °C:
+                    {translatedModelInfo.averageAnnualTemperatureInC[props.language]}:
                     <input
                         className="input-small"
                         type="text"
@@ -172,7 +174,7 @@ export default function AddCountryCard(props: Readonly<AddCountryCardProps>) {
                     />
                 </label>
                 <label>
-                    Annual Precipitation in mm:
+                    {translatedModelInfo.annualPrecipitationInMm[props.language]}:
                     <input
                         className="input-small"
                         type="text"

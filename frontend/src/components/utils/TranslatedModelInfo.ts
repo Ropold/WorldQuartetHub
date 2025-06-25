@@ -1,4 +1,13 @@
 export const translatedModelInfo: Record<string, Record<string, string>> = {
+    "countryName": {
+        "en": "Country Name",
+        "de": "Landesname",
+        "pl": "Nazwa kraju",
+        "es": "Nombre del país",
+        "fr": "Nom du pays",
+        "it": "Nome del paese",
+        "ru": "Название страны"
+    },
     "capitalCity": {
         "en": "Capital City",
         "de": "Hauptstadt",

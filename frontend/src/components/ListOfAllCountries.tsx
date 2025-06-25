@@ -11,6 +11,7 @@ type ListOfAllCountriesProps = {
     toggleFavorite: (questionId: string) => void;
     allCountries: CountryModel[];
     getAllCountries: () => void;
+    language: string;
 }
 
 export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesProps>) {
@@ -49,6 +50,7 @@ export default function ListOfAllCountries(props: Readonly<ListOfAllCountriesPro
                     user={props.user}
                     favorites={props.favorites}
                     toggleFavorite={props.toggleFavorite}
+                    language={props.language}
                 />
                 ))}
             </div>

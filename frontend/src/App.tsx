@@ -123,11 +123,11 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>
             <Route path="/play" element={<Play/>} />
-            <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries}/>} />
+            <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             <Route path="/high-score" element={<HighScore/>} />
             <Route element={<ProtectedRoute user={user}/>}>
-                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+                <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             </Route>
         </Routes>
         <Footer />

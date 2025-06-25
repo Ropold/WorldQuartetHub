@@ -2,6 +2,7 @@ import type {CountryModel} from "./model/CountryModel.ts";
 import "./styles/CountryCard.css";
 import {useNavigate} from "react-router-dom";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
+import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
 
 type CountryCardProps = {
     country: CountryModel;
@@ -11,6 +12,7 @@ type CountryCardProps = {
     showButtons?: boolean;
     handleEditToggle?: (id: string) => void;
     handleDeleteClick?: (id: string) => void;
+    language: string;
 }
 
 export default function CountryCard(props: Readonly<CountryCardProps>){
@@ -26,7 +28,7 @@ export default function CountryCard(props: Readonly<CountryCardProps>){
 
     return (
         <div className="country-card" onClick={handleCardClick}>
-            <h3>{props.country.countryName}</h3>
+            <h3> {translatedCountryNames[props.country.countryName]?.[props.language] ?? props.country.countryName}</h3>
             <img
                 src={flagSrc ?? props.country.imageUrl ?? undefined}
                 alt={`${props.country.countryName} flag`}
