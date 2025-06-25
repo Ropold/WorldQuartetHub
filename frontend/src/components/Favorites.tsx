@@ -7,6 +7,7 @@ type FavoritesProps = {
     user: string;
     favorites: string[];
     toggleFavorite: (questionId: string) => void;
+    language: string;
 }
 
 export default function Favorites(props: Readonly<FavoritesProps>) {
@@ -33,6 +34,7 @@ export default function Favorites(props: Readonly<FavoritesProps>) {
                         user={props.user}
                         favorites={props.favorites}
                         toggleFavorite={props.toggleFavorite}
+                        language={props.language}
                     />
                 ))
             ) : (
