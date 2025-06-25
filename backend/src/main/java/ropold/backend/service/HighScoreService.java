@@ -52,8 +52,6 @@ public class HighScoreService {
         return highScoreRepository.save(newHighScoreModel);
     }
 
-
-
     public void deleteHighScore(String id) {
         highScoreRepository.deleteById(id);
     }
