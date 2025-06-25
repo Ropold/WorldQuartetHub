@@ -21,6 +21,8 @@ export default function App() {
     const [favorites, setFavorites] = useState<string[]>([]);
     const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
 
+    const [language, setLanguage] = useState<string>("en");
+
     function getUser() {
         axios.get("/api/users/me")
             .then((response) => {
@@ -116,7 +118,7 @@ export default function App() {
 
   return (
     <>
-        <Navbar getUser={getUser} getUserDetails={getUserDetails} user={user}/>
+        <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome/>}/>

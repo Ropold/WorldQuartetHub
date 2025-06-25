@@ -54,3 +54,37 @@
 .popup-cancel:hover {
     background-color: #555;
 }
+
+.popup-language-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.language-option-button {
+    background-color: #66b3ff; /* helles Blau */
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.language-option-button:hover {
+    background-color: #007bff; /* dunkleres Blau beim Hover */
+}
+
+.language-flag {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
