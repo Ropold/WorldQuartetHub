@@ -6,6 +6,8 @@ import "./styles/AddCountryCard.css";
 import "./styles/Popup.css";
 import {useLocation} from "react-router-dom";
 import SearchBar from "./SearchBar.tsx";
+import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
+import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
 
 type MyCountriesProps = {
     user: string;
@@ -32,16 +34,18 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
 
     const location = useLocation();
 
-    function filterCountries(countries: CountryModel[], query: string): CountryModel[] {
-        return countries.filter(country =>
-            country.countryName.toLowerCase().includes(query.toLowerCase()) ||
-            country.capitalCity.toLowerCase().includes(query.toLowerCase())
-        );
+    function filterCountries(countries: CountryModel[], query: string, language: string): CountryModel[] {
+        const lowerQuery = query.toLowerCase();
+        return countries.filter(country => {
+            const name = translatedCountryNames[country.countryName]?.[language]?.toLowerCase() || "";
+            const capital = translatedCapitalCities[country.capitalCity]?.[language]?.toLowerCase() || "";
+            return name.includes(lowerQuery) || capital.includes(lowerQuery);
+        });
     }
 
     useEffect(() => {
-        setFilteredCountries(filterCountries(userCountries, searchQuery));
-    }, [userCountries, searchQuery]);
+        setFilteredCountries(filterCountries(userCountries, searchQuery, props.language));
+    }, [userCountries, searchQuery, props.language]);
 
     useEffect(() => {
         window.scroll(0, 0);
