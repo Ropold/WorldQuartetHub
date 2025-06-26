@@ -18,10 +18,7 @@ export default function Play(props: Readonly<PlayProps>) {
     const [gameCardCount,setGameCardCount] = useState<number>(5);
     const [userCountries, setUserCountries] = useState<CountryModel[]>([]);
     const [cpuCountries, setCpuCountries] = useState<CountryModel[]>([]);
-
     const [lostCardCount, setLostCardCount] = useState<number>(0);
-    const [remainingPlayerCards, setRemainingPlayerCards] = useState<number>(5);
-    const [remainingCpuCards, setRemainingCpuCards] = useState<number>(5);
 
     const [showWinAnimation, setShowWinAnimation] = useState<boolean>(false);
     const [isNewHighScore, setIsNewHighScore] = useState<boolean>(false);
@@ -60,8 +57,6 @@ export default function Play(props: Readonly<PlayProps>) {
 
     function handleGameStart() {
         setLostCardCount(0);
-        setRemainingPlayerCards(gameCardCount);
-        setRemainingCpuCards(gameCardCount);
         getUserAndCpuCards(gameCardCount);
 
         setShowPreviewMode(false);
@@ -85,15 +80,6 @@ export default function Play(props: Readonly<PlayProps>) {
                 <button className="button-group-button" onClick={handleGameStart}>Start Game</button>
                 <button className="button-group-button" onClick={handleHardResetGame}>Reset Game</button>
             </div>
-
-            {!showPreviewMode &&
-                <div className="space-between">
-                    <p>Lost Card Count {lostCardCount}</p>
-                    <p>remainingPlayerCards {remainingPlayerCards}</p>
-                    <p>remainingCpuCards {remainingCpuCards}</p>
-                    {/*<p>⏱️ Time: {time.toFixed(1)} sec</p>*/}
-                </div>
-            }
 
             {showPreviewMode &&
                 <>
@@ -121,7 +107,17 @@ export default function Play(props: Readonly<PlayProps>) {
 
 
                     <Preview/>
-                    <Game userCountries={userCountries} setUserCountries={setUserCountries} cpuCountries={cpuCountries} setCpuCountries={setCpuCountries} setGameFinished={setGameFinished} setLostCardCount={setLostCardCount} setShowWinAnimation={setShowWinAnimation} resetSignal={resetSignal}/>
+                    <Game
+                        userCountries={userCountries}
+                        setUserCountries={setUserCountries}
+                        cpuCountries={cpuCountries}
+                        setCpuCountries={setCpuCountries}
+                        setGameFinished={setGameFinished}
+                        lostCardCount={lostCardCount}
+                        setLostCardCount={setLostCardCount}
+                        setShowWinAnimation={setShowWinAnimation}
+                        resetSignal={resetSignal}
+                        gameCardCount={gameCardCount}/>
                 </>}
 
 
