@@ -49,13 +49,10 @@ export default function Details(props: Readonly<DetailsProps>) {
         }
     }, [country.githubId]);
 
-
     return (
         <>
             <div className="details-container">
-                <h2>
-                    {translatedCountryNames[country.countryName]?.[props.language] ?? country.countryName}
-                </h2>
+                <h2>{translatedCountryNames[country.countryName]?.[props.language] ?? country.countryName}</h2>
                 <p> <strong>{translatedModelInfo.capitalCity[props.language]}: </strong>
                     {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
                 </p>

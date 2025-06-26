@@ -14,6 +14,7 @@ import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 import Details from "./components/Details.tsx";
 import Play from "./components/Play.tsx";
 import HighScore from "./components/HighScore.tsx";
+import type {HighScoreModel} from "./components/model/HighScoreModel.ts";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
@@ -22,6 +23,8 @@ export default function App() {
     const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
 
     const [language, setLanguage] = useState<string>("en");
+
+    const [highScores, setHighScores] = useState<{[key: number]: HighScoreModel[]}>({ 5: [], 10: [], 25: [] });
 
     function getUser() {
         axios.get("/api/users/me")
@@ -116,7 +119,26 @@ export default function App() {
         );
     }
 
-  return (
+    function getHighScore(count: number) {
+        axios.get(`/api/high-score/${count}`)
+            .then((response) => {
+                setHighScores((prev) => ({
+                    ...prev,
+                    [count]: response.data,
+                }));
+            })
+            .catch((error) => {
+                console.error(`Error fetching high score ${count}:`, error);
+            });
+    }
+
+    useEffect(() => {
+        [5, 10, 25].forEach(getHighScore);
+    }, []);
+
+
+
+    return (
     <>
         <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
         <Routes>
