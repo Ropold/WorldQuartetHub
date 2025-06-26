@@ -49,25 +49,22 @@ export default function Details(props: Readonly<DetailsProps>) {
         }
     }, [country.githubId]);
 
-
     return (
         <>
             <div className="details-container">
-                <h2>
-                    {translatedCountryNames[country.countryName]?.[props.language] ?? country.countryName}
-                </h2>
-                <p> <strong>{translatedModelInfo.capitalCity[props.language] || "Capital City"}: </strong>
+                <h2>{translatedCountryNames[country.countryName]?.[props.language] ?? country.countryName}</h2>
+                <p> <strong>{translatedModelInfo.capitalCity[props.language]}: </strong>
                     {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
                 </p>
                 <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions}</p>
                 <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2}</p>
-                <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation}</p>
-                <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD}</p>
+                <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation.toLocaleString("de-DE")}</p>
+                <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD.toLocaleString("de-DE")}</p>
                 <p><strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {country.forestAreaPercentage}</p>
-                <p><strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {country.totalAreaInKm2}</p>
-                <p><strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {country.roadNetworkLengthInKm}</p>
+                <p><strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {country.totalAreaInKm2.toLocaleString("de-DE")}</p>
+                <p><strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {country.roadNetworkLengthInKm.toLocaleString("de-DE")}</p>
                 <p><strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {country.averageAnnualTemperatureInC}</p>
-                <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm}</p>
+                <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm.toLocaleString("de-DE")}</p>
 
                 {country.imageUrl && (
                     <img

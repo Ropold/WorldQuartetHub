@@ -14,6 +14,7 @@ import ListOfAllCountries from "./components/ListOfAllCountries.tsx";
 import Details from "./components/Details.tsx";
 import Play from "./components/Play.tsx";
 import HighScore from "./components/HighScore.tsx";
+import type {HighScoreModel} from "./components/model/HighScoreModel.ts";
 
 export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
@@ -22,6 +23,8 @@ export default function App() {
     const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
 
     const [language, setLanguage] = useState<string>("en");
+
+    const [highScores, setHighScores] = useState<{[key: number]: HighScoreModel[]}>({ 5: [], 10: [], 25: [] });
 
     function getUser() {
         axios.get("/api/users/me")
@@ -116,7 +119,20 @@ export default function App() {
         );
     }
 
-  return (
+    function getHighScores(count: number) {
+        axios.get(`/api/high-score/${count}`)
+            .then((response) => {
+                setHighScores((prev) => ({
+                    ...prev,
+                    [count]: response.data,
+                }));
+            })
+            .catch((error) => {
+                console.error(`Error fetching high score ${count}:`, error);
+            });
+    }
+
+    return (
     <>
         <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
         <Routes>
@@ -125,7 +141,7 @@ export default function App() {
             <Route path="/play" element={<Play/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
-            <Route path="/high-score" element={<HighScore/>} />
+            <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             </Route>
