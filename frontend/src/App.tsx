@@ -137,7 +137,7 @@ export default function App() {
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome language={language}/>}/>
-            <Route path="/play" element={<Play user={user} highScores={highScores} getHighScores={getHighScores}/>} />
+            <Route path="/play" element={<Play user={user} highScores={highScores} getHighScores={getHighScores} language={language}/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores}/>} />

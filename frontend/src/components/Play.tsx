@@ -9,6 +9,7 @@ type PlayProps = {
     user: string;
     highScores: { [key: number]: HighScoreModel[] };
     getHighScores: (count: number) => void;
+    language: string;
 }
 
 export default function Play(props: Readonly<PlayProps>) {
@@ -45,10 +46,8 @@ export default function Play(props: Readonly<PlayProps>) {
     }, [showPreviewMode, gameFinished]);
 
     function getUserAndCpuCards(count: number) {
-        console.log("Fetching cards with count:", count);
         axios.get(`/api/world-quartet-hub/deal/${count}`)
             .then((response) => {
-                console.log("Backend-Antwort:", response.data);
                 setUserCountries(response.data.user as CountryModel[]);
                 setCpuCountries(response.data.cpu as CountryModel[]);
             })
@@ -56,7 +55,6 @@ export default function Play(props: Readonly<PlayProps>) {
                 console.error(`Error fetching cards for count ${count}:`, error);
             });
     }
-
 
     useEffect(() => {
         getUserAndCpuCards(gameCardCount);
@@ -127,6 +125,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     setShowWinAnimation={setShowWinAnimation}
                     resetSignal={resetSignal}
                     gameCardCount={gameCardCount}
+                    language={props.language}
                 />
             )}
         </>
