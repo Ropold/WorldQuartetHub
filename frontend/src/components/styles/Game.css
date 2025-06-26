@@ -1,11 +1,29 @@
-.game-cards-container {
+
+.game-board-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+    padding: 10px;
 }
 
-.clickable-country-property-div {
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    gap: 16px;
+    margin-top: 20px;
+    border: 2px solid #66b3ff;
+}
+.game-cards-container-cpu{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    gap: 16px;
+    margin-top: 20px;
+    border: 2px solid #ff9e00;
+}
+
+
+.clickable-country-property-div, .clickable-country-property-div-cpu {
     background-color: #f5f5f5;
     border-radius: 8px;
     padding: 1rem;
@@ -15,22 +33,22 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.clickable-country-property-div:hover {
-    transform: translateY(-4px);
+.clickable-country-property-div:hover, .clickable-country-property-div-cpu:hover {
+    transform: translateY(-1px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-.text-country-property {
+.text-country-property, .text-country-property-cpu {
     margin: 0 0 0.5rem 0;
     font-weight: 600;
     font-size: 1.1rem;
 }
 
-.logo-image {
-    width: 40px;
-    height: 40px;
-    margin-top: 0.5rem;
-    filter: grayscale(50%);
-    user-select: none;
-    pointer-events: none;
+.logo-image-game {
+    height: 30px;
+    width: auto;
+    margin-right: 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
