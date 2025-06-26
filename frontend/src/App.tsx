@@ -119,7 +119,7 @@ export default function App() {
         );
     }
 
-    function getHighScore(count: number) {
+    function getHighScores(count: number) {
         axios.get(`/api/high-score/${count}`)
             .then((response) => {
                 setHighScores((prev) => ({
@@ -132,12 +132,6 @@ export default function App() {
             });
     }
 
-    useEffect(() => {
-        [5, 10, 25].forEach(getHighScore);
-    }, []);
-
-
-
     return (
     <>
         <Navbar user={user} getUser={getUser} getUserDetails={getUserDetails} language={language} setLanguage={setLanguage}/>
@@ -147,7 +141,7 @@ export default function App() {
             <Route path="/play" element={<Play/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
-            <Route path="/high-score" element={<HighScore/>} />
+            <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             </Route>
