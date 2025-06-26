@@ -45,8 +45,10 @@ export default function Play(props: Readonly<PlayProps>) {
     }, [showPreviewMode, gameFinished]);
 
     function getUserAndCpuCards(count: number) {
+        console.log("Fetching cards with count:", count);
         axios.get(`/api/world-quartet-hub/deal/${count}`)
             .then((response) => {
+                console.log("Backend-Antwort:", response.data);
                 setUserCountries(response.data.user as CountryModel[]);
                 setCpuCountries(response.data.cpu as CountryModel[]);
             })
@@ -55,10 +57,13 @@ export default function Play(props: Readonly<PlayProps>) {
             });
     }
 
+
+    useEffect(() => {
+        getUserAndCpuCards(gameCardCount);
+    }, [gameCardCount]);
+
     function handleGameStart() {
         setLostCardCount(0);
-        getUserAndCpuCards(gameCardCount);
-
         setShowPreviewMode(false);
         setGameFinished(false);
         setShowWinAnimation(false);
@@ -72,6 +77,7 @@ export default function Play(props: Readonly<PlayProps>) {
         setShowPreviewMode(true);
         setGameFinished(true);
         setIsNewHighScore(false);
+        getUserAndCpuCards(gameCardCount)
     }
 
     return(
@@ -107,20 +113,22 @@ export default function Play(props: Readonly<PlayProps>) {
 
 
                     <Preview/>
-                    <Game
-                        userCountries={userCountries}
-                        setUserCountries={setUserCountries}
-                        cpuCountries={cpuCountries}
-                        setCpuCountries={setCpuCountries}
-                        setGameFinished={setGameFinished}
-                        lostCardCount={lostCardCount}
-                        setLostCardCount={setLostCardCount}
-                        setShowWinAnimation={setShowWinAnimation}
-                        resetSignal={resetSignal}
-                        gameCardCount={gameCardCount}/>
                 </>}
 
-
+            {!showPreviewMode && userCountries.length > 0 && cpuCountries.length > 0 && (
+                <Game
+                    userCountries={userCountries}
+                    setUserCountries={setUserCountries}
+                    cpuCountries={cpuCountries}
+                    setCpuCountries={setCpuCountries}
+                    setGameFinished={setGameFinished}
+                    lostCardCount={lostCardCount}
+                    setLostCardCount={setLostCardCount}
+                    setShowWinAnimation={setShowWinAnimation}
+                    resetSignal={resetSignal}
+                    gameCardCount={gameCardCount}
+                />
+            )}
         </>
     )
 }

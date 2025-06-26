@@ -1,6 +1,6 @@
 import type {CountryModel} from "./model/CountryModel.ts";
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 type GameProps = {
     userCountries: CountryModel[];
@@ -49,6 +49,17 @@ export default function Game(props: Readonly<GameProps>) {
         }
     }
 
+    useEffect(() => {
+        setRemainingPlayerCards(props.gameCardCount);
+        setRemainingCpuCards(props.gameCardCount);
+        props.setLostCardCount(0);
+    }, [props.resetSignal]);
+
+    function handleNextRound() {
+        selectNextCpuCountry();
+        selectNextUserCountry();
+    }
+
     return(
         <>
             <h2>Game</h2>
@@ -58,6 +69,9 @@ export default function Game(props: Readonly<GameProps>) {
                     <p>remainingPlayerCards {remainingPlayerCards}</p>
                     <p>remainingCpuCards {remainingCpuCards}</p>
                     {/*<p>⏱️ Time: {time.toFixed(1)} sec</p>*/}
+                </div>
+                <div>
+            <button className="button-group-button" onClick={handleNextRound}>Next Round</button>
                 </div>
 
         </>
