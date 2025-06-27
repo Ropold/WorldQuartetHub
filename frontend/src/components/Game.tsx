@@ -7,6 +7,16 @@ import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
 import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
 import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
+import capitalCityLogo from "../assets/country-model/capitalCity.jpg";
+import populationInMillionsLogo from "../assets/country-model/populationInMillions.jpg";
+import populationDensityPerKm2Logo from "../assets/country-model/populationDensityPerKm2.jpg";
+import capitalCityPopulationLogo from "../assets/country-model/capitalCityPopulation.jpg";
+import gdpPerCapitaInUSDLogo from "../assets/country-model/gdpPerCapitaInUSD.jpg";
+import forestAreaPercentageLogo from "../assets/country-model/forestAreaPercentage.jpg";
+import totalAreaInKm2Logo from "../assets/country-model/totalAreaInKm2.jpg";
+import roadNetworkLengthInKmLogo from "../assets/country-model/roadNetworkLengthInKm.jpg";
+import averageAnnualTemperatureInCLogo from "../assets/country-model/averageAnnualTemperatureInC.jpg";
+import annualPrecipitationInMmLogo from "../assets/country-model/annualPrecipitationInMm.jpg";
 
 type GameProps = {
     userCountries: CountryModel[];
