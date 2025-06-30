@@ -105,7 +105,14 @@ export default function Game(props: Readonly<GameProps>) {
             <div className="game-board-grid">
                 {/* USER-CARDS */}
                 <div className="game-cards-container">
-                    <div className="clickable-country-property-div" onClick={() => setSelectedAttribute("countryName")}>
+                    <div className="clickable-country-property-div">
+                        {currentUserCountry && userFlagSrc && (
+                            <img src={userFlagSrc} alt={`${currentUserCountry.countryName} flag`}
+                                 className="logo-image-game"/>
+                        )}
+                    </div>
+                    <div   className={`clickable-country-property-div ${selectedAttribute === "countryName" ? "selected-attribute" : ""}`}
+                         onClick={() => setSelectedAttribute("countryName")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 {translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName}
@@ -114,110 +121,104 @@ export default function Game(props: Readonly<GameProps>) {
                         <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div" onClick={() => setSelectedAttribute("capitalCity")}>
+                    <div className={`clickable-country-property-div ${selectedAttribute === "capitalCity" ? "selected-attribute" : ""}`}
+                         onClick={() => setSelectedAttribute("capitalCity")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.capitalCity[props.language]}</strong>: {translatedCapitalCities[currentUserCountry.capitalCity]?.[props.language] || currentUserCountry.capitalCity}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={capitalCityLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div">
-                        {currentUserCountry && userFlagSrc && (
-                            <img src={userFlagSrc} alt={`${currentUserCountry.countryName} flag`}
-                                 className="logo-image-game"/>
-                        )}
-                    </div>
-
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "populationInMillions" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("populationInMillions")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {currentUserCountry.populationInMillions}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={populationInMillionsLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "populationDensityPerKm2" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("populationDensityPerKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {currentUserCountry.populationDensityPerKm2}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={populationDensityPerKm2Logo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "capitalCityPopulation" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("capitalCityPopulation")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {currentUserCountry.capitalCityPopulation.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={capitalCityPopulationLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "gdpPerCapitaInUSD" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("gdpPerCapitaInUSD")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {currentUserCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={gdpPerCapitaInUSDLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "forestAreaPercentage" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("forestAreaPercentage")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {currentUserCountry.forestAreaPercentage}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={forestAreaPercentageLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "totalAreaInKm2" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("totalAreaInKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {currentUserCountry.totalAreaInKm2.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={totalAreaInKm2Logo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "roadNetworkLengthInKm" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("roadNetworkLengthInKm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {currentUserCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={roadNetworkLengthInKmLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "averageAnnualTemperatureInC" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("averageAnnualTemperatureInC")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {currentUserCountry.averageAnnualTemperatureInC}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={averageAnnualTemperatureInCLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
-                    <div className="clickable-country-property-div"
+                    <div className={`clickable-country-property-div ${selectedAttribute === "annualPrecipitationInMm" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("annualPrecipitationInMm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {currentUserCountry.annualPrecipitationInMm.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={annualPrecipitationInMmLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
                 </div>
 
@@ -238,7 +239,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.capitalCity[props.language]}</strong>: {translatedCapitalCities[currentCpuCountry.capitalCity]?.[props.language] || currentCpuCountry.capitalCity}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={capitalCityLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -254,7 +255,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {currentCpuCountry.populationInMillions}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={populationInMillionsLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -263,7 +264,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {currentCpuCountry.populationDensityPerKm2}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={populationDensityPerKm2Logo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -272,7 +273,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {currentCpuCountry.capitalCityPopulation.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={capitalCityPopulationLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -281,7 +282,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {currentCpuCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={gdpPerCapitaInUSDLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -290,7 +291,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {currentCpuCountry.forestAreaPercentage}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={forestAreaPercentageLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -299,7 +300,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {currentCpuCountry.totalAreaInKm2.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={totalAreaInKm2Logo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -308,7 +309,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {currentCpuCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={roadNetworkLengthInKmLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -317,7 +318,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {currentCpuCountry.averageAnnualTemperatureInC}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={averageAnnualTemperatureInCLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
 
                     <div className="clickable-country-property-div-cpu">
@@ -326,7 +327,7 @@ export default function Game(props: Readonly<GameProps>) {
                                 <strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {currentCpuCountry.annualPrecipitationInMm.toLocaleString("de-DE")}
                             </h2>
                         )}
-                        <img src={headerLogo} alt="All Countries Logo" className="logo-image-game"/>
+                        <img src={annualPrecipitationInMmLogo} alt="All Countries Logo" className="logo-image-game"/>
                     </div>
                 </div>
             </div>
