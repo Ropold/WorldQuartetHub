@@ -139,7 +139,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong> km²</p>
                             </h2>
                         )}
                     </div>
@@ -161,7 +161,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.gdpPerCapitaInUSD[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}</strong> $</p>
                             </h2>
                         )}
                     </div>
@@ -172,7 +172,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.forestAreaPercentage}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.forestAreaPercentage}</strong> %</p>
                             </h2>
                         )}
                     </div>
@@ -183,7 +183,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.totalAreaInKm2[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.totalAreaInKm2.toLocaleString("de-DE")}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.totalAreaInKm2.toLocaleString("de-DE")}</strong> km²</p>
                             </h2>
                         )}
                     </div>
@@ -194,7 +194,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.roadNetworkLengthInKm[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}</strong> km</p>
                             </h2>
                         )}
                     </div>
@@ -205,7 +205,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.averageAnnualTemperatureInC[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.averageAnnualTemperatureInC}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.averageAnnualTemperatureInC}</strong> °C</p>
                             </h2>
                         )}
                     </div>
@@ -216,7 +216,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.annualPrecipitationInMm[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.annualPrecipitationInMm.toLocaleString("de-DE")}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.annualPrecipitationInMm.toLocaleString("de-DE")}</strong> mm</p>
                             </h2>
                         )}
                     </div>

@@ -63,7 +63,7 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "ru": "Процент лесных территорий"
     },
     "totalAreaInKm2": {
-        "en": "Total Area in Km²",
+        "en": "Total Area in km²",
         "de": "Gesamtfläche in km²",
         "pl": "Powierzchnia całkowita w km²",
         "es": "Área total en km²",

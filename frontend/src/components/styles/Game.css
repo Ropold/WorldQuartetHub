@@ -110,15 +110,19 @@
 
 
 .property-label {
-    font-size: clamp(0.75rem, 1.1vw, 0.95rem); /* dynamisch skalierend */
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
     line-height: 1.2;
     display: -webkit-box;
-    -webkit-line-clamp: 2;         /* maximal 2 Zeilen */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+
+    /* NEU: feste Höhe für max. 2 Zeilen */
+    height: calc(1.2em * 2); /* Zeilenhöhe * 2 */
 }
+
 
 .value-line-tile {
     padding-top: 13px; /* optional: justierbarer Abstand */
