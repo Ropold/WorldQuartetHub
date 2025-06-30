@@ -89,8 +89,8 @@
     }
 }
 
-.selected-attribute {
-    border: 3px solid #388e3c !important;
+#selected-attribute {
+    border: 3px solid #388e3c;
     animation: pulse-border 1.5s infinite;
 }
 

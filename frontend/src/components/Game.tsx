@@ -100,8 +100,9 @@ export default function Game(props: Readonly<GameProps>) {
                                  className="image-flag-tile"/>
                         )}
                     </div>
-                    <div className={`clickable pastel-mint ${selectedAttribute === "countryName" ? "selected-attribute" : ""}`}
-                         onClick={() => setSelectedAttribute("countryName")}>
+                    <div   className={"clickable pastel-mint"}
+                           id={selectedAttribute === "countryName" ? "selected-attribute" : undefined}
+                           onClick={() => setSelectedAttribute("countryName")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.countryName[props.language]}:</p>
@@ -110,7 +111,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-teal ${selectedAttribute === "capitalCity" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-teal"}
+                         id={selectedAttribute === "capitalCity" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("capitalCity")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -120,7 +122,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-purple ${selectedAttribute === "populationInMillions" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-purple"}
+                         id={selectedAttribute === "populationInMillions" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("populationInMillions")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -130,7 +133,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-red ${selectedAttribute === "populationDensityPerKm2" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-red"}
+                         id={selectedAttribute === "populationDensityPerKm2" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("populationDensityPerKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -140,7 +144,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-yellow ${selectedAttribute === "capitalCityPopulation" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-yellow"}
+                         id={selectedAttribute === "capitalCityPopulation" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("capitalCityPopulation")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -150,7 +155,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-orange ${selectedAttribute === "gdpPerCapitaInUSD" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-orange"}
+                         id={selectedAttribute === "gdpPerCapitaInUSD" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("gdpPerCapitaInUSD")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -160,7 +166,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-green ${selectedAttribute === "forestAreaPercentage" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-green"}
+                         id={selectedAttribute === "forestAreaPercentage" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("forestAreaPercentage")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -170,7 +177,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-blue ${selectedAttribute === "totalAreaInKm2" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-blue"}
+                         id={selectedAttribute === "totalAreaInKm2" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("totalAreaInKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -180,7 +188,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-gray ${selectedAttribute === "roadNetworkLengthInKm" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-gray"}
+                         id={selectedAttribute === "roadNetworkLengthInKm" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("roadNetworkLengthInKm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -190,7 +199,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-brown ${selectedAttribute === "averageAnnualTemperatureInC" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-brown"}
+                         id={selectedAttribute === "averageAnnualTemperatureInC" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("averageAnnualTemperatureInC")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -200,7 +210,8 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={`clickable pastel-lightblue ${selectedAttribute === "annualPrecipitationInMm" ? "selected-attribute" : ""}`}
+                    <div className={"clickable pastel-lightblue"}
+                         id={selectedAttribute === "annualPrecipitationInMm" ? "selected-attribute" : undefined}
                          onClick={() => setSelectedAttribute("annualPrecipitationInMm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
