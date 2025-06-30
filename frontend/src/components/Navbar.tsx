@@ -2,7 +2,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./styles/Navbar.css";
 import "./styles/Buttons.css"
-import headerLogo from "../assets/world-quartet-original.jpg"
+import headerLogo from "../assets/world-quartet-logo.jpg"
 import highScoreLogo from "../assets/highscore-logo.jpg"
 import * as React from "react";
 import {LanguagesImages} from "./utils/FlagImages.ts";
