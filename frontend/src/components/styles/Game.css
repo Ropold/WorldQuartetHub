@@ -23,28 +23,32 @@
 }
 
 
-.clickable-country-property-div, .clickable-country-property-div-cpu {
-    background-color: #f5f5f5;
+.clickable, .clickable-cpu {
     border-radius: 8px;
-    padding: 1rem;
+    padding: 10px;
+    border: 3px solid transparent;  /* gleich groß wie später */
+    margin :3px;
     text-align: center;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.clickable-country-property-div:hover, .clickable-country-property-div-cpu:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.clickable:hover, .clickable-cpu:hover {
+    border: 3px solid #007bff; /* Schwarze, 5px dicke Border */
+    transform: scale(1.03); /* Skaliert das Bild leicht beim Hover */
+    box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.8); /* Leichter Schatten bei Hover */
+    cursor: pointer;
 }
 
 .text-country-property, .text-country-property-cpu {
     margin: 0 0 0.5rem 0;
     font-weight: 600;
     font-size: 1.1rem;
+    color: #2c2c2c;
 }
 
-.logo-image-game {
+.logo-image-country-name {
     height: 30px;
     width: auto;
     margin-right: 5px;
@@ -53,8 +57,44 @@
     cursor: pointer;
 }
 
-.selected-attribute {
-    border: 3px solid #007bff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-    border-radius: 8px;
+.logo-image-tile-flag {
+    height: 80px;
+    width: auto;
+    margin-right: 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0px rgba(76, 175, 80, 0.4); /* heller Grünton */
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(76, 175, 80, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(76, 175, 80, 0.4);
+    }
+}
+
+.selected-attribute {
+    border: 3px solid #388e3c !important;
+    animation: pulse-border 1.5s infinite;
+}
+
+
+.pastel-purple    { background-color: #c4a3d7; }
+.pastel-red       { background-color: #f5b5b3; }
+.pastel-yellow    { background-color: #fff9c4; }
+.pastel-orange    { background-color: #ffd8b1; }
+.pastel-green     { background-color: #b7e4c7; }
+.pastel-gray      { background-color: #d3d3d3; }
+.pastel-brown     { background-color: #cdb89e; }
+.pastel-blue      { background-color: #b3cde0; }
+.pastel-lightblue { background-color: #cce7f0; }
+.pastel-teal      { background-color: #a6d3ce; }
+.pastel-mint      { background-color: #d0f0c0; }
+.pastel-flag      {background-color: #f5f5f5;  }
+
+
