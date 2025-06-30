@@ -82,7 +82,7 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
     },
     "averageAnnualTemperatureInC": {
         "en": "Average Annual Temperature in °C",
-        "de": "Durchschnittliche Jahrestemperatur in °C",
+        "de": "Jahresdurchschnitt Temperatur in °C",
         "pl": "Średnia roczna temperatura w °C",
         "es": "Temperatura media anual en °C",
         "fr": "Température annuelle moyenne en °C",

@@ -94,31 +94,28 @@ export default function Game(props: Readonly<GameProps>) {
             <div className="game-board-grid">
                 {/* USER-CARDS */}
                 <div className="game-cards-container">
-                    <div className="clickable pastel-flag">
+                    <div className="flag-tile pastel-flag">
                         {currentUserCountry && userFlagSrc && (
                             <img src={userFlagSrc} alt={`${currentUserCountry.countryName} flag`}
-                                 className="logo-image-tile-flag"/>
+                                 className="image-flag-tile"/>
                         )}
                     </div>
                     <div className={`clickable pastel-mint ${selectedAttribute === "countryName" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("countryName")}>
                         {currentUserCountry && (
-                            <div>
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.countryName[props.language]}:</p>
-                                <p><strong>{translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName}</strong></p>
+                                <p className="property-label" >{translatedModelInfo.countryName[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName}</strong></p>
                             </h2>
-                            </div>
                         )}
-
                     </div>
 
                     <div className={`clickable pastel-teal ${selectedAttribute === "capitalCity" ? "selected-attribute" : ""}`}
                          onClick={() => setSelectedAttribute("capitalCity")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.capitalCity[props.language]}:</p>
-                                <p><strong>{translatedCapitalCities[currentUserCountry.capitalCity]?.[props.language] || currentUserCountry.capitalCity}</strong></p>
+                                <p className="property-label">{translatedModelInfo.capitalCity[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{translatedCapitalCities[currentUserCountry.capitalCity]?.[props.language] || currentUserCountry.capitalCity}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -127,8 +124,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("populationInMillions")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.populationInMillions[props.language]}:</p>
-                                <p><strong>{currentUserCountry.populationInMillions}</strong></p>
+                                <p className="property-label" >{translatedModelInfo.populationInMillions[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationInMillions}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -137,8 +134,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("populationDensityPerKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
-                                <p><strong>{currentUserCountry.populationDensityPerKm2}</strong></p>
+                                <p className="property-label" >{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -147,8 +144,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("capitalCityPopulation")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.capitalCityPopulation[props.language]}:</p>
-                                <p><strong>{currentUserCountry.capitalCityPopulation.toLocaleString("de-DE")}</strong></p>
+                                <p className="property-label" >{translatedModelInfo.capitalCityPopulation[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.capitalCityPopulation.toLocaleString("de-DE")}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -157,8 +154,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("gdpPerCapitaInUSD")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}:</p>
-                                <p><strong>{currentUserCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}</strong></p>
+                                <p className="property-label">{translatedModelInfo.gdpPerCapitaInUSD[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.gdpPerCapitaInUSD.toLocaleString("de-DE")}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -167,8 +164,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("forestAreaPercentage")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
-                                <p><strong>{currentUserCountry.forestAreaPercentage}</strong></p>
+                                <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.forestAreaPercentage}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -177,8 +174,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("totalAreaInKm2")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.totalAreaInKm2[props.language]}:</p>
-                                <p><strong>{currentUserCountry.totalAreaInKm2.toLocaleString("de-DE")}</strong></p>
+                                <p className="property-label">{translatedModelInfo.totalAreaInKm2[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.totalAreaInKm2.toLocaleString("de-DE")}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -187,8 +184,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("roadNetworkLengthInKm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.roadNetworkLengthInKm[props.language]}:</p>
-                                <p><strong>{currentUserCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}</strong></p>
+                                <p className="property-label">{translatedModelInfo.roadNetworkLengthInKm[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.roadNetworkLengthInKm.toLocaleString("de-DE")}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -197,8 +194,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("averageAnnualTemperatureInC")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}:</p>
-                                <p><strong>{currentUserCountry.averageAnnualTemperatureInC}</strong></p>
+                                <p className="property-label">{translatedModelInfo.averageAnnualTemperatureInC[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.averageAnnualTemperatureInC}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -207,8 +204,8 @@ export default function Game(props: Readonly<GameProps>) {
                          onClick={() => setSelectedAttribute("annualPrecipitationInMm")}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
-                                <p>{translatedModelInfo.annualPrecipitationInMm[props.language]}:</p>
-                                <p><strong>{currentUserCountry.annualPrecipitationInMm.toLocaleString("de-DE")}</strong></p>
+                                <p className="property-label">{translatedModelInfo.annualPrecipitationInMm[props.language]}:</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.annualPrecipitationInMm.toLocaleString("de-DE")}</strong></p>
                             </h2>
                         )}
                     </div>
@@ -235,7 +232,7 @@ export default function Game(props: Readonly<GameProps>) {
                     <div className="clickable-cpu">
                         {currentCpuCountry && cpuFlagSrc && (
                             <img src={cpuFlagSrc} alt={`${currentCpuCountry.countryName} flag`}
-                                 className="logo-image-country-name"/>
+                                 className=""/>
                         )}
                     </div>
 
