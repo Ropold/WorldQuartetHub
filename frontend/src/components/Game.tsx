@@ -24,7 +24,7 @@ type GameProps = {
 
 export default function Game(props: Readonly<GameProps>) {
 
-    const [remainingPlayerCards, setRemainingPlayerCards] = useState<number>(5);
+    const [remainingUserCards, setRemainingUserCards] = useState<number>(5);
     const [remainingCpuCards, setRemainingCpuCards] = useState<number>(5);
 
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
@@ -45,11 +45,9 @@ export default function Game(props: Readonly<GameProps>) {
             const [next, ...rest] = props.userCountries;
             setCurrentUserCountry(next);
             props.setUserCountries(rest);
-            setRemainingPlayerCards(rest.length);
+            setRemainingUserCards(rest.length);
         } else {
             setCurrentUserCountry(null);
-            setRemainingPlayerCards(0);
-            props.setGameFinished(true);
         }
     }
 
@@ -61,52 +59,71 @@ export default function Game(props: Readonly<GameProps>) {
             setRemainingCpuCards(rest.length);
         } else {
             setCurrentCpuCountry(null);
-            setRemainingCpuCards(0);
-            props.setGameFinished(true);
         }
     }
 
     function firstCardPick() {
         if (props.cpuCountries.length === 0 || props.userCountries.length === 0) return;
+        const firstRandomCardCpu = props.cpuCountries[Math.floor(Math.random() * props.cpuCountries.length)];
+        const firstRandomCardUser = props.userCountries[Math.floor(Math.random() * props.userCountries.length)];
 
-        const randomCpu = props.cpuCountries[Math.floor(Math.random() * props.cpuCountries.length)];
-        const randomUser = props.userCountries[Math.floor(Math.random() * props.userCountries.length)];
-
-        setCurrentCpuCountry(randomCpu);
-        setCurrentUserCountry(randomUser);
+        setCurrentCpuCountry(firstRandomCardCpu);
+        setCurrentUserCountry(firstRandomCardUser);
     }
 
+    function compareCurrentCards() {
+        if (!currentUserCountry || !currentCpuCountry) return;
 
-    useEffect(() => {
-        setRemainingPlayerCards(props.gameCardCount);
-        setRemainingCpuCards(props.gameCardCount);
-        props.setLostCardCount(0);
-        firstCardPick();
-    }, [props.resetSignal]);
+        const attr = selectedAttribute;
+        const userValue = currentUserCountry[attr as keyof CountryModel];
+        const cpuValue = currentCpuCountry[attr as keyof CountryModel];
+
+        if (typeof userValue === "number" && typeof cpuValue === "number") {
+            if (userValue > cpuValue) {
+                console.log("User gewinnt die Runde!");
+                // add currentCpuCountry to user stack, etc.
+            } else if (userValue < cpuValue) {
+                console.log("CPU gewinnt die Runde!");
+                // add currentUserCountry to CPU stack, etc.
+            } else {
+                console.log("Gleichstand! → Stechen");
+                // trigger tie-breaker mechanism
+            }
+        }}
+
+    function handleCheck(){
+        if (!selectedAttribute && isRevealed) return;
+        setIsRevealed(true);
+        compareCurrentCards();
+    }
 
     function handleNextRound() {
+        if(selectedAttribute == null) return
         selectNextCpuCountry();
         selectNextUserCountry();
         setIsRevealed(false);
         setSelectedAttribute(null);
     }
 
-    function handleCheck(){
-        if (!selectedAttribute) return;
-        setIsRevealed(true);
-    }
+    useEffect(() => {
+        setRemainingUserCards(props.gameCardCount);
+        setRemainingCpuCards(props.gameCardCount);
+        props.setLostCardCount(0);
+        firstCardPick();
+    }, [props.resetSignal]);
+
 
     return (
         <>
             <div className="space-between">
                 <p>Lost Card Count {props.lostCardCount}</p>
-                <p>remainingPlayerCards {remainingPlayerCards}</p>
+                <p>remainingPlayerCards {remainingUserCards}</p>
                 <p>remainingCpuCards {remainingCpuCards}</p>
             </div>
 
             <div className="space-between">
-                <button className="button-group-button" onClick={handleCheck}>Check</button>
-                <button className="button-group-button" onClick={handleNextRound}>Next Round</button>
+                <button className="button-group-button" onClick={handleCheck} disabled={!selectedAttribute || isRevealed}>Check</button>
+                <button className="button-group-button" onClick={handleNextRound} disabled={!isRevealed}>Next Round</button>
             </div>
 
 
@@ -426,5 +443,5 @@ export default function Game(props: Readonly<GameProps>) {
                     )}
                 </div>
         </>
-    );
+    )
 }
