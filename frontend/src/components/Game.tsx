@@ -30,6 +30,7 @@ export default function Game(props: Readonly<GameProps>) {
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
     const [currentCpuCountry, setCurrentCpuCountry] = useState<CountryModel | null>(null);
     const [selectedAttribute, setSelectedAttribute] = useState<keyof CountryModel | null>(null);
+    const [tieCountrySave, setTieCountrySave] = useState<CountryModel[]>([]);
 
     const [isRevealed, setIsRevealed] = useState<boolean>(false);
 
@@ -87,6 +88,11 @@ export default function Game(props: Readonly<GameProps>) {
         }
     }, [remainingUserCards, remainingCpuCards]);
 
+    useEffect(() => {
+        setRemainingUserCards((currentUserCountry ? 1 : 0) + props.userCountries.length);
+        setRemainingCpuCards((currentCpuCountry ? 1 : 0) + props.cpuCountries.length);
+    }, [currentUserCountry, props.userCountries, currentCpuCountry, props.cpuCountries]);
+
 
     function compareCurrentCards() {
         if (!currentUserCountry || !currentCpuCountry || !selectedAttribute) return;
@@ -97,37 +103,30 @@ export default function Game(props: Readonly<GameProps>) {
 
         if (typeof userValue === "number" && typeof cpuValue === "number") {
             if (userValue > cpuValue) {
-                props.setUserCountries(prev => [...prev, currentUserCountry,currentCpuCountry]);
-                setRemainingUserCards(prev => prev + 1);
-                setRemainingCpuCards(prev => prev - 1);
-                // add currentCpuCountry to user stack, etc.
+                props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
+                setTieCountrySave([]);
             } else if (userValue < cpuValue) {
+                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
-                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
-                setRemainingUserCards(prev => prev - 1);
-                setRemainingCpuCards(prev => prev + 1);
-                // add currentUserCountry to CPU stack, etc.
+                setTieCountrySave([]);
             } else {
-                console.log("Gleichstand! → Stechen");
-                // trigger tie-breaker mechanism
+                setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
+                alert("tie")
             }
         }
 
         if(typeof userValue === "string" && typeof cpuValue === "string") {
             if(userValue.length > cpuValue.length){
-                props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
-                setRemainingUserCards(prev => prev + 1);
-                setRemainingCpuCards(prev => prev - 1);
+                props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
+                setTieCountrySave([]);
             } else if (userValue.length < cpuValue.length) {
+                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
-                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
-                setRemainingUserCards(prev => prev - 1);
-                setRemainingCpuCards(prev => prev + 1);
+                setTieCountrySave([]);
             } else {
-                console.log("Gleichstand! → Stechen");
-                // trigger tie-breaker mechanism
+                setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
+                alert("tie")
             }
-
         }
 
     }
