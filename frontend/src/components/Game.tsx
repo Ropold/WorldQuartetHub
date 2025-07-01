@@ -75,6 +75,18 @@ export default function Game(props: Readonly<GameProps>) {
 
     }
 
+    useEffect(() => {
+        if (remainingUserCards === 0 || remainingCpuCards === 0) {
+            props.setGameFinished(true);
+            props.setShowWinAnimation(true);
+            if (remainingUserCards === 0) {
+                console.log("CPU wins the game!");
+            } else {
+                console.log("User wins the game!");
+            }
+        }
+    }, [remainingUserCards, remainingCpuCards]);
+
 
     function compareCurrentCards() {
         if (!currentUserCountry || !currentCpuCountry || !selectedAttribute) return;
@@ -88,19 +100,34 @@ export default function Game(props: Readonly<GameProps>) {
                 props.setUserCountries(prev => [...prev, currentUserCountry,currentCpuCountry]);
                 setRemainingUserCards(prev => prev + 1);
                 setRemainingCpuCards(prev => prev - 1);
-                console.log("User gewinnt die Runde!");
                 // add currentCpuCountry to user stack, etc.
             } else if (userValue < cpuValue) {
                 props.setLostCardCount(prev => prev + 1);
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
                 setRemainingUserCards(prev => prev - 1);
                 setRemainingCpuCards(prev => prev + 1);
-                console.log("CPU gewinnt die Runde!");
                 // add currentUserCountry to CPU stack, etc.
             } else {
                 console.log("Gleichstand! → Stechen");
                 // trigger tie-breaker mechanism
             }
+        }
+
+        if(typeof userValue === "string" && typeof cpuValue === "string") {
+            if(userValue.length > cpuValue.length){
+                props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
+                setRemainingUserCards(prev => prev + 1);
+                setRemainingCpuCards(prev => prev - 1);
+            } else if (userValue.length < cpuValue.length) {
+                props.setLostCardCount(prev => prev + 1);
+                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
+                setRemainingUserCards(prev => prev - 1);
+                setRemainingCpuCards(prev => prev + 1);
+            } else {
+                console.log("Gleichstand! → Stechen");
+                // trigger tie-breaker mechanism
+            }
+
         }
 
     }
