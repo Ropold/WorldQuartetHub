@@ -64,32 +64,46 @@ export default function Game(props: Readonly<GameProps>) {
 
     function firstCardPick() {
         if (props.cpuCountries.length === 0 || props.userCountries.length === 0) return;
-        const firstRandomCardCpu = props.cpuCountries[Math.floor(Math.random() * props.cpuCountries.length)];
-        const firstRandomCardUser = props.userCountries[Math.floor(Math.random() * props.userCountries.length)];
+        const [firstUserCard, ...restUserCards] = props.userCountries;
+        const [firstCpuCard, ...restCpuCards] = props.cpuCountries;
 
-        setCurrentCpuCountry(firstRandomCardCpu);
-        setCurrentUserCountry(firstRandomCardUser);
+        setCurrentUserCountry(firstUserCard);
+        setCurrentCpuCountry(firstCpuCard);
+
+        props.setUserCountries(restUserCards);
+        props.setCpuCountries(restCpuCards);
+
     }
 
+
     function compareCurrentCards() {
-        if (!currentUserCountry || !currentCpuCountry) return;
+        if (!currentUserCountry || !currentCpuCountry || !selectedAttribute) return;
 
         const attr = selectedAttribute;
-        const userValue = currentUserCountry[attr as keyof CountryModel];
-        const cpuValue = currentCpuCountry[attr as keyof CountryModel];
+        const userValue = currentUserCountry[attr];
+        const cpuValue = currentCpuCountry[attr];
 
         if (typeof userValue === "number" && typeof cpuValue === "number") {
             if (userValue > cpuValue) {
+                props.setUserCountries(prev => [...prev, currentUserCountry,currentCpuCountry]);
+                setRemainingUserCards(prev => prev + 1);
+                setRemainingCpuCards(prev => prev - 1);
                 console.log("User gewinnt die Runde!");
                 // add currentCpuCountry to user stack, etc.
             } else if (userValue < cpuValue) {
+                props.setLostCardCount(prev => prev + 1);
+                props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry]);
+                setRemainingUserCards(prev => prev - 1);
+                setRemainingCpuCards(prev => prev + 1);
                 console.log("CPU gewinnt die Runde!");
                 // add currentUserCountry to CPU stack, etc.
             } else {
                 console.log("Gleichstand! → Stechen");
                 // trigger tie-breaker mechanism
             }
-        }}
+        }
+
+    }
 
     function handleCheck(){
         if (!selectedAttribute && isRevealed) return;
@@ -117,7 +131,7 @@ export default function Game(props: Readonly<GameProps>) {
         <>
             <div className="space-between">
                 <p>Lost Card Count {props.lostCardCount}</p>
-                <p>remainingPlayerCards {remainingUserCards}</p>
+                <p>remainingUserCards {remainingUserCards}</p>
                 <p>remainingCpuCards {remainingCpuCards}</p>
             </div>
 
