@@ -57,14 +57,14 @@ export default function Details(props: Readonly<DetailsProps>) {
                     {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
                 </p>
                 <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions}</p>
-                <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2}</p>
+                <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2} km²</p>
                 <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation.toLocaleString("de-DE")}</p>
-                <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD.toLocaleString("de-DE")}</p>
-                <p><strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {country.forestAreaPercentage}</p>
-                <p><strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {country.totalAreaInKm2.toLocaleString("de-DE")}</p>
-                <p><strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {country.roadNetworkLengthInKm.toLocaleString("de-DE")}</p>
-                <p><strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {country.averageAnnualTemperatureInC}</p>
-                <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm.toLocaleString("de-DE")}</p>
+                <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD.toLocaleString("de-DE")} $</p>
+                <p><strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {country.forestAreaPercentage} %</p>
+                <p><strong>{translatedModelInfo.totalAreaInKm2[props.language]}</strong>: {country.totalAreaInKm2.toLocaleString("de-DE")} km²</p>
+                <p><strong>{translatedModelInfo.roadNetworkLengthInKm[props.language]}</strong>: {country.roadNetworkLengthInKm.toLocaleString("de-DE")} km</p>
+                <p><strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {country.averageAnnualTemperatureInC} °C</p>
+                <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm.toLocaleString("de-DE")} mm</p>
 
                 {country.imageUrl && (
                     <img

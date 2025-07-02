@@ -115,19 +115,33 @@ export default function Game(props: Readonly<GameProps>) {
             }
         }
 
-        if(typeof userValue === "string" && typeof cpuValue === "string") {
-            if(userValue.length > cpuValue.length){
+        if (typeof userValue === "string" && typeof cpuValue === "string") {
+            let translatedUserValue = userValue;
+            let translatedCpuValue = cpuValue;
+
+            if (selectedAttribute === "capitalCity") {
+                translatedUserValue = translatedCapitalCities[currentUserCountry.capitalCity]?.[props.language] || currentUserCountry.capitalCity;
+                translatedCpuValue = translatedCapitalCities[currentCpuCountry.capitalCity]?.[props.language] || currentCpuCountry.capitalCity;
+            }
+
+            if (selectedAttribute === "countryName") {
+                translatedUserValue = translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName;
+                translatedCpuValue = translatedCountryNames[currentCpuCountry.countryName]?.[props.language] ?? currentCpuCountry.countryName;
+            }
+
+            if (translatedUserValue.length > translatedCpuValue.length) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
-            } else if (userValue.length < cpuValue.length) {
+            } else if (translatedUserValue.length < translatedCpuValue.length) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
                 setTieCountrySave([]);
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
-                alert("tie")
+                alert("tie");
             }
         }
+
 
     }
 
