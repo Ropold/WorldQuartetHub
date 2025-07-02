@@ -8,6 +8,8 @@ import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
 import headerLogo from "../assets/world-quartet-original.jpg"
 
+type WinnerType = "user" | "cpu" | "" ;
+
 type GameProps = {
     userCountries: CountryModel[];
     setUserCountries: React.Dispatch<React.SetStateAction<CountryModel[]>>
@@ -20,13 +22,15 @@ type GameProps = {
     resetSignal:number;
     gameCardCount: number;
     language: string;
+    winner: string;
+    setWinner: React.Dispatch<React.SetStateAction<WinnerType>>;
+    setShowLastCards: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Game(props: Readonly<GameProps>) {
 
     const [lastUserCard, setLastUserCard] = useState <boolean>(false);
     const [lastCpuCard, setLastCpuCard] = useState <boolean>(false);
-    const [winner, setWinner] = useState<"user" | "cpu" | null>(null);
 
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
     const [currentCpuCountry, setCurrentCpuCountry] = useState<CountryModel | null>(null);
@@ -85,9 +89,7 @@ export default function Game(props: Readonly<GameProps>) {
 
         props.setUserCountries(restUserCards);
         props.setCpuCountries(restCpuCards);
-
     }
-
 
     function compareCurrentCards() {
         if (!currentUserCountry || !currentCpuCountry || !selectedAttribute) return;
@@ -103,8 +105,8 @@ export default function Game(props: Readonly<GameProps>) {
                 if(lastCpuCard){
                     props.setGameFinished(true);
                     props.setShowWinAnimation(true);
-                    setWinner("user");
-                    alert("User win the game!");
+                    props.setShowLastCards(true);
+                    props.setWinner("user");
                 }
             } else if (userValue < cpuValue) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
@@ -112,9 +114,9 @@ export default function Game(props: Readonly<GameProps>) {
                 setTieCountrySave([]);
                 if(lastUserCard){
                     props.setGameFinished(true);
+                    props.setShowLastCards(true);
                     props.setShowWinAnimation(true);
-                    setWinner("cpu");
-                    alert("CPU wins the game!");
+                    props.setWinner("cpu");
                 }
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
@@ -122,14 +124,14 @@ export default function Game(props: Readonly<GameProps>) {
                 if(lastCpuCard){
                     props.setGameFinished(true);
                     props.setShowWinAnimation(true);
-                    setWinner("user");
-                    alert("User wins!");
+                    props.setShowLastCards(true);
+                    props.setWinner("user");
                 }
                 if(lastUserCard){
                     props.setGameFinished(true);
                     props.setShowWinAnimation(true);
-                    setWinner("cpu");
-                    alert("Cpu wins!");
+                    props.setShowLastCards(true);
+                    props.setWinner("cpu");
                 }
             }
         }
@@ -149,13 +151,37 @@ export default function Game(props: Readonly<GameProps>) {
             if (translatedUserValue.length > translatedCpuValue.length) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
+                if(lastCpuCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    props.setShowLastCards(true);
+                    props.setWinner("user");
+                }
             } else if (translatedUserValue.length < translatedCpuValue.length) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
                 setTieCountrySave([]);
+                if(lastUserCard){
+                    props.setGameFinished(true);
+                    props.setShowLastCards(true);
+                    props.setShowWinAnimation(true);
+                    props.setWinner("cpu");
+                }
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
                 alert("tie");
+                if(lastCpuCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    props.setShowLastCards(true);
+                    props.setWinner("user");
+                }
+                if(lastUserCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    props.setShowLastCards(true);
+                    props.setWinner("cpu");
+                }
             }
         }
     }

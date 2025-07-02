@@ -21,6 +21,8 @@ export default function Play(props: Readonly<PlayProps>) {
     const [cpuCountries, setCpuCountries] = useState<CountryModel[]>([]);
     const [lostCardCount, setLostCardCount] = useState<number>(0);
 
+    const [showLastCards, setShowLastCards] = useState<boolean>(false);
+    const [winner, setWinner] = useState<"user" | "cpu" | "">("");
     const [showWinAnimation, setShowWinAnimation] = useState<boolean>(false);
     const [isNewHighScore, setIsNewHighScore] = useState<boolean>(false);
     const [playerName, setPlayerName] = useState<string>("");
@@ -66,6 +68,7 @@ export default function Play(props: Readonly<PlayProps>) {
         setGameFinished(false);
         setShowWinAnimation(false);
         setIsNewHighScore(false);
+        setShowLastCards(false)
         setTime(0);
         setShowNameInput(false);
         setResetSignal(prev => prev + 1);
@@ -91,6 +94,11 @@ export default function Play(props: Readonly<PlayProps>) {
                         <h4>Choose Number of Cards:</h4>
                         <div className="space-between">
                             <div
+                                className={`clickable-header ${gameCardCount === 2 ? "active-button-deck-difficulty" : ""}`}
+                                onClick={()=> setGameCardCount(2)}>
+                                <h2 className="header-title">2</h2>
+                            </div>
+                            <div
                                 className={`clickable-header ${gameCardCount === 5 ? "active-button-deck-difficulty" : ""}`}
                                 onClick={()=> setGameCardCount(5)}>
                                 <h2 className="header-title">5</h2>
@@ -113,7 +121,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     <Preview/>
                 </>}
 
-            {!showPreviewMode && !gameFinished && (
+            {!showPreviewMode && (!gameFinished || showLastCards) && (
                 <Game
                     userCountries={userCountries}
                     setUserCountries={setUserCountries}
@@ -126,6 +134,9 @@ export default function Play(props: Readonly<PlayProps>) {
                     resetSignal={resetSignal}
                     gameCardCount={gameCardCount}
                     language={props.language}
+                    winner={winner}
+                    setWinner={setWinner}
+                    setShowLastCards={setShowLastCards}
                 />
             )}
         </>
