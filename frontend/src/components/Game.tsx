@@ -98,40 +98,35 @@ export default function Game(props: Readonly<GameProps>) {
         const userValue = currentUserCountry[attr];
         const cpuValue = currentCpuCountry[attr];
 
+        function triggerGameEnd(winner: "user" | "cpu") {
+            props.setGameFinished(true);
+            props.setShowWinAnimation(true);
+            props.setShowLastCards(true);
+            props.setWinner(winner);
+        }
+
         if (typeof userValue === "number" && typeof cpuValue === "number") {
             if (userValue > cpuValue) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
                 if(lastCpuCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("user");
+                    triggerGameEnd("user");
                 }
             } else if (userValue < cpuValue) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
                 setTieCountrySave([]);
                 if(lastUserCard){
-                    props.setGameFinished(true);
-                    props.setShowLastCards(true);
-                    props.setShowWinAnimation(true);
-                    props.setWinner("cpu");
+                    triggerGameEnd("cpu")
                 }
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
                 alert("tie")
                 if(lastCpuCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("user");
+                    triggerGameEnd("user")
                 }
                 if(lastUserCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("cpu");
+                    triggerGameEnd("cpu")
                 }
             }
         }
@@ -152,35 +147,23 @@ export default function Game(props: Readonly<GameProps>) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
                 if(lastCpuCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("user");
+                    triggerGameEnd("user")
                 }
             } else if (translatedUserValue.length < translatedCpuValue.length) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
                 setTieCountrySave([]);
                 if(lastUserCard){
-                    props.setGameFinished(true);
-                    props.setShowLastCards(true);
-                    props.setShowWinAnimation(true);
-                    props.setWinner("cpu");
+                    triggerGameEnd("cpu")
                 }
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
                 alert("tie");
                 if(lastCpuCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("user");
+                    triggerGameEnd("user")
                 }
                 if(lastUserCard){
-                    props.setGameFinished(true);
-                    props.setShowWinAnimation(true);
-                    props.setShowLastCards(true);
-                    props.setWinner("cpu");
+                    triggerGameEnd("cpu")
                 }
             }
         }
