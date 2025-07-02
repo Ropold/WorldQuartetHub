@@ -113,7 +113,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     <Preview/>
                 </>}
 
-            {!showPreviewMode && userCountries.length > 0 && cpuCountries.length > 0 && (
+            {!showPreviewMode && !gameFinished && (
                 <Game
                     userCountries={userCountries}
                     setUserCountries={setUserCountries}

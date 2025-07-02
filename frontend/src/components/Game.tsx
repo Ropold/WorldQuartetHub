@@ -24,8 +24,9 @@ type GameProps = {
 
 export default function Game(props: Readonly<GameProps>) {
 
-    const [remainingUserCards, setRemainingUserCards] = useState<number>(5);
-    const [remainingCpuCards, setRemainingCpuCards] = useState<number>(5);
+    const [lastUserCard, setLastUserCard] = useState <boolean>(false);
+    const [lastCpuCard, setLastCpuCard] = useState <boolean>(false);
+    const [winner, setWinner] = useState<"user" | "cpu" | null>(null);
 
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
     const [currentCpuCountry, setCurrentCpuCountry] = useState<CountryModel | null>(null);
@@ -46,9 +47,14 @@ export default function Game(props: Readonly<GameProps>) {
             const [next, ...rest] = props.userCountries;
             setCurrentUserCountry(next);
             props.setUserCountries(rest);
-            setRemainingUserCards(rest.length);
+            if (rest.length === 0) {
+                setLastUserCard(true);
+            } else {
+                setLastUserCard(false);
+            }
         } else {
             setCurrentUserCountry(null);
+            setLastUserCard(false);
         }
     }
 
@@ -57,11 +63,17 @@ export default function Game(props: Readonly<GameProps>) {
             const [next, ...rest] = props.cpuCountries;
             setCurrentCpuCountry(next);
             props.setCpuCountries(rest);
-            setRemainingCpuCards(rest.length);
+            if (rest.length === 0) {
+                setLastCpuCard(true);
+            } else {
+                setLastCpuCard(false);
+            }
         } else {
             setCurrentCpuCountry(null);
+            setLastCpuCard(false);
         }
     }
+
 
     function firstCardPick() {
         if (props.cpuCountries.length === 0 || props.userCountries.length === 0) return;
@@ -76,23 +88,6 @@ export default function Game(props: Readonly<GameProps>) {
 
     }
 
-    useEffect(() => {
-        if (remainingUserCards === 0 || remainingCpuCards === 0) {
-            props.setGameFinished(true);
-            props.setShowWinAnimation(true);
-            if (remainingUserCards === 0) {
-                console.log("CPU wins the game!");
-            } else {
-                console.log("User wins the game!");
-            }
-        }
-    }, [remainingUserCards, remainingCpuCards]);
-
-    useEffect(() => {
-        setRemainingUserCards((currentUserCountry ? 1 : 0) + props.userCountries.length);
-        setRemainingCpuCards((currentCpuCountry ? 1 : 0) + props.cpuCountries.length);
-    }, [currentUserCountry, props.userCountries, currentCpuCountry, props.cpuCountries]);
-
 
     function compareCurrentCards() {
         if (!currentUserCountry || !currentCpuCountry || !selectedAttribute) return;
@@ -105,13 +100,37 @@ export default function Game(props: Readonly<GameProps>) {
             if (userValue > cpuValue) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
+                if(lastCpuCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    setWinner("user");
+                    alert("User win the game!");
+                }
             } else if (userValue < cpuValue) {
                 props.setCpuCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 props.setLostCardCount(prev => prev + 1);
                 setTieCountrySave([]);
+                if(lastUserCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    setWinner("cpu");
+                    alert("CPU wins the game!");
+                }
             } else {
                 setTieCountrySave(prev => [...prev, currentUserCountry, currentCpuCountry]);
                 alert("tie")
+                if(lastCpuCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    setWinner("user");
+                    alert("User wins!");
+                }
+                if(lastUserCard){
+                    props.setGameFinished(true);
+                    props.setShowWinAnimation(true);
+                    setWinner("cpu");
+                    alert("Cpu wins!");
+                }
             }
         }
 
@@ -123,12 +142,10 @@ export default function Game(props: Readonly<GameProps>) {
                 translatedUserValue = translatedCapitalCities[currentUserCountry.capitalCity]?.[props.language] || currentUserCountry.capitalCity;
                 translatedCpuValue = translatedCapitalCities[currentCpuCountry.capitalCity]?.[props.language] || currentCpuCountry.capitalCity;
             }
-
             if (selectedAttribute === "countryName") {
                 translatedUserValue = translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName;
                 translatedCpuValue = translatedCountryNames[currentCpuCountry.countryName]?.[props.language] ?? currentCpuCountry.countryName;
             }
-
             if (translatedUserValue.length > translatedCpuValue.length) {
                 props.setUserCountries(prev => [...prev, currentUserCountry, currentCpuCountry, ...tieCountrySave]);
                 setTieCountrySave([]);
@@ -141,8 +158,6 @@ export default function Game(props: Readonly<GameProps>) {
                 alert("tie");
             }
         }
-
-
     }
 
     function handleCheck(){
@@ -160,8 +175,6 @@ export default function Game(props: Readonly<GameProps>) {
     }
 
     useEffect(() => {
-        setRemainingUserCards(props.gameCardCount);
-        setRemainingCpuCards(props.gameCardCount);
         props.setLostCardCount(0);
         firstCardPick();
     }, [props.resetSignal]);
@@ -171,8 +184,8 @@ export default function Game(props: Readonly<GameProps>) {
         <>
             <div className="space-between">
                 <p>Lost Card Count {props.lostCardCount}</p>
-                <p>remainingUserCards {remainingUserCards}</p>
-                <p>remainingCpuCards {remainingCpuCards}</p>
+                <p>remainingUserCards {props.userCountries.length + 1}</p>
+                <p>remainingCpuCards {props.cpuCountries.length + 1}</p>
             </div>
 
             <div className="space-between">
