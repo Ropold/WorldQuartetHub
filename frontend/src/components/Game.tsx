@@ -7,6 +7,9 @@ import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
 import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
 import headerLogo from "../assets/world-quartet-original.jpg"
+import userLogo from "../assets/user.jpg"
+import cpuLogo from "../assets/cpu.jpg"
+import lostCardsLogo from "../assets/lost-cards.jpg"
 
 type WinnerType = "user" | "cpu" | "" ;
 
@@ -15,6 +18,7 @@ type GameProps = {
     setUserCountries: React.Dispatch<React.SetStateAction<CountryModel[]>>
     cpuCountries: CountryModel[];
     setCpuCountries: React.Dispatch<React.SetStateAction<CountryModel[]>>;
+    gameFinished: boolean;
     setGameFinished: React.Dispatch<React.SetStateAction<boolean>>;
     lostCardCount: number;
     setLostCardCount: React.Dispatch<React.SetStateAction<number>>;
@@ -121,9 +125,10 @@ export default function Game(props: Readonly<GameProps>) {
                 alert("CPU wins the game!");
             }
         }
+
         const newCards: CountryModel[] = [
-            ...(currentUserCountry ? [currentUserCountry] : []),
-            ...(currentCpuCountry ? [currentCpuCountry] : []),
+            currentUserCountry,
+            currentCpuCountry,
             ...tieCountrySave,
         ];
 
@@ -215,14 +220,37 @@ export default function Game(props: Readonly<GameProps>) {
     return (
         <>
             <div className="space-between">
-                <p>Lost Card Count {props.lostCardCount}</p>
-                <p>remainingUserCards {userCardCount}</p>
-                <p>remainingCpuCards {cpuCardCount}</p>
+                <div className="clickable-header no-hover">
+                    <p className="header-title no-hover">Lost Cards</p>
+                    <img src={lostCardsLogo} alt="Lost Card Logo" className="logo-image no-hover" />
+                    <p className="card-count no-hover"><strong>{props.lostCardCount}</strong></p>
+                </div>
+                <div className="clickable-header no-hover">
+                    <p className="header-title no-hover">User Cards</p>
+                    <img src={userLogo} alt="User Logo" className="logo-image no-hover" />
+                    <p className="card-count no-hover"><strong>{userCardCount}</strong></p>
+                </div>
+                <div className="clickable-header no-hover">
+                    <p className="header-title no-hover">Cpu Cards</p>
+                    <img src={cpuLogo} alt="Cpu Logo" className="logo-image no-hover" />
+                    <p className="card-count no-hover"><strong>{cpuCardCount}</strong></p>
+                </div>
             </div>
 
             <div className="space-between">
-                <button className="button-group-button" onClick={handleCheck} disabled={!selectedAttribute || isRevealed}>Check</button>
-                <button className="button-group-button" onClick={handleNextRound} disabled={!isRevealed}>Next Round</button>
+                <button
+                    className={`green-button ${(!selectedAttribute || isRevealed) ? 'button-is-inactive' : ''}`}
+                    onClick={handleCheck}
+                    disabled={!selectedAttribute || isRevealed}
+                >Check
+                </button>
+
+                <button
+                    className={`green-button ${!isRevealed || props.gameFinished ? 'button-is-inactive' : ''}`}
+                    onClick={handleNextRound}
+                    disabled={!isRevealed || props.gameFinished}
+                >Next Round
+                </button>
             </div>
 
 
@@ -373,7 +401,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     {currentCpuCountry && (
                                         <div className="flag-wrapper">
                                             <img
-                                                src={cpuFlagSrc || currentCpuCountry.imageUrl || headerLogo}
+                                                src={cpuFlagSrc ?? currentCpuCountry.imageUrl ?? headerLogo}
                                                 alt={`${currentCpuCountry.countryName} flag`}
                                                 className="image-flag-tile"
                                             />

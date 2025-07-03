@@ -42,11 +42,11 @@
     margin-bottom: 20px;
 }
 
-#button-profile {
+#purple-button {
     background-color: #9c27b0; /* Violett */
 }
 
-#button-profile:hover {
+#purple-button:hover {
     background-color: #7b1fa2; /* Dunkleres Violett beim Hover */
 }
 
@@ -65,11 +65,11 @@
     color: #999;
 }
 
-#active-button-my-animals{
+#active-button-my-countries{
     background-color: #66bb6a;
 }
 
-#active-button-my-animals:hover{
+#active-button-my-countries:hover{
     background-color: #388e3c;
 }
 
@@ -164,9 +164,23 @@
     outline: none;
 }
 
-#active-button-my-questions{
+.green-button{
     background-color: #66bb6a;
 }
-#active-button-my-questions:hover{
+.green-button:hover{
     background-color: #388e3c;
 }
+
+.purple-button {
+    background-color: #9c27b0; /* Violett */
+}
+
+.purple-button:hover {
+    background-color: #7b1fa2; /* Dunkleres Violett beim Hover */
+}
+
+.button-is-inactive {
+    background-color: #999;
+    cursor: not-allowed;
+}
+

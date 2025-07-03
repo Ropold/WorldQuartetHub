@@ -84,8 +84,8 @@ export default function Play(props: Readonly<PlayProps>) {
     return(
         <>
             <div className="space-between">
-                <button className="button-group-button" onClick={handleGameStart}>Start Game</button>
-                <button className="button-group-button" onClick={handleHardResetGame}>Reset Game</button>
+                <button className="green-button" onClick={handleGameStart}>Start Game</button>
+                <button className="purple-button" onClick={handleHardResetGame}>Reset Game</button>
             </div>
 
             {showPreviewMode &&
@@ -127,6 +127,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     setUserCountries={setUserCountries}
                     cpuCountries={cpuCountries}
                     setCpuCountries={setCpuCountries}
+                    gameFinished={gameFinished}
                     setGameFinished={setGameFinished}
                     lostCardCount={lostCardCount}
                     setLostCardCount={setLostCardCount}
