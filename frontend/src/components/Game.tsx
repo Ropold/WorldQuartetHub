@@ -119,10 +119,10 @@ export default function Game(props: Readonly<GameProps>) {
 
             if (winner === "user") {
                 updateCardCounts(props.gameCardCount * 2, 0);
-                alert("User wins the game!");
+                //alert("User wins the game!"); // alternative machen!!
             } else {
                 updateCardCounts(0, props.gameCardCount * 2);
-                alert("CPU wins the game!");
+                //alert("CPU wins the game!"); alternative machen!!
             }
         }
 
@@ -157,7 +157,7 @@ export default function Game(props: Readonly<GameProps>) {
         function handleTie() {
             setTieCountrySave(prev => [...prev, ...newCards]);
             updateCardCounts(props.userCountries.length, props.cpuCountries.length);
-            alert("Tie");
+            //alert("It's a tie! Both players keep their cards.");
             if (lastCpuCard) triggerGameEnd("user");
             if (lastUserCard) triggerGameEnd("cpu");
         }

@@ -23,7 +23,7 @@ export default function Play(props: Readonly<PlayProps>) {
 
     const [showLastCards, setShowLastCards] = useState<boolean>(false);
     const [winner, setWinner] = useState<"user" | "cpu" | "">("");
-    const [showWinAnimation, setShowWinAnimation] = useState<boolean>(false);
+    const [showAnimation, setShowAnimation] = useState<boolean>(false);
     const [isNewHighScore, setIsNewHighScore] = useState<boolean>(false);
     const [playerName, setPlayerName] = useState<string>("");
     const [time, setTime] = useState<number>(0);
@@ -66,7 +66,7 @@ export default function Play(props: Readonly<PlayProps>) {
         setLostCardCount(0);
         setShowPreviewMode(false);
         setGameFinished(false);
-        setShowWinAnimation(false);
+        setShowAnimation(false);
         setIsNewHighScore(false);
         setShowLastCards(false)
         setTime(0);
@@ -91,7 +91,19 @@ export default function Play(props: Readonly<PlayProps>) {
                 <button className="purple-button" onClick={handleHardResetGame}>Reset Game</button>
             </div>
 
-
+            {showPopup && (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <h3>Note</h3>
+                        <p>{popupMessage}</p>
+                        <div className="popup-actions">
+                            <button onClick={() => setShowPopup(false)} className="popup-confirm">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {showPreviewMode &&
                 <>
@@ -136,7 +148,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     setGameFinished={setGameFinished}
                     lostCardCount={lostCardCount}
                     setLostCardCount={setLostCardCount}
-                    setShowWinAnimation={setShowWinAnimation}
+                    setShowWinAnimation={setShowAnimation}
                     resetSignal={resetSignal}
                     gameCardCount={gameCardCount}
                     language={props.language}
