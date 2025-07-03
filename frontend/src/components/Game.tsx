@@ -258,10 +258,13 @@ export default function Game(props: Readonly<GameProps>) {
                 {/* USER-CARDS */}
                 <div className="game-cards-container">
                     <div className="flag-tile pastel-flag">
-                        {currentUserCountry && userFlagSrc && (
+                        {currentUserCountry && (
                             <div className="flag-wrapper">
-                            <img src={userFlagSrc || currentUserCountry.imageUrl || headerLogo} alt={`${currentUserCountry.countryName} flag`}
-                                 className="image-flag-tile"/>
+                                <img
+                                    src={userFlagSrc ?? currentUserCountry.imageUrl ?? headerLogo}
+                                    alt={`${currentUserCountry.countryName} flag`}
+                                    className="image-flag-tile"
+                                />
                             </div>
                         )}
                     </div>
