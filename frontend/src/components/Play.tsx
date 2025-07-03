@@ -84,9 +84,14 @@ export default function Play(props: Readonly<PlayProps>) {
     return(
         <>
             <div className="space-between">
-                <button className="green-button" onClick={handleGameStart}>Start Game</button>
+                <button className={`green-button ${!gameFinished ? 'button-is-inactive' : ''}`}
+                        onClick={handleGameStart}
+                        disabled={!gameFinished}
+                >Start Game</button>
                 <button className="purple-button" onClick={handleHardResetGame}>Reset Game</button>
             </div>
+
+
 
             {showPreviewMode &&
                 <>
