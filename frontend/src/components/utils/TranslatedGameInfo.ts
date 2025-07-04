@@ -72,5 +72,14 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Prochaine manche",
         "it": "Prossimo turno",
         "ru": "Следующий раунд"
+    },
+    "Choose Number of Cards": {
+        "en": "Choose Number of Cards",
+        "de": "Wähle Anzahl der Karten",
+        "pl": "Wybierz liczbę kart",
+        "es": "Elige el número de cartas",
+        "fr": "Choisissez le nombre de cartes",
+        "it": "Scegli il numero di carte",
+        "ru": "Выберите количество карт"
     }
     }

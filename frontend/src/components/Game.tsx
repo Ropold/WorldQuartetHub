@@ -137,22 +137,18 @@ export default function Game(props: Readonly<GameProps>) {
         ];
 
         function handleUserWin() {
-            props.setUserCountries(prev => {
-                const updated = [...prev, ...newCards];
-                updateCardCounts(updated.length, props.cpuCountries.length);
-                return updated;
-            });
+            const updated = [...props.userCountries, ...newCards];
+            props.setUserCountries(updated);
+            updateCardCounts(updated.length, props.cpuCountries.length);
             setTieCountrySave([]);
             setRoundResult("user");
             if (lastCpuCard) triggerGameEnd("user");
         }
 
         function handleCpuWin() {
-            props.setCpuCountries(prev => {
-                const updated = [...prev, ...newCards];
-                updateCardCounts(props.userCountries.length, updated.length);
-                return updated;
-            });
+            const updated = [...props.cpuCountries, ...newCards];
+            props.setCpuCountries(updated);
+            updateCardCounts(props.userCountries.length, updated.length);
             props.setLostCardCount(prev => prev + 1);
             setTieCountrySave([]);
             setRoundResult("cpu");
@@ -160,9 +156,9 @@ export default function Game(props: Readonly<GameProps>) {
         }
 
         function handleTie() {
-            setTieCountrySave(prev => [...prev, ...newCards]);
+            const updatedTie = [...tieCountrySave, ...newCards];
+            setTieCountrySave(updatedTie);
             updateCardCounts(props.userCountries.length, props.cpuCountries.length);
-            //alert("It's a tie! Both players keep their cards.");
             setRoundResult("tie");
             if (lastCpuCard) triggerGameEnd("user");
             if (lastUserCard) triggerGameEnd("cpu");
@@ -221,7 +217,6 @@ export default function Game(props: Readonly<GameProps>) {
         props.setLostCardCount(0);
         firstCardPick();
     }, [props.resetSignal]);
-
 
     return (
         <>

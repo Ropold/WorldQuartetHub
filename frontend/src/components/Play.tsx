@@ -5,6 +5,7 @@ import Preview from "./Preview.tsx";
 import Game from "./Game.tsx";
 import axios from "axios";
 import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
+import "./styles/Play.css"
 
 type PlayProps = {
     user: string;
@@ -24,7 +25,7 @@ export default function Play(props: Readonly<PlayProps>) {
 
     const [showLastCards, setShowLastCards] = useState<boolean>(false);
     const [winner, setWinner] = useState<"user" | "cpu" | "">("");
-    const [showAnimation, setShowAnimation] = useState<boolean>(false);
+    const [showWinAnimation, setShowWinAnimation] = useState<boolean>(false);
     const [isNewHighScore, setIsNewHighScore] = useState<boolean>(false);
     const [playerName, setPlayerName] = useState<string>("");
     const [time, setTime] = useState<number>(0);
@@ -67,7 +68,7 @@ export default function Play(props: Readonly<PlayProps>) {
         setLostCardCount(0);
         setShowPreviewMode(false);
         setGameFinished(false);
-        setShowAnimation(false);
+        setShowWinAnimation(false);
         setIsNewHighScore(false);
         setShowLastCards(false)
         setTime(0);
@@ -81,6 +82,14 @@ export default function Play(props: Readonly<PlayProps>) {
         setIsNewHighScore(false);
         getUserAndCpuCards(gameCardCount)
     }
+
+    const getWinClass = () => {
+        if (winner === "cpu") return "win-animation win-animation-bad";
+        if (gameCardCount === 0) return "win-animation win-animation-perfect";
+        if (gameCardCount <= 3) return "win-animation win-animation-good";
+        return "win-animation win-animation-ok";
+    };
+
 
     return(
         <>
@@ -106,10 +115,28 @@ export default function Play(props: Readonly<PlayProps>) {
                 </div>
             )}
 
+            {showWinAnimation && (
+                <div className={getWinClass()}>
+                    <p>
+                        🎉 You beat the CPU
+                        {lostCardCount === 0
+                            ? " with a flawless game – not a single card lost! 🌟"
+                            : lostCardCount <= 2
+                                ? ` and only gave away ${lostCardCount} card${lostCardCount === 1 ? "" : "s"}. Impressive! 💪`
+                                : lostCardCount <= 5
+                                    ? ` but had to give up ${lostCardCount} cards. Well played! 🧠`
+                                    : lostCardCount < 10
+                                        ? ` despite losing ${lostCardCount} cards. That was a tough battle! 👊`
+                                        : ". But the CPU took all your cards. Time for a rematch! 🔄"}
+                    </p>
+                </div>
+            )}
+
+
             {showPreviewMode &&
                 <>
                     <div>
-                        <h4>Choose Number of Cards:</h4>
+                        <h4>{translatedGameInfo["Choose Number of Cards"][props.language]}:</h4>
                         <div className="space-between">
                             <div
                                 className={`clickable-header ${gameCardCount === 2 ? "active-button-deck-difficulty" : ""}`}
@@ -149,7 +176,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     setGameFinished={setGameFinished}
                     lostCardCount={lostCardCount}
                     setLostCardCount={setLostCardCount}
-                    setShowWinAnimation={setShowAnimation}
+                    setShowWinAnimation={setShowWinAnimation}
                     resetSignal={resetSignal}
                     gameCardCount={gameCardCount}
                     language={props.language}
