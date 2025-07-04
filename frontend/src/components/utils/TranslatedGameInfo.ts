@@ -162,5 +162,14 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Bien joué ! 🧠",
         "it": "Ben giocato! 🧠",
         "ru": "Хорошо сыграно! 🧠"
+    },
+    "Congratulations! You secured a spot on the high score list. Enter your name:": {
+        "en": "Congratulations! You secured a spot on the high score list. Enter your name:",
+        "de": "Herzlichen Glückwunsch! Du hast dir einen Platz auf der Highscore-Liste gesichert. Gib deinen Namen ein:",
+        "pl": "Gratulacje! Zajmujesz miejsce na liście najlepszych wyników. Wprowadź swoje imię:",
+        "es": "¡Felicidades! Has asegurado un lugar en la lista de puntuaciones altas. Ingresa tu nombre:",
+        "fr": "Félicitations ! Vous avez obtenu une place sur la liste des meilleurs scores. Entrez votre nom :",
+        "it": "Congratulazioni! Hai assicurato un posto nella classifica dei punteggi. Inserisci il tuo nome:",
+        "ru": "Поздравляем! Вы заняли место в списке лучших результатов. Введите ваше имя:"
     }
     }

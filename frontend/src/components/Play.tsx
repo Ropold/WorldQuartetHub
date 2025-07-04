@@ -170,7 +170,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     }}
                 >
                     <label htmlFor="playerName">
-                        Congratulations! You secured a spot on the high score list. Enter your name:
+                        {translatedGameInfo["Congratulations! You secured a spot on the high score list. Enter your name:"][props.language]}
                     </label>
                     <input
                         className="playerName"
