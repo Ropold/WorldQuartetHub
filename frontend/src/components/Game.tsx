@@ -121,12 +121,22 @@ export default function Game(props: Readonly<GameProps>) {
             props.setShowLastCards(true);
             props.setWinner(winner);
 
+            function tempShowWinAnimation() {
+                setTimeout(() => {
+                    props.setShowWinAnimation(true);
+                    props.setGameFinished(true);
+                    setTimeout(() => {
+                        props.setShowWinAnimation(false);
+                    }, 5000);
+                }, 1000);
+            }
+
             if (winner === "user") {
                 updateCardCounts(props.gameCardCount * 2, 0);
-                //alert("User wins the game!"); // alternative machen!!
+                tempShowWinAnimation();
             } else {
                 updateCardCounts(0, props.gameCardCount * 2);
-                //alert("CPU wins the game!"); alternative machen!!
+                tempShowWinAnimation()
             }
         }
 

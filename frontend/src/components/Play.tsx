@@ -85,11 +85,10 @@ export default function Play(props: Readonly<PlayProps>) {
 
     const getWinClass = () => {
         if (winner === "cpu") return "win-animation win-animation-bad";
-        if (gameCardCount === 0) return "win-animation win-animation-perfect";
-        if (gameCardCount <= 3) return "win-animation win-animation-good";
+        if (lostCardCount === 0) return "win-animation win-animation-perfect";
+        if (lostCardCount <= 3) return "win-animation win-animation-good";
         return "win-animation win-animation-ok";
     };
-
 
     return(
         <>
@@ -131,7 +130,6 @@ export default function Play(props: Readonly<PlayProps>) {
                     </p>
                 </div>
             )}
-
 
             {showPreviewMode &&
                 <>
