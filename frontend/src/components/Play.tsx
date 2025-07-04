@@ -138,6 +138,10 @@ export default function Play(props: Readonly<PlayProps>) {
         setGameFinished(true);
         setIsNewHighScore(false);
         getUserAndCpuCards(gameCardCount)
+        setWinner("");
+        setLostCardCount(0);
+        setTime(0);
+        setShowWinAnimation(false);
     }
 
     const getWinClass = () => {
@@ -161,7 +165,7 @@ export default function Play(props: Readonly<PlayProps>) {
                 <form
                     className="high-score-input"
                     onSubmit={(e) => {
-                        e.preventDefault(); // Verhindert das Neuladen der Seite
+                        e.preventDefault();
                         handleSaveHighScore();
                     }}
                 >
@@ -226,11 +230,6 @@ export default function Play(props: Readonly<PlayProps>) {
                     <div>
                         <h4>{translatedGameInfo["Choose Number of Cards"][props.language]}:</h4>
                         <div className="space-between">
-                            <div
-                                className={`clickable-header ${gameCardCount === 2 ? "active-button-deck-difficulty" : ""}`}
-                                onClick={()=> setGameCardCount(2)}>
-                                <h2 className="header-title">2</h2>
-                            </div>
                             <div
                                 className={`clickable-header ${gameCardCount === 5 ? "active-button-deck-difficulty" : ""}`}
                                 onClick={()=> setGameCardCount(5)}>
