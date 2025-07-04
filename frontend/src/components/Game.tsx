@@ -10,8 +10,11 @@ import headerLogo from "../assets/world-quartet-original.jpg"
 import userLogo from "../assets/user.jpg"
 import cpuLogo from "../assets/cpu.jpg"
 import lostCardsLogo from "../assets/lost-cards.jpg"
+import roundWinner from "../assets/round-winner.svg";
+import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
 
 type WinnerType = "user" | "cpu" | "" ;
+type RoundResult = "user" | "cpu" | "tie" | "idle";
 
 type GameProps = {
     userCountries: CountryModel[];
@@ -37,6 +40,7 @@ export default function Game(props: Readonly<GameProps>) {
     const [lastCpuCard, setLastCpuCard] = useState <boolean>(false);
     const [userCardCount, setUserCardCount] = useState<number>(0);
     const [cpuCardCount, setCpuCardCount] = useState<number>(0);
+    const [roundResult, setRoundResult] = useState<RoundResult>("idle");
 
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
     const [currentCpuCountry, setCurrentCpuCountry] = useState<CountryModel | null>(null);
@@ -139,6 +143,7 @@ export default function Game(props: Readonly<GameProps>) {
                 return updated;
             });
             setTieCountrySave([]);
+            setRoundResult("user");
             if (lastCpuCard) triggerGameEnd("user");
         }
 
@@ -150,14 +155,15 @@ export default function Game(props: Readonly<GameProps>) {
             });
             props.setLostCardCount(prev => prev + 1);
             setTieCountrySave([]);
+            setRoundResult("cpu");
             if (lastUserCard) triggerGameEnd("cpu");
         }
-
 
         function handleTie() {
             setTieCountrySave(prev => [...prev, ...newCards]);
             updateCardCounts(props.userCountries.length, props.cpuCountries.length);
             //alert("It's a tie! Both players keep their cards.");
+            setRoundResult("tie");
             if (lastCpuCard) triggerGameEnd("user");
             if (lastUserCard) triggerGameEnd("cpu");
         }
@@ -196,7 +202,6 @@ export default function Game(props: Readonly<GameProps>) {
         }
     }
 
-
     function handleCheck(){
         if (!selectedAttribute && isRevealed) return;
         setIsRevealed(true);
@@ -209,6 +214,7 @@ export default function Game(props: Readonly<GameProps>) {
         selectNextUserCountry();
         setIsRevealed(false);
         setSelectedAttribute(null);
+        setRoundResult("idle");
     }
 
     useEffect(() => {
@@ -221,17 +227,22 @@ export default function Game(props: Readonly<GameProps>) {
         <>
             <div className="space-between">
                 <div className="clickable-header no-hover">
-                    <p className="header-title no-hover">Lost Cards</p>
+                    <p className="header-title no-hover">{translatedGameInfo["Lost Cards"][props.language]}</p>
                     <img src={lostCardsLogo} alt="Lost Card Logo" className="logo-image no-hover" />
                     <p className="card-count no-hover"><strong>{props.lostCardCount}</strong></p>
                 </div>
                 <div className="clickable-header no-hover">
-                    <p className="header-title no-hover">User Cards</p>
+                    <p className="header-title no-hover">{translatedGameInfo["Round Winner"][props.language]}</p>
+                    <img src={roundWinner} alt="Lost Card Logo" className="logo-image no-hover" />
+                    <p className="card-count no-hover"><strong>{roundResult}</strong></p>
+                </div>
+                <div className="clickable-header no-hover">
+                    <p className="header-title no-hover">{translatedGameInfo["User Cards"][props.language]}</p>
                     <img src={userLogo} alt="User Logo" className="logo-image no-hover" />
                     <p className="card-count no-hover"><strong>{userCardCount}</strong></p>
                 </div>
                 <div className="clickable-header no-hover">
-                    <p className="header-title no-hover">Cpu Cards</p>
+                    <p className="header-title no-hover">{translatedGameInfo["Cpu Cards"][props.language]}</p>
                     <img src={cpuLogo} alt="Cpu Logo" className="logo-image no-hover" />
                     <p className="card-count no-hover"><strong>{cpuCardCount}</strong></p>
                 </div>
@@ -242,14 +253,14 @@ export default function Game(props: Readonly<GameProps>) {
                     className={`green-button ${(!selectedAttribute || isRevealed) ? 'button-is-inactive' : ''}`}
                     onClick={handleCheck}
                     disabled={!selectedAttribute || isRevealed}
-                >Check
+                >{translatedGameInfo["Check"][props.language]}
                 </button>
 
                 <button
                     className={`green-button ${!isRevealed || props.gameFinished ? 'button-is-inactive' : ''}`}
                     onClick={handleNextRound}
                     disabled={!isRevealed || props.gameFinished}
-                >Next Round
+                >{translatedGameInfo["Next Round"][props.language]}
                 </button>
             </div>
 

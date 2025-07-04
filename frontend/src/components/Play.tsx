@@ -4,6 +4,7 @@ import type {CountryModel} from "./model/CountryModel.ts";
 import Preview from "./Preview.tsx";
 import Game from "./Game.tsx";
 import axios from "axios";
+import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
 
 type PlayProps = {
     user: string;
@@ -87,8 +88,8 @@ export default function Play(props: Readonly<PlayProps>) {
                 <button className={`green-button ${!gameFinished ? 'button-is-inactive' : ''}`}
                         onClick={handleGameStart}
                         disabled={!gameFinished}
-                >Start Game</button>
-                <button className="purple-button" onClick={handleHardResetGame}>Reset Game</button>
+                >{translatedGameInfo["Start Game"][props.language]}</button>
+                <button className="purple-button" onClick={handleHardResetGame}>{translatedGameInfo["Reset Game"][props.language]}</button>
             </div>
 
             {showPopup && (
