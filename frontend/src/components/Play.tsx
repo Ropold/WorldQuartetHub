@@ -60,9 +60,66 @@ export default function Play(props: Readonly<PlayProps>) {
             });
     }
 
+    function postHighScore() {
+        const highScoreData = {
+            id: null,
+            playerName: playerName,
+            githubId: props.user,
+            cardCount: gameCardCount,
+            lostCardCount: lostCardCount,
+            scoreTime: parseFloat(time.toFixed(1)),
+            date: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString()
+        };
+
+        axios.post("/api/high-score", highScoreData)
+            .then(() => {
+                setShowNameInput(false);
+            })
+            .catch(console.error);
+    }
+
+    useEffect(() => {
+        if (gameFinished && winner === "user") {
+            checkForHighScore();
+        }
+    }, [gameFinished]);
+
+    function checkForHighScore() {
+        const currentHighScores = props.highScores[gameCardCount];
+
+        if (!currentHighScores) return;
+
+        if (currentHighScores.length < 10) {
+            setIsNewHighScore(true);
+            setShowNameInput(true);
+            return;
+        }
+
+        const worstScore = currentHighScores[currentHighScores.length - 1];
+        const isBetter =
+            lostCardCount < worstScore.lostCardCount ||
+            (lostCardCount === worstScore.lostCardCount && time < worstScore.scoreTime);
+
+        if (isBetter) {
+            setIsNewHighScore(true);
+            setShowNameInput(true);
+        }
+    }
+
+
+    function handleSaveHighScore() {
+        if (playerName.trim().length < 3) {
+            setPopupMessage("Your name must be at least 3 characters long!");
+            setShowPopup(true);
+            return;
+        }
+        postHighScore();
+    }
+
     useEffect(() => {
         getUserAndCpuCards(gameCardCount);
     }, [gameCardCount]);
+
 
     function handleGameStart() {
         setLostCardCount(0);
@@ -100,6 +157,35 @@ export default function Play(props: Readonly<PlayProps>) {
                 <button className="purple-button" onClick={handleHardResetGame}>{translatedGameInfo["Reset Game"][props.language]}</button>
             </div>
 
+            {isNewHighScore && showNameInput && (
+                <form
+                    className="high-score-input"
+                    onSubmit={(e) => {
+                        e.preventDefault(); // Verhindert das Neuladen der Seite
+                        handleSaveHighScore();
+                    }}
+                >
+                    <label htmlFor="playerName">
+                        Congratulations! You secured a spot on the high score list. Enter your name:
+                    </label>
+                    <input
+                        className="playerName"
+                        type="text"
+                        id="playerName"
+                        value={playerName}
+                        onChange={(e) => setPlayerName(e.target.value)}
+                        placeholder="Enter your name"
+                    />
+                    <button
+                        className="button-group-button"
+                        id="button-border-animation"
+                        type="submit"
+                    >
+                        Save Highscore
+                    </button>
+                </form>
+            )}
+
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
@@ -117,16 +203,20 @@ export default function Play(props: Readonly<PlayProps>) {
             {showWinAnimation && (
                 <div className={getWinClass()}>
                     <p>
-                        🎉 You beat the CPU
-                        {lostCardCount === 0
-                            ? " with a flawless game – not a single card lost! 🌟"
-                            : lostCardCount <= 2
-                                ? ` and only gave away ${lostCardCount} card${lostCardCount === 1 ? "" : "s"}. Impressive! 💪`
-                                : lostCardCount <= 5
-                                    ? ` but had to give up ${lostCardCount} cards. Well played! 🧠`
-                                    : lostCardCount < 10
-                                        ? ` despite losing ${lostCardCount} cards. That was a tough battle! 👊`
-                                        : ". But the CPU took all your cards. Time for a rematch! 🔄"}
+                        {winner === "user" ? (
+                            <>
+                                {translatedGameInfo["You beat the Cpu!"][props.language]}
+                                {lostCardCount === 0
+                                    ? ` ${translatedGameInfo["with a flawless game"][props.language]}`
+                                    : lostCardCount <= 3
+                                        ? ` ${translatedGameInfo["and only gave away"][props.language]} ${lostCardCount} ${translatedGameInfo[lostCardCount === 1 ? "card" : "cards"][props.language]}. ${translatedGameInfo["Impressive!"][props.language]}`
+                                        : ` ${translatedGameInfo["and had to give up"][props.language]} ${lostCardCount} ${translatedGameInfo["cards"][props.language]}. ${translatedGameInfo["Well played!"][props.language]}`}
+                            </>
+                        ) : winner === "cpu" ? (
+                            <>
+                                {translatedGameInfo["The CPU wins! The CPU took all your cards. Time for a rematch!"][props.language]}
+                            </>
+                        ) : null}
                     </p>
                 </div>
             )}
