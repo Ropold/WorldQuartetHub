@@ -1,6 +1,6 @@
 WordQuartetHub – A World Quartet Game
 
-Live: https://wordquartethub.onrender.com
+Live: https://worldquartethub.onrender.com
 
 SonarQube-backend:
 
