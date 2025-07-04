@@ -2,7 +2,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "./styles/Navbar.css";
 import "./styles/Buttons.css"
-import headerLogo from "../assets/world-quartet-original.jpg"
+import headerLogo from "../assets/world-quartet-logo.jpg"
 import highScoreLogo from "../assets/highscore-logo.jpg"
 import * as React from "react";
 import {LanguagesImages} from "./utils/FlagImages.ts";
@@ -164,7 +164,7 @@ export default function Navbar(props: Readonly<NavbarProps>) {
 
             {props.user !== "anonymousUser" ? (
                 <>
-                    <button id="button-profile" onClick={() => navigate("/profile")}>Profile</button>
+                    <button className="purple-button" onClick={() => navigate("/profile")}>Profile</button>
                     <button className="button-group-button" onClick={logoutFromGithub}>Logout</button>
                 </>
             ) : (

@@ -63,7 +63,7 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "ru": "Процент лесных территорий"
     },
     "totalAreaInKm2": {
-        "en": "Total Area in Km²",
+        "en": "Total Area in km²",
         "de": "Gesamtfläche in km²",
         "pl": "Powierzchnia całkowita w km²",
         "es": "Área total en km²",
@@ -82,7 +82,7 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
     },
     "averageAnnualTemperatureInC": {
         "en": "Average Annual Temperature in °C",
-        "de": "Durchschnittliche Jahrestemperatur in °C",
+        "de": "Jahresdurchschnitt Temperatur in °C",
         "pl": "Średnia roczna temperatura w °C",
         "es": "Temperatura media anual en °C",
         "fr": "Température annuelle moyenne en °C",

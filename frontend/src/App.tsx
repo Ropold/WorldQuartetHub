@@ -20,10 +20,9 @@ export default function App() {
     const [user, setUser] = useState<string>("anonymousUser");
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const [favorites, setFavorites] = useState<string[]>([]);
+
     const [allCountries, setAllCountries] = useState<CountryModel[]>([]);
-
     const [language, setLanguage] = useState<string>("en");
-
     const [highScores, setHighScores] = useState<{[key: number]: HighScoreModel[]}>({ 5: [], 10: [], 25: [] });
 
     function getUser() {
@@ -138,7 +137,7 @@ export default function App() {
         <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Welcome language={language}/>}/>
-            <Route path="/play" element={<Play/>} />
+            <Route path="/play" element={<Play user={user} highScores={highScores} getHighScores={getHighScores} language={language}/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores}/>} />

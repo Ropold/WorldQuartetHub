@@ -1,0 +1,155 @@
+
+.game-board-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 10px;
+    max-width: 1050px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    border: 2px solid #66b3ff;
+}
+
+.game-cards-container-cpu{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    border: 2px solid #ff9e00;
+}
+
+.clickable {
+    height: 110px;
+    width: 135px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 3px solid transparent;  /* gleich groß wie später */
+    margin :3px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable:hover, .clickable-cpu:hover {
+    border: 3px solid #007bff; /* Schwarze, 5px dicke Border */
+    transform: scale(1.03); /* Skaliert das Bild leicht beim Hover */
+    box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.8); /* Leichter Schatten bei Hover */
+    cursor: pointer;
+}
+
+.text-country-property, .text-country-property-cpu {
+    display: flex;
+    flex-direction: column; /* sorgt für festen Abstand */
+    height: 100%;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.flag-tile {
+    height: 110px;
+    width: 135px;
+    margin: 3px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 3px solid transparent;
+}
+
+.flag-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.image-flag-tile {
+    max-width: 100%;
+    max-height: 100%;
+    border: 2px solid black;
+    object-fit: contain;
+    margin: 0;
+}
+
+.cpu-cover-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top:25px;
+    margin-left: 20px;
+}
+
+
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0px rgba(76, 175, 80, 0.4); /* heller Grünton */
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(76, 175, 80, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(76, 175, 80, 0.4);
+    }
+}
+
+#selected-attribute {
+    border: 3px solid #388e3c;
+    animation: pulse-border 1.5s infinite;
+}
+
+
+.pastel-purple    { background-color: #c4a3d7; }
+.pastel-red       { background-color: #f5b5b3; }
+.pastel-yellow    { background-color: #fff9c4; }
+.pastel-orange    { background-color: #ffd8b1; }
+.pastel-green     { background-color: #b7e4c7; }
+.pastel-gray      { background-color: #d3d3d3; }
+.pastel-brown     { background-color: #cdb89e; }
+.pastel-blue      { background-color: #b3cde0; }
+.pastel-lightblue { background-color: #cce7f0; }
+.pastel-teal      { background-color: #a6d3ce; }
+.pastel-mint      { background-color: #d0f0c0; }
+.pastel-flag      {background-color: #f5f5f5;  }
+
+
+.property-label {
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+
+    /* NEU: feste Höhe für max. 2 Zeilen */
+    height: calc(1.2em * 2); /* Zeilenhöhe * 2 */
+}
+
+
+.value-line-tile {
+    padding-top: 13px; /* optional: justierbarer Abstand */
+}
+.card-count{
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.no-hover:hover {
+    background-color:  #66b3ff;
+    transform: none;
+    cursor: default;
+}
