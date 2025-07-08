@@ -144,6 +144,11 @@ export default function Play(props: Readonly<PlayProps>) {
         setShowWinAnimation(false);
     }
 
+    function handleCancelHighScore() {
+        setShowNameInput(false);
+        setIsNewHighScore(false);
+    }
+
     const getWinClass = () => {
         if (winner === "cpu") return "win-animation win-animation-bad";
         if (lostCardCount === 0) return "win-animation win-animation-perfect";
@@ -178,15 +183,18 @@ export default function Play(props: Readonly<PlayProps>) {
                         id="playerName"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Enter your name"
+                        placeholder={translatedGameInfo["Enter your name"][props.language]}
                     />
+                    <div>
                     <button
                         className="button-group-button"
                         id="button-border-animation"
                         type="submit"
                     >
-                        Save Highscore
+                        {translatedGameInfo["Save High Score"][props.language]}
                     </button>
+                    <button className="button-group-button margin-left-10" onClick={handleCancelHighScore}>{translatedGameInfo["Cancel"][props.language]}</button>
+                    </div>
                 </form>
             )}
 

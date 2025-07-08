@@ -45,7 +45,6 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "it": "Carte del User",
         "ru": "Карты User"
     },
-
     "Cpu Cards": {
         "en": "Cpu Cards",
         "de": "Cpu Karten",
@@ -171,5 +170,32 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Félicitations ! Vous avez obtenu une place sur la liste des meilleurs scores. Entrez votre nom :",
         "it": "Congratulazioni! Hai assicurato un posto nella classifica dei punteggi. Inserisci il tuo nome:",
         "ru": "Поздравляем! Вы заняли место в списке лучших результатов. Введите ваше имя:"
+    },
+    "Save High Score": {
+        "en": "Save High Score",
+        "de": "High Score speichern",
+        "pl": "Zapisz High Score",
+        "es": "Guardar High Score",
+        "fr": "Enregistrer le High Score",
+        "it": "Salva High Score",
+        "ru": "Сохранить High Score"
+    },
+    "Cancel": {
+        "en": "Cancel",
+        "de": "Abbrechen",
+        "pl": "Anuluj",
+        "es": "Cancelar",
+        "fr": "Annuler",
+        "it": "Annulla",
+        "ru": "Отмена"
+    },
+    "Enter your name": {
+        "en": "Enter your name",
+        "de": "Gib deinen Namen ein",
+        "pl": "Wprowadź swoje imię",
+        "es": "Ingresa tu nombre",
+        "fr": "Entrez votre nom",
+        "it": "Inserisci il tuo nome",
+        "ru": "Введите ваше имя"
     }
     }
