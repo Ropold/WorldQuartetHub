@@ -242,6 +242,104 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Mes pays",
         "it": "I miei paesi",
         "ru": "Мои страны"
+    },
+    "Player": {
+        "en": "Player",
+        "de": "Spieler",
+        "pl": "Gracz",
+        "es": "Jugador",
+        "fr": "Joueur",
+        "it": "Giocatore",
+        "ru": "Игрок"
+    },
+    "Date": {
+        "en": "Date",
+        "de": "Datum",
+        "pl": "Data",
+        "es": "Fecha",
+        "fr": "Date",
+        "it": "Data",
+        "ru": "Дата"
+    },
+    "Card Count" : {
+        "en": "Card Count",
+        "de": "Kartenanzahl",
+        "pl": "Liczba kart",
+        "es": "Número de cartas",
+        "fr": "Nombre de cartes",
+        "it": "Conteggio delle carte",
+        "ru": "Количество карт"
+    },
+    "Authentication":{
+        "en": "Authentication",
+        "de": "Authentifizierung",
+        "pl": "Uwierzytelnianie",
+        "es": "Autenticación",
+        "fr": "Authentification",
+        "it": "Autenticazione",
+        "ru": "Аутентификация"
+    },
+    "Time":{
+        "en": "Time",
+        "de": "Zeit",
+        "pl": "Czas",
+        "es": "Tiempo",
+        "fr": "Temps",
+        "it": "Tempo",
+        "ru": "Время"
+    },
+    "Back to Overview": {
+        "en": "Back to Overview",
+        "de": "Zurück zur Übersicht",
+        "pl": "Powrót do przeglądu",
+        "es": "Volver a la vista general",
+        "fr": "Retour à l'aperçu",
+        "it": "Torna alla panoramica",
+        "ru": "Вернуться к обзору"
+    },
+    "World Quartet Hub 2025 by R.Stolz - Country data from 2022": {
+        "en": "World Quartet Hub © 2025 by R.Stolz - Country data from 2022",
+        "de": "World Quartet Hub © 2025 von R.Stolz - Länderdaten aus dem Jahr 2022",
+        "pl": "World Quartet Hub © 2025 autorstwa R. Stolza – dane o krajach z roku 2022",
+        "es": "World Quartet Hub © 2025 por R.Stolz - Datos de países de 2022",
+        "fr": "World Quartet Hub © 2025 par R.Stolz - Données sur les pays de 2022",
+        "it": "World Quartet Hub © 2025 di R.Stolz - Dati sui paesi del 2022",
+        "ru": "World Quartet Hub © 2025 от R.Stolz - Данные о странах за 2022 год"
+    },
+    "idle": {
+        "en": "⏳ pending ⏳",
+        "de": "⏳ wartend ⏳",
+        "pl": "⏳ oczekujący ⏳",
+        "es": "⏳ pendiente ⏳",
+        "fr": "⏳ en attente ⏳",
+        "it": "⏳ in attesa ⏳",
+        "ru": "⏳ в ожидании ⏳"
+    },
+    "user": {
+        "en": "🙋 user 🙋",
+        "de": "🙋 Spieler 🙋",
+        "pl": "🙋 gracz 🙋",
+        "es": "🙋 jugador 🙋",
+        "fr": "🙋 joueur 🙋",
+        "it": "🙋 giocatore 🙋",
+        "ru": "🙋 игрок 🙋"
+    },
+    "cpu": {
+        "en": "💻 computer 💻",
+        "de": "💻 Computer 💻",
+        "pl": "💻 komputer 💻",
+        "es": "💻 computadora💻",
+        "fr": "💻 ordinateur 💻",
+        "it": "💻 computer 💻",
+        "ru": "💻компьютер 💻"
+    },
+    "tie": {
+        "en": "🤝 tie 🤝",
+        "de": "Unentschieden 🤝",
+        "pl": "🤝 remis 🤝",
+        "es": "🤝 empate 🤝",
+        "fr": "🤝 égalité 🤝",
+        "it": "🤝 pareggio 🤝",
+        "ru": "🤝 ничья 🤝"
     }
-
 }

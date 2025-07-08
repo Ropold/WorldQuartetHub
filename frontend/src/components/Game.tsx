@@ -233,22 +233,22 @@ export default function Game(props: Readonly<GameProps>) {
             <div className="space-between">
                 <div className="clickable-header no-hover">
                     <p className="header-title no-hover">{translatedGameInfo["Lost Cards"][props.language]}</p>
-                    <img src={lostCardsLogo} alt="Lost Card Logo" className="logo-image no-hover" />
+                    <img src={lostCardsLogo} alt="Lost Card Logo" className="logo-image no-hover" /> :
                     <p className="card-count no-hover"><strong>{props.lostCardCount}</strong></p>
                 </div>
-                <div className="clickable-header no-hover">
+                <div className="clickable-header more-width no-hover">
                     <p className="header-title no-hover">{translatedGameInfo["Round Winner"][props.language]}</p>
-                    <img src={roundWinner} alt="Lost Card Logo" className="logo-image no-hover" />
-                    <p className="card-count no-hover"><strong>{roundResult}</strong></p>
+                    <img src={roundWinner} alt="Lost Card Logo" className="logo-image no-hover" /> :
+                    <p className="card-count no-hover"><strong>{translatedGameInfo[roundResult][props.language]}</strong></p>
                 </div>
                 <div className="clickable-header no-hover">
                     <p className="header-title no-hover">{translatedGameInfo["User Cards"][props.language]}</p>
-                    <img src={userLogo} alt="User Logo" className="logo-image no-hover" />
+                    <img src={userLogo} alt="User Logo" className="logo-image no-hover" /> :
                     <p className="card-count no-hover"><strong>{userCardCount}</strong></p>
                 </div>
                 <div className="clickable-header no-hover">
                     <p className="header-title no-hover">{translatedGameInfo["Cpu Cards"][props.language]}</p>
-                    <img src={cpuLogo} alt="Cpu Logo" className="logo-image no-hover" />
+                    <img src={cpuLogo} alt="Cpu Logo" className="logo-image no-hover" /> :
                     <p className="card-count no-hover"><strong>{cpuCardCount}</strong></p>
                 </div>
             </div>

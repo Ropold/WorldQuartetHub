@@ -147,6 +147,7 @@ export default function Play(props: Readonly<PlayProps>) {
     function handleCancelHighScore() {
         setShowNameInput(false);
         setIsNewHighScore(false);
+        setPlayerName("");
     }
 
     const getWinClass = () => {

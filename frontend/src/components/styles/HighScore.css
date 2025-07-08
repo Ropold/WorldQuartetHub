@@ -22,6 +22,7 @@
     width: 100%;  /* Jetzt auf 100%, sodass die Tabellen untereinander passen */
     max-width: 1000px; /* Optional: Limitiert die maximale Breite für bessere Darstellung */
     background-color: #f9f9f9;
+    margin-top: 10px;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 8px;

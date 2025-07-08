@@ -1,8 +1,13 @@
+import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
 
-export default function Footer() {
+type FooterProps = {
+    language: string;
+}
+
+export default function Footer(props: Readonly<FooterProps>) {
     return (
         <footer className="footer">
-            <p>World Quartet Hub © 2025 by R.Stolz</p>
+            <p>{translatedGameInfo["World Quartet Hub 2025 by R.Stolz - Country data from 2022"][props.language]}</p>
         </footer>
     )
 }
