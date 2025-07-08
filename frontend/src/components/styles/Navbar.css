@@ -46,7 +46,7 @@
     margin: 2px;
     font-family: inherit;
     font-size: 1em;
-    font-weight: 650;
+    font-weight: 550; /* Changed from 650 to 550 for better readability */
     text-align: center;
     background: none;
     border: none;
