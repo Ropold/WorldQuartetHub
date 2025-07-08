@@ -49,6 +49,14 @@
     border-radius: 10px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .high-score-table-compressed-h3 {
+        color: white !important;
+    }
+}
+
+
+
 
 .high-score-table-h3 {
     font-size: 1.3rem;
