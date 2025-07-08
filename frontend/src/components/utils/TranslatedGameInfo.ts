@@ -197,5 +197,51 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Entrez votre nom",
         "it": "Inserisci il tuo nome",
         "ru": "Введите ваше имя"
+    },
+    "Save Changes":{
+        "en": "Save Changes",
+        "de": "Änderungen speichern",
+        "pl": "Zapisz zmiany",
+        "es": "Guardar cambios",
+        "fr": "Enregistrer les modifications",
+        "it": "Salva le modifiche",
+        "ru": "Сохранить изменения"
+    },
+    "Remove Image":{
+        "en": "Remove Image",
+        "de": "Bild entfernen",
+        "pl": "Usuń obraz",
+        "es": "Eliminar imagen",
+        "fr": "Supprimer l'image",
+        "it": "Rimuovi immagine",
+        "ru": "Удалить изображение"
+    },
+    "Favorites": {
+        "en": "Favorites",
+        "de": "Favoriten",
+        "pl": "Ulubione",
+        "es": "Favoritos",
+        "fr": "Favoris",
+        "it": "Preferiti",
+        "ru": "Избранное"
+    },
+    "Add new Country": {
+        "en": "Add new Country",
+        "de": "Neues Land hinzufügen",
+        "pl": "Dodaj nowy kraj",
+        "es": "Agregar nuevo país",
+        "fr": "Ajouter un nouveau pays",
+        "it": "Aggiungi nuovo paese",
+        "ru": "Добавить новую страну"
+    },
+    "My Countries": {
+        "en": "My Countries",
+        "de": "Meine Länder",
+        "pl": "Moje kraje",
+        "es": "Mis países",
+        "fr": "Mes pays",
+        "it": "I miei paesi",
+        "ru": "Мои страны"
     }
-    }
+
+}

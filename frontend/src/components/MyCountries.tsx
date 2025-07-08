@@ -8,6 +8,8 @@ import {useLocation} from "react-router-dom";
 import SearchBar from "./SearchBar.tsx";
 import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
 import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
+import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
+import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
 
 type MyCountriesProps = {
     user: string;
@@ -173,7 +175,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                     <form onSubmit={handleSaveEdit}>
                         <div className="edit-form">
                         <label>
-                            countryName:
+                            {translatedModelInfo.countryName[props.language]}:
                             <input
                                 className="input-small"
                                 type="text"
@@ -182,7 +184,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            capitalCity:
+                            {translatedModelInfo.capitalCity[props.language]}:
                             <input
                                 className="input-small"
                                 type="text"
@@ -191,7 +193,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            populationInMillions:
+                            {translatedModelInfo.populationInMillions[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -201,7 +203,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            populationDensityPerKm2:
+                            {translatedModelInfo.populationDensityPerKm2[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -210,7 +212,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            capitalCityPopulation:
+                            {translatedModelInfo.capitalCityPopulation[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -220,7 +222,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            gdpPerCapitaInUSD:
+                            {translatedModelInfo.gdpPerCapitaInUSD[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -229,7 +231,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            forestAreaPercentage:
+                            {translatedModelInfo.forestAreaPercentage[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -238,7 +240,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            totalAreaInKm2:
+                            {translatedModelInfo.totalAreaInKm2[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -247,7 +249,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            roadNetworkLengthInKm:
+                            {translatedModelInfo.roadNetworkLengthInKm[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -256,7 +258,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            averageAnnualTemperatureInC:
+                            {translatedModelInfo.averageAnnualTemperatureInC[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -266,7 +268,7 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                             />
                         </label>
                         <label>
-                            annualPrecipitationInMm:
+                            {translatedModelInfo.annualPrecipitationInMm[props.language]}:
                             <input
                                 className="input-small"
                                 type="number"
@@ -288,13 +290,13 @@ export default function MyCountries(props: Readonly<MyCountriesProps>) {
                                 />
                             )}
                         </label>
-                        <button className="button-group-button" type="button" onClick={() => { setImage(null); setImageChanged(true); setImageDeleted(true); }}>Entferne Bild</button>
+                        <button className="button-group-button" type="button" onClick={() => { setImage(null); setImageChanged(true); setImageDeleted(true); }}>{translatedGameInfo["Remove Image"][props.language]}</button>
                     </div>
 
 
                     <div className="space-between">
-                        <button className="button-group-button" type="submit">Save Changes</button>
-                        <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
+                        <button className="button-group-button" type="submit">{translatedGameInfo["Save Changes"][props.language]}</button>
+                        <button className="button-group-button" type="button" onClick={() => props.setIsEditing(false)}>{translatedGameInfo["Cancel"][props.language]}</button>
                     </div>
                     </form>
                 </div>
