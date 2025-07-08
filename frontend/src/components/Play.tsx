@@ -1,7 +1,7 @@
 import type {HighScoreModel} from "./model/HighScoreModel.ts";
 import {useEffect, useState} from "react";
 import type {CountryModel} from "./model/CountryModel.ts";
-import Preview from "./Preview.tsx";
+import QuartetModel from "./QuartetModel.tsx";
 import Game from "./Game.tsx";
 import axios from "axios";
 import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
@@ -259,7 +259,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     </div>
 
 
-                    <Preview/>
+                    <QuartetModel language={props.language}/>
                 </>}
 
             {!showPreviewMode && (!gameFinished || showLastCards) && (

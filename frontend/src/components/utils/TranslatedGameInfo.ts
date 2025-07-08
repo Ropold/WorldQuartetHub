@@ -73,13 +73,13 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "ru": "Следующий раунд"
     },
     "Choose Number of Cards": {
-        "en": "Choose Number of Cards",
-        "de": "Wähle Anzahl der Karten",
-        "pl": "Wybierz liczbę kart",
-        "es": "Elige el número de cartas",
-        "fr": "Choisissez le nombre de cartes",
-        "it": "Scegli il numero di carte",
-        "ru": "Выберите количество карт"
+        "en": "Choose number of dealt cards 🃏 for player and computer",
+        "de": "Wähle Anzahl der ausgeteilten Karten 🃏 für Spieler und Computer",
+        "pl": "Wybierz liczbę rozdanych kart 🃏 dla gracza i komputera",
+        "es": "Elige el número de cartas 🃏 repartidas para el jugador y el ordenador",
+        "fr": "Choisissez le nombre de cartes 🃏 distribuées pour le joueur et l’ordinateur",
+        "it": "Scegli il numero di carte distribuite 🃏 a giocatore e computer",
+        "ru": "Выберите количество розданных карт 🃏 для игрока и компьютера"
     },
     "You beat the Cpu!": {
         "en": "🎉 You beat the Cpu! 🎉",
@@ -341,5 +341,14 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "🤝 égalité 🤝",
         "it": "🤝 pareggio 🤝",
         "ru": "🤝 ничья 🤝"
+    },
+    "Preview-Text": {
+        "de": "Es gewinnt immer der höhere Zahlenwert oder die größere Buchstabenzahl",
+        "en": "The higher number or letter count always wins",
+        "pl": "Wygrywa zawsze wyższa wartość liczby lub większa liczba liter",
+        "es": "Siempre gana el número mayor o la mayor cantidad de letras",
+        "fr": "C'est toujours la valeur numérique ou le nombre de lettres le plus élevé qui gagne",
+        "it": "Vince sempre il valore numerico più alto o il numero maggiore di lettere",
+        "ru": "Всегда побеждает большее число или большее количество букв"
     }
 }
