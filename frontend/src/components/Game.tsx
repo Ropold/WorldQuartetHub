@@ -228,6 +228,22 @@ export default function Game(props: Readonly<GameProps>) {
         firstCardPick();
     }, [props.resetSignal]);
 
+    function getTileClass(attribute: string, color: string, side: "user" | "cpu"): string {
+        const isSelected = selectedAttribute === attribute;
+
+        return [
+            "clickable",
+            color,
+            isSelected ? "selected-attribute" : "",
+            isSelected && isRevealed && roundResult === side ? "winner-border" : "",
+            isSelected && isRevealed && roundResult !== side && roundResult !== "tie" ? "loser-border" : "",
+            isSelected && isRevealed && roundResult === "tie" ? "tie-border" : ""
+        ].filter(Boolean).join(" ");
+    }
+
+
+
+
     return (
         <>
             <div className="space-between">
@@ -284,9 +300,10 @@ export default function Game(props: Readonly<GameProps>) {
                             </div>
                         )}
                     </div>
-                    <div   className={"clickable pastel-mint"}
-                           id={selectedAttribute === "countryName" ? "selected-attribute" : undefined}
-                           onClick={!isRevealed ? () => setSelectedAttribute("countryName") : undefined}>
+                    <div
+                        className={getTileClass("countryName", "pastel-mint", "user")}
+                        onClick={!isRevealed ? () => setSelectedAttribute("countryName") : undefined}
+                    >
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.countryName[props.language]}:</p>
@@ -295,8 +312,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-teal"}
-                         id={selectedAttribute === "capitalCity" ? "selected-attribute" : undefined}
+                    <div className={getTileClass("capitalCity", "pastel-teal", "user")}
                          onClick={!isRevealed ? () => setSelectedAttribute("capitalCity"): undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
@@ -306,9 +322,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-purple"}
-                         id={selectedAttribute === "populationInMillions" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("populationInMillions"): undefined}>
+                    <div className={getTileClass("populationInMillions", "pastel-purple","user")} onClick={!isRevealed ? () => setSelectedAttribute("populationInMillions") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationInMillions[props.language]}:</p>
@@ -317,9 +331,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-red"}
-                         id={selectedAttribute === "populationDensityPerKm2" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("populationDensityPerKm2"): undefined}>
+                    <div className={getTileClass("populationDensityPerKm2", "pastel-red","user")} onClick={!isRevealed ? () => setSelectedAttribute("populationDensityPerKm2") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
@@ -328,9 +340,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-yellow"}
-                         id={selectedAttribute === "capitalCityPopulation" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("capitalCityPopulation"): undefined}>
+                    <div className={getTileClass("capitalCityPopulation", "pastel-yellow","user")} onClick={!isRevealed ? () => setSelectedAttribute("capitalCityPopulation") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.capitalCityPopulation[props.language]}:</p>
@@ -339,9 +349,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-orange"}
-                         id={selectedAttribute === "gdpPerCapitaInUSD" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("gdpPerCapitaInUSD"): undefined}>
+                    <div className={getTileClass("gdpPerCapitaInUSD", "pastel-orange","user")} onClick={!isRevealed ? () => setSelectedAttribute("gdpPerCapitaInUSD") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.gdpPerCapitaInUSD[props.language]}:</p>
@@ -350,9 +358,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-green"}
-                         id={selectedAttribute === "forestAreaPercentage" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("forestAreaPercentage"): undefined}>
+                    <div className={getTileClass("forestAreaPercentage", "pastel-green","user")} onClick={!isRevealed ? () => setSelectedAttribute("forestAreaPercentage") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
@@ -361,9 +367,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-blue"}
-                         id={selectedAttribute === "totalAreaInKm2" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("totalAreaInKm2"): undefined}>
+                    <div className={getTileClass("totalAreaInKm2", "pastel-blue","user")} onClick={!isRevealed ? () => setSelectedAttribute("totalAreaInKm2") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.totalAreaInKm2[props.language]}:</p>
@@ -372,9 +376,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-gray"}
-                         id={selectedAttribute === "roadNetworkLengthInKm" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("roadNetworkLengthInKm"): undefined}>
+                    <div className={getTileClass("roadNetworkLengthInKm", "pastel-gray","user")} onClick={!isRevealed ? () => setSelectedAttribute("roadNetworkLengthInKm") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.roadNetworkLengthInKm[props.language]}:</p>
@@ -383,9 +385,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-brown"}
-                         id={selectedAttribute === "averageAnnualTemperatureInC" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("averageAnnualTemperatureInC"): undefined}>
+                    <div className={getTileClass("averageAnnualTemperatureInC", "pastel-brown","user")} onClick={!isRevealed ? () => setSelectedAttribute("averageAnnualTemperatureInC") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.averageAnnualTemperatureInC[props.language]}:</p>
@@ -394,9 +394,7 @@ export default function Game(props: Readonly<GameProps>) {
                         )}
                     </div>
 
-                    <div className={"clickable pastel-lightblue"}
-                         id={selectedAttribute === "annualPrecipitationInMm" ? "selected-attribute" : undefined}
-                         onClick={!isRevealed ? () => setSelectedAttribute("annualPrecipitationInMm"): undefined}>
+                    <div className={getTileClass("annualPrecipitationInMm", "pastel-lightblue","user")} onClick={!isRevealed ? () => setSelectedAttribute("annualPrecipitationInMm") : undefined}>
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label">{translatedModelInfo.annualPrecipitationInMm[props.language]}:</p>
@@ -428,11 +426,8 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-mint"}
-                                    id={selectedAttribute === "countryName" ? "selected-attribute" : undefined}
-                                >
-                                    {currentCpuCountry && (
+                                <div className={getTileClass("countryName", "pastel-mint","cpu")}>
+                                {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.countryName[props.language]}:</p>
                                             <p className="value-line-tile">
@@ -444,10 +439,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-teal"}
-                                    id={selectedAttribute === "capitalCity" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("capitalCity", "pastel-teal","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.capitalCity[props.language]}:</p>
@@ -460,10 +452,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-purple"}
-                                    id={selectedAttribute === "populationInMillions" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("populationInMillions", "pastel-purple","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.populationInMillions[props.language]}:</p>
@@ -474,10 +463,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-red"}
-                                    id={selectedAttribute === "populationDensityPerKm2" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("populationDensityPerKm2", "pastel-red","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
@@ -488,10 +474,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-yellow"}
-                                    id={selectedAttribute === "capitalCityPopulation" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("capitalCityPopulation", "pastel-yellow","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.capitalCityPopulation[props.language]}:</p>
@@ -502,10 +485,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-orange"}
-                                    id={selectedAttribute === "gdpPerCapitaInUSD" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("gdpPerCapitaInUSD", "pastel-orange","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.gdpPerCapitaInUSD[props.language]}:</p>
@@ -516,10 +496,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-green"}
-                                    id={selectedAttribute === "forestAreaPercentage" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("forestAreaPercentage", "pastel-green","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
@@ -530,10 +507,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-blue"}
-                                    id={selectedAttribute === "totalAreaInKm2" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("totalAreaInKm2", "pastel-blue","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.totalAreaInKm2[props.language]}:</p>
@@ -544,10 +518,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-gray"}
-                                    id={selectedAttribute === "roadNetworkLengthInKm" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("roadNetworkLengthInKm", "pastel-gray","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.roadNetworkLengthInKm[props.language]}:</p>
@@ -558,10 +529,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-brown"}
-                                    id={selectedAttribute === "averageAnnualTemperatureInC" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("averageAnnualTemperatureInC", "pastel-brown","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.averageAnnualTemperatureInC[props.language]}:</p>
@@ -572,10 +540,7 @@ export default function Game(props: Readonly<GameProps>) {
                                     )}
                                 </div>
 
-                                <div
-                                    className={"clickable pastel-lightblue"}
-                                    id={selectedAttribute === "annualPrecipitationInMm" ? "selected-attribute" : undefined}
-                                >
+                                <div className={getTileClass("annualPrecipitationInMm", "pastel-lightblue","cpu")}>
                                     {currentCpuCountry && (
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.annualPrecipitationInMm[props.language]}:</p>

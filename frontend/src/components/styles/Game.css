@@ -105,8 +105,22 @@
     }
 }
 
-#selected-attribute {
+.selected-attribute {
     border: 3px solid #388e3c;
+    animation: pulse-border 1.5s infinite;
+}
+
+.winner-border {
+    border: 3px solid #388e3c;
+    animation: pulse-border 1.5s infinite;
+}
+
+.tie-border {
+    border: 3px solid #999;
+    animation: pulse-border 1.5s infinite;
+}
+.loser-border{
+    border: 3px solid #d32f2f;
     animation: pulse-border 1.5s infinite;
 }
 
