@@ -361,22 +361,22 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "ru": "→ Варшава выигрывает"
     },
     "Population-Wins-1": {
-        "en": "Paris (2.2 million) vs Warsaw (1.8 million)",
-        "de": "Paris (2,2 Millionen) gegen Warschau (1,8 Millionen)",
-        "pl": "Paryż (2,2 miliona) kontra Warszawa (1,8 miliona)",
-        "es": "París (2,2 millones) contra Varsovia (1,8 millones)",
-        "fr": "Paris (2,2 millions) contre Varsovie (1,8 million)",
-        "it": "Parigi (2,2 milioni) contro Varsavia (1,8 milioni)",
-        "ru": "Париж (2.2 миллиона) против Варшавы (1.8 миллиона)"
+        "en": "2.2 million (Paris) vs. 1.8 million (Warsaw)",
+        "de": "2,2 Millionen (Paris) gegen 1,8 Millionen (Warschau)",
+        "pl": "2,2 miliona (Paryż) kontra 1,8 miliona (Warszawa)",
+        "es": "2,2 millones (París) contra 1,8 millones (Varsovia)",
+        "fr": "2,2 millions (Paris) contre 1,8 million (Varsovie)",
+        "it": "2,2 milioni (Parigi) contro 1,8 milioni (Varsavia)",
+        "ru": "2,2 миллиона (Париж) против 1,8 миллиона (Варшава)"
     },
     "Population-Wins-2": {
-        "en": "→ Paris wins",
-        "de": "→ Paris gewinnt",
-        "pl": "→ Paryż wygrywa",
-        "es": "→ París gana",
-        "fr": "→ Paris gagne",
-        "it": "→ Parigi vince",
-        "ru": "→ Париж выигрывает"
+        "en": "→ 2.2 million (Paris) wins",
+        "de": "→ 2,2 Millionen (Paris) gewinnt",
+        "pl": "→ 2,2 miliona (Paryż) wygrywa",
+        "es": "→ 2,2 millones (París) gana",
+        "fr": "→ 2,2 millions (Paris) gagne",
+        "it": "→ 2,2 milioni (Parigi) vince",
+        "ru": "→ 2.2 миллиона (Париж) выигрывает"
     },
     "Forest-Tie-1": {
         "en": "France (31%) vs Poland (31%)",
