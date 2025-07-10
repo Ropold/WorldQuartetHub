@@ -342,13 +342,67 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "it": "🤝 pareggio 🤝",
         "ru": "🤝 ничья 🤝"
     },
-    "Preview-Text": {
-        "de": "Es gewinnt immer der höhere Zahlenwert oder die größere Buchstabenzahl",
-        "en": "The higher number or letter count always wins",
-        "pl": "Wygrywa zawsze wyższa wartość liczby lub większa liczba liter",
-        "es": "Siempre gana el número mayor o la mayor cantidad de letras",
-        "fr": "C'est toujours la valeur numérique ou le nombre de lettres le plus élevé qui gagne",
-        "it": "Vince sempre il valore numerico più alto o il numero maggiore di lettere",
-        "ru": "Всегда побеждает большее число или большее количество букв"
+    "City-Wins-1": {
+        "en": "Paris (5 letters) vs Warsaw (6 letters)",
+        "de": "Paris (5 Buchstaben) gegen Warschau (9 Buchstaben)",
+        "pl": "Paryż (5 liter) kontra Warszawa (8 liter)",
+        "es": "París (5 letras) contra Varsovia (9 letras)",
+        "fr": "Paris (5 lettres) contre Varsovie (9 lettres)",
+        "it": "Parigi (6 lettere) contro Varsavia (9 lettere)",
+        "ru": "Париж (5 букв) против Варшавы (7 букв)"
+    },
+    "City-Wins-2": {
+        "en": "→ Warsaw wins",
+        "de": "→ Warschau gewinnt",
+        "pl": "→ Warszawa wygrywa",
+        "es": "→ Varsovia gana",
+        "fr": "→ Varsovie gagne",
+        "it": "→ Varsavia vince",
+        "ru": "→ Варшава выигрывает"
+    },
+    "Population-Wins-1": {
+        "en": "Paris (2.2 million) vs Warsaw (1.8 million)",
+        "de": "Paris (2,2 Millionen) gegen Warschau (1,8 Millionen)",
+        "pl": "Paryż (2,2 miliona) kontra Warszawa (1,8 miliona)",
+        "es": "París (2,2 millones) contra Varsovia (1,8 millones)",
+        "fr": "Paris (2,2 millions) contre Varsovie (1,8 million)",
+        "it": "Parigi (2,2 milioni) contro Varsavia (1,8 milioni)",
+        "ru": "Париж (2.2 миллиона) против Варшавы (1.8 миллиона)"
+    },
+    "Population-Wins-2": {
+        "en": "→ Paris wins",
+        "de": "→ Paris gewinnt",
+        "pl": "→ Paryż wygrywa",
+        "es": "→ París gana",
+        "fr": "→ Paris gagne",
+        "it": "→ Parigi vince",
+        "ru": "→ Париж выигрывает"
+    },
+    "Forest-Tie-1": {
+        "en": "France (31%) vs Poland (31%)",
+        "de": "Frankreich (31%) gegen Polen (31%)",
+        "pl": "Francja (31%) kontra Polska (31%)",
+        "es": "Francia (31%) contra Polonia (31%)",
+        "fr": "France (31%) contre Pologne (31%)",
+        "it": "Francia (31%) contro Polonia (31%)",
+        "ru": "Франция (31%) против Польши (31%)"
+    },
+    "Forest-Tie-2": {
+        "en": "→ Tie – cards added to next round",
+        "de": "→ Unentschieden – Karten werden zur nächsten Runde hinzugefügt",
+        "pl": "→ Remis – karty dodane do następnej rundy",
+        "es": "→ Empate – cartas añadidas a la siguiente ronda",
+        "fr": "→ Égalité – cartes ajoutées à la manche suivante",
+        "it": "→ Pareggio – carte aggiunte al turno successivo",
+        "ru": "→ Ничья – карты добавлены к следующему раунду"
+    },
+    "Rules": {
+        "en": "Quartet Comparison Rules",
+        "de": "Quartett Vergleichsregeln",
+        "pl": "Zasady porównywania kwartetów",
+        "es": "Reglas de comparación de cuartetos",
+        "fr": "Règles de comparaison des quartets",
+        "it": "Regole di confronto dei quartetti",
+        "ru": "Правила сравнения квартетов"
     }
 }

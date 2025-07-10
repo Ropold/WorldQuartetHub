@@ -27,12 +27,17 @@
 
 .game-cards-container-preview {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 3 Spalten */
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
     gap: 20px;
     padding: 10px;
     max-width: 600px;
     margin: 10px auto 0;
 
+}
+
+.preview-teal{
+    width: 155px;
+    height: 135px;
 }
 
 .clickable {
@@ -132,6 +137,18 @@
 .loser-border{
     border: 3px solid #d32f2f;
     animation: pulse-border 1.5s infinite;
+}
+
+.explanation-border {
+    border: 3px solid #66b3ff;
+    animation: pulse-border 1.5s infinite;
+}
+
+.small-font{
+    font-size: 0.9rem;
+}
+.more-small-font{
+    font-size: 0.7rem;
 }
 
 
