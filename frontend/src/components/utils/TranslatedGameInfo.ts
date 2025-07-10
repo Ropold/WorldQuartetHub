@@ -110,7 +110,7 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
     },
     "and only gave away": {
         "en": "and only gave away",
-        "de": "und nur",
+        "de": "und hast nur",
         "pl": "i oddałeś tylko",
         "es": "y solo entregaste",
         "fr": "et n'a donné que",
@@ -137,7 +137,7 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
     },
     "Impressive!": {
         "en": "Impressive! 💪",
-        "de": "Beeindruckend! 💪",
+        "de": "abgegeben. Beeindruckend! 💪",
         "pl": "Imponujące! 💪",
         "es": "¡Impresionante! 💪",
         "fr": "Impressionnant ! 💪",
@@ -397,12 +397,12 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "ru": "→ Ничья – карты добавлены к следующему раунду"
     },
     "Rules": {
-        "en": "Quartet Comparison Rules",
-        "de": "Quartett Vergleichsregeln",
-        "pl": "Zasady porównywania kwartetów",
-        "es": "Reglas de comparación de cuartetos",
-        "fr": "Règles de comparaison des quartets",
-        "it": "Regole di confronto dei quartetti",
-        "ru": "Правила сравнения квартетов"
+        "en": "Quartet Comparison Rules – The Higher Value Always Wins",
+        "de": "Quartett Vergleichsregeln – Der höhere Wert gewinnt immer",
+        "pl": "Zasady porównywania kwartetów – zawsze wygrywa wyższa wartość",
+        "es": "Reglas de comparación de cuartetos: siempre gana el valor más alto",
+        "fr": "Règles de comparaison des quartets – La valeur la plus élevée l'emporte toujours",
+        "it": "Regole di confronto dei quartetti – Vince sempre il valore più alto",
+        "ru": "Правила сравнения квартетов – всегда побеждает более высокая ценность"
     }
 }
