@@ -25,6 +25,16 @@
     border: 2px solid #ff9e00;
 }
 
+.game-cards-container-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 Spalten */
+    gap: 20px;
+    padding: 10px;
+    max-width: 600px;
+    margin: 10px auto 0;
+
+}
+
 .clickable {
     height: 110px;
     width: 135px;

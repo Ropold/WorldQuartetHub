@@ -241,9 +241,6 @@ export default function Game(props: Readonly<GameProps>) {
         ].filter(Boolean).join(" ");
     }
 
-
-
-
     return (
         <>
             <div className="space-between">
