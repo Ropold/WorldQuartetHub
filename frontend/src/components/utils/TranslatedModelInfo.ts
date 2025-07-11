@@ -35,6 +35,15 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "it": "Densità di pop. (ab./km²)",
         "ru": "Плотность насел. (чел./км²)"
     },
+    "Density Units": {
+        "en" : "pop./km²",
+        "de" : "Ew./km²",
+        "pl" : "osób/km²",
+        "es" : "hab./km²",
+        "fr" : "hab./km²",
+        "it" : "ab./km²",
+        "ru" : "чел./км²"
+    },
     "capitalCityPopulation": {
         "en": "Capital City Population",
         "de": "Bevölkerung der Hauptstadt",
