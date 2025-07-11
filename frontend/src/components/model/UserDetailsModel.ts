@@ -2,7 +2,7 @@ export type UserDetails = {
     login: string;
     id: number;
     node_id: string;
-    avatar_url: string;
+    avatar_url: string | null;
     gravatar_id: string | null;
     bio: string | null;
     blog: string;
@@ -39,7 +39,7 @@ export const DefaultUserDetails: UserDetails = {
     login: "Loading...",
     id: 0,
     node_id: "Loading...",
-    avatar_url: "https://via.placeholder.com/150",
+    avatar_url: null,
     gravatar_id: null,
     bio: null,
     blog: "",

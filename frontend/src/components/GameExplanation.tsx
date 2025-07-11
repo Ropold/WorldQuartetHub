@@ -58,14 +58,14 @@ export default function GameExplanation(props: Readonly<QuartetModelProps>) {
                 <div className={("preview-teal tie-border pastel-green")} >
                     <h2 className="text-country-property">
                         <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
-                        <p className="value-line-tile"><strong>{userCountry.forestAreaPercentage}</strong></p>
+                        <p className="value-line-tile"><strong>{userCountry.forestAreaPercentage} %</strong></p>
                     </h2>
                 </div>
 
                 <div className={("preview-teal tie-border pastel-green")} >
                     <h2 className="text-country-property">
                         <p className="property-label">{translatedModelInfo.forestAreaPercentage[props.language]}:</p>
-                        <p className="value-line-tile"><strong>{cpuCountry.forestAreaPercentage}</strong></p>
+                        <p className="value-line-tile"><strong>{cpuCountry.forestAreaPercentage} %</strong></p>
                     </h2>
                 </div>
                 <div className="preview-teal explanation-border more-small-font">

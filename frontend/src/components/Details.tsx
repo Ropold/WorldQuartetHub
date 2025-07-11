@@ -56,7 +56,7 @@ export default function Details(props: Readonly<DetailsProps>) {
                 <p> <strong>{translatedModelInfo.capitalCity[props.language]}: </strong>
                     {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
                 </p>
-                <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions}</p>
+                <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions} {translatedModelInfo["mio"][props.language]}</p>
                 <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2} {translatedModelInfo["Density Units"][props.language]}</p>
                 <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation.toLocaleString("de-DE")}</p>
                 <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD.toLocaleString("de-DE")} $</p>
@@ -70,7 +70,7 @@ export default function Details(props: Readonly<DetailsProps>) {
                     <img
                         className="details-image"
                         src={country.imageUrl}
-                        alt={`${country.countryName} image`}
+                        alt={country.countryName}
                     />
                 )}
 
@@ -97,7 +97,13 @@ export default function Details(props: Readonly<DetailsProps>) {
                 <h3>Added by User</h3>
                 <p><strong>Github-User</strong> {githubUser.login} </p>
                 <p><strong>GitHub Profile</strong> <a href={githubUser.html_url} target="_blank" rel="noopener noreferrer">Visit Profile</a></p>
-                <img className="profile-container-img" src={githubUser.avatar_url} alt={`${githubUser.login}'s avatar`} />
+                {githubUser.avatar_url && (
+                    <img
+                        className="profile-container-img"
+                        src={githubUser.avatar_url}
+                        alt={`${githubUser.login}'s avatar`}
+                    />
+                )}
             </div>
             </>
     )

@@ -32,8 +32,6 @@ type GameProps = {
     winner: string;
     setWinner: React.Dispatch<React.SetStateAction<WinnerType>>;
     setShowLastCards: React.Dispatch<React.SetStateAction<boolean>>;
-    isRevealed: boolean;
-    setIsRevealed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Game(props: Readonly<GameProps>) {
@@ -43,6 +41,7 @@ export default function Game(props: Readonly<GameProps>) {
     const [userCardCount, setUserCardCount] = useState<number>(0);
     const [cpuCardCount, setCpuCardCount] = useState<number>(0);
     const [roundResult, setRoundResult] = useState<RoundResult>("idle");
+    const [isRevealed, setIsRevealed] = useState<boolean>(false);
 
     const [currentUserCountry, setCurrentUserCountry] = useState<CountryModel | null>(null);
     const [currentCpuCountry, setCurrentCpuCountry] = useState<CountryModel | null>(null);
@@ -55,10 +54,6 @@ export default function Game(props: Readonly<GameProps>) {
     const userFlagSrc = userIsoCode ? flagImages[userIsoCode] : null;
     const cpuFlagSrc = cpuIsoCode ? flagImages[cpuIsoCode] : null;
 
-    const {
-        isRevealed,
-        setIsRevealed,
-    } = props;
 
     function selectNextUserCountry() {
         if (props.userCountries.length > 0) {
@@ -230,6 +225,12 @@ export default function Game(props: Readonly<GameProps>) {
     useEffect(() => {
         props.setLostCardCount(0);
         firstCardPick();
+        setIsRevealed(false);
+        setSelectedAttribute(null);
+        setRoundResult("idle");
+        setLastUserCard(false);
+        setLastCpuCard(false);
+        setTieCountrySave([]);
     }, [props.resetSignal]);
 
     function getTileClass(attribute: string, color: string, side: "user" | "cpu"): string {
@@ -327,7 +328,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationInMillions[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.populationInMillions}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationInMillions}</strong> {translatedModelInfo["mio"][props.language]}</p>
                             </h2>
                         )}
                     </div>
@@ -336,7 +337,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong></p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong> {translatedModelInfo["Density Units"][props.language]}</p>
                             </h2>
                         )}
                     </div>
@@ -458,7 +459,7 @@ export default function Game(props: Readonly<GameProps>) {
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.populationInMillions[props.language]}:</p>
                                             <p className="value-line-tile">
-                                                <strong>{currentCpuCountry.populationInMillions}</strong>
+                                                <strong>{currentCpuCountry.populationInMillions}</strong> {translatedModelInfo["mio"][props.language]}
                                             </p>
                                         </h2>
                                     )}
@@ -469,7 +470,7 @@ export default function Game(props: Readonly<GameProps>) {
                                         <h2 className="text-country-property">
                                             <p className="property-label">{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
                                             <p className="value-line-tile">
-                                                <strong>{currentCpuCountry.populationDensityPerKm2}</strong> km²
+                                                <strong>{currentCpuCountry.populationDensityPerKm2}</strong> {translatedModelInfo["Density Units"][props.language]}
                                             </p>
                                         </h2>
                                     )}

@@ -22,7 +22,6 @@ export default function Play(props: Readonly<PlayProps>) {
     const [userCountries, setUserCountries] = useState<CountryModel[]>([]);
     const [cpuCountries, setCpuCountries] = useState<CountryModel[]>([]);
     const [lostCardCount, setLostCardCount] = useState<number>(0);
-    const [isRevealed, setIsRevealed] = useState<boolean>(false);
 
     const [showLastCards, setShowLastCards] = useState<boolean>(false);
     const [winner, setWinner] = useState<"user" | "cpu" | "">("");
@@ -118,6 +117,7 @@ export default function Play(props: Readonly<PlayProps>) {
     async function handleGameStart() {
         await getUserAndCpuCards(gameCardCount);
         setWinner("");
+        setPlayerName("");
         setLostCardCount(0);
         setShowPreviewMode(false);
         setGameFinished(false);
@@ -127,10 +127,11 @@ export default function Play(props: Readonly<PlayProps>) {
         setTime(0);
         setShowNameInput(false);
         setResetSignal(prev => prev + 1);
-        setIsRevealed(false);
     }
 
     function handleHardResetGame() {
+        setWinner("");
+        setPlayerName("");
         setShowPreviewMode(true);
         setGameFinished(true);
         setIsNewHighScore(false);
@@ -138,7 +139,6 @@ export default function Play(props: Readonly<PlayProps>) {
         setLostCardCount(0);
         setTime(0);
         setShowWinAnimation(false);
-        setIsRevealed(false);
     }
 
     function handleCancelHighScore() {
@@ -276,8 +276,6 @@ export default function Play(props: Readonly<PlayProps>) {
                     winner={winner}
                     setWinner={setWinner}
                     setShowLastCards={setShowLastCards}
-                    isRevealed={isRevealed}
-                    setIsRevealed={setIsRevealed}
                 />
             )}
         </>
