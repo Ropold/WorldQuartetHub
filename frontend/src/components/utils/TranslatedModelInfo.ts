@@ -27,13 +27,13 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "ru": "Население в миллионах"
     },
     "populationDensityPerKm2": {
-        "en": "Population Density per Km²",
-        "de": "Einwohnerdichte pro km²",
-        "pl": "Zaludnienie na km²",
-        "es": "Densidad de poblac. por km²",
-        "fr": "Densité de pop. par km²",
-        "it": "Densità di pop. per km²",
-        "ru": "Плотность насел. на км²"
+        "en": "Pop. Density (pop./km²)",
+        "de": "Bevölkerungs -dichte (Ew./km²)",
+        "pl": "Gęstość zal. (osób/km²)",
+        "es": "Densidad de pob. (hab./km²)",
+        "fr": "Densité de pop. (hab./km²)",
+        "it": "Densità di pop. (ab./km²)",
+        "ru": "Плотность насел. (чел./км²)"
     },
     "capitalCityPopulation": {
         "en": "Capital City Population",

@@ -336,7 +336,7 @@ export default function Game(props: Readonly<GameProps>) {
                         {currentUserCountry && (
                             <h2 className="text-country-property">
                                 <p className="property-label" >{translatedModelInfo.populationDensityPerKm2[props.language]}:</p>
-                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong> km²</p>
+                                <p className="value-line-tile"><strong>{currentUserCountry.populationDensityPerKm2}</strong></p>
                             </h2>
                         )}
                     </div>
