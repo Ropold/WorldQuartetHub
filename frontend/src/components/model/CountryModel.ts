@@ -13,7 +13,7 @@ export type CountryModel = {
     averageAnnualTemperatureInC: number;
     annualPrecipitationInMm: number;
     githubId: string;
-    imageUrl: string;
+    imageUrl: string | null;
 };
 
 
@@ -31,7 +31,7 @@ export const DefaultCountryFrance: CountryModel = {
     averageAnnualTemperatureInC: 11.7,
     annualPrecipitationInMm: 720,
     githubId: '154427648',
-    imageUrl: 'https://example.com/france.jpg'
+    imageUrl: null
 };
 
 export const DefaultCountryPoland: CountryModel = {
@@ -48,7 +48,7 @@ export const DefaultCountryPoland: CountryModel = {
     averageAnnualTemperatureInC: 9.3,
     annualPrecipitationInMm: 695,
     githubId: '154427648',
-    imageUrl: 'https://example.com/poland.jpg'
+    imageUrl: null
 };
 
 

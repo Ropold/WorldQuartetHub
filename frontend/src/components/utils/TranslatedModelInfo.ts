@@ -18,22 +18,22 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "ru": "Столица"
     },
     "populationInMillions": {
-        "en": "Population in Millions",
-        "de": "Bevölkerung in Millionen",
-        "pl": "Ludność w milionach",
-        "es": "Población en millones",
-        "fr": "Population en millions",
-        "it": "Popolazione in milioni",
-        "ru": "Население в миллионах"
+        "en": "Population",
+        "de": "Bevölkerung",
+        "pl": "Ludność",
+        "es": "Población",
+        "fr": "Population",
+        "it": "Popolazione",
+        "ru": "Население"
     },
     "populationDensityPerKm2": {
-        "en": "Pop. Density (pop./km²)",
-        "de": "Bevölkerungs -dichte (Ew./km²)",
-        "pl": "Gęstość zal. (osób/km²)",
-        "es": "Densidad de pob. (hab./km²)",
-        "fr": "Densité de pop. (hab./km²)",
-        "it": "Densità di pop. (ab./km²)",
-        "ru": "Плотность насел. (чел./км²)"
+        "en": "Population Density",
+        "de": "Bevölkerungs-dichte",
+        "pl": "Gęstość zaludnienia",
+        "es": "Densidad de población",
+        "fr": "Densité de population",
+        "it": "Densità di popolazione",
+        "ru": "Плотность населения"
     },
     "Density Units": {
         "en" : "pop./km²",
@@ -54,66 +54,66 @@ export const translatedModelInfo: Record<string, Record<string, string>> = {
         "ru": "Население столицы"
     },
     "gdpPerCapitaInUSD": {
-        "en": "GDP per Capita in $",
-        "de": "BIP pro Kopf in $",
-        "pl": "PKB na mieszkańca w $",
-        "es": "PIB per cápita en Usd",
-        "fr": "PIB par habitant en $",
-        "it": "PIL pro capite in $",
-        "ru": "ВВП на душу $"
+        "en": "GDP per Capita",
+        "de": "BIP pro Kopf",
+        "pl": "PKB na mieszkańca",
+        "es": "PIB per cápita",
+        "fr": "PIB par habitant",
+        "it": "PIL pro capite",
+        "ru": "ВВП на душу"
     },
     "forestAreaPercentage": {
-        "en": "Forest Area %",
-        "de": "Waldfläche in %",
-        "pl": "Powierzchnia leśna w %",
-        "es": "Área forestal en porcentaje",
-        "fr": "Superficie forestière en %",
-        "it": "Area forestale in %",
-        "ru": "Лесная территория в %"
+        "en": "Forest Area",
+        "de": "Waldfläche",
+        "pl": "Powierzchnia leśna",
+        "es": "Área forestal",
+        "fr": "Superficie forestière",
+        "it": "Area forestale",
+        "ru": "Лесная территория"
     },
     "totalAreaInKm2": {
-        "en": "Total Area in km²",
-        "de": "Gesamtfläche in km²",
-        "pl": "Powierzchnia całkowita w km²",
-        "es": "Área total en km²",
-        "fr": "Superficie totale en km²",
-        "it": "Area totale in km²",
-        "ru": "Общая площадь в км²"
+        "en": "Land area",
+        "de": "Landesfläche",
+        "pl": "Powierzchnia kraju",
+        "es": "Superficie terrestre",
+        "fr": "Superficie terrestre",
+        "it": "Area terrestre",
+        "ru": "Площадь страны"
     },
     "roadNetworkLengthInKm": {
-        "en": "Road Network Length in Km",
-        "de": "Straßennetzlänge in km",
-        "pl": "Długość sieci drogowej w km",
-        "es": "Longitud de la red vial en km",
-        "fr": "Longueur du rése. rout. en km",
-        "it": "Lunghezza della rete strad. in km",
-        "ru": "Длина дорожной сети в км"
+        "en": "Road Network Length",
+        "de": "Straßennetz",
+        "pl": "Długość sieci drogowej",
+        "es": "Longitud de la red vial",
+        "fr": "Longueur du réseau routier",
+        "it": "Lunghezza della rete stradale",
+        "ru": "Длина дорожной сети"
     },
     "averageAnnualTemperatureInC": {
-        "en": "Avg. Temp. per Year in °C",
-        "de": "Durchschn. Temp. im Jahr in °C",
-        "pl": "Śr. temp. roczna w °C",
-        "es": "Temp. media anual en °C",
-        "fr": "Temp. moy. annuelle en °C",
-        "it": "Temp. media annua in °C",
-        "ru": "Ср. темп. за год в °C"
-    },
-    "annualPrecipitationInMma": {
-        "en": "Annual Precipitation in mm",
-        "de": "Jährlicher Niederschlag in mm",
-        "pl": "Roczne opady w mm",
-        "es": "Precipitación anual en mm",
-        "fr": "Précipitations annuelles en mm",
-        "it": "Precipitazioni annuali in mm",
-        "ru": "Годовое количество осадков в мм"
+        "en": "Average Annual Temperature",
+        "de": "Jahres-temperatur",
+        "pl": "Średnia roczna temperatura",
+        "es": "Temperatura media anual",
+        "fr": "Température moyenne ann.",
+        "it": "Temperatura media annuale",
+        "ru": "Среднегодовая температура"
     },
     "annualPrecipitationInMm": {
-        "en": "Annual Rainfall in mm",
-        "de": "Niederschlag pro Jahr in mm",
-        "pl": "Opady na rok w mm",
-        "es": "Lluvia anual en mm",
-        "fr": "Pluie annuelle en mm",
-        "it": "Pioggia annua in mm",
-        "ru": "Осадки в год мм"
+        "en": "Annual Precipitation",
+        "de": "Niederschläge",
+        "pl": "Opady roczne",
+        "es": "Precipitaciones anuales",
+        "fr": "Précipitations annuelles",
+        "it": "Precipitazioni annuali",
+        "ru": "Годовые осадки"
+    },
+    "mio": {
+        "en": "mil.",
+        "de": "Mio.",
+        "pl": "mln",
+        "es": "mill.",
+        "fr": "M",
+        "it": "mil.",
+        "ru": "млн."
     }
 };

@@ -1,3 +1,5 @@
+// i dont need this file, but it is used in the codebase
+
 export const countryCapitalsEn: Record<string, string> = {
     "Andorra": "Andorra la Vella",
     "Afghanistan": "Kabul",
@@ -29,7 +31,7 @@ export const countryCapitalsEn: Record<string, string> = {
     "Bosnia and Herzegovina": "Sarajevo",
     "Botswana": "Gaborone",
     "Bouvet Island": "",
-    "Brazil": "Brasília",
+    "Brazil": "Brasilia",
     "British Indian Ocean Territory": "Diego Garcia",
     "Brunei Darussalam": "Bandar Seri Begawan",
     "Bulgaria": "Sofia",

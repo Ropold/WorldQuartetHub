@@ -1,7 +1,7 @@
 /* Stil für das Begrüßungsbild */
 .logo-welcome {
     width: 80%; /* Bildbreite auf 80% der Elternelementbreite setzen */
-    max-width: 500px; /* Maximalbreite auf 600px begrenzen */
+    max-width: 400px;
     margin-top: 25px;
     padding: 5px;
     border-radius: 100px; /* Abgerundete Ecken */

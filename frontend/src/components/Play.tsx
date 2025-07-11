@@ -118,6 +118,7 @@ export default function Play(props: Readonly<PlayProps>) {
     async function handleGameStart() {
         await getUserAndCpuCards(gameCardCount);
         setWinner("");
+        setPlayerName("");
         setLostCardCount(0);
         setShowPreviewMode(false);
         setGameFinished(false);
@@ -131,6 +132,8 @@ export default function Play(props: Readonly<PlayProps>) {
     }
 
     function handleHardResetGame() {
+        setWinner("");
+        setPlayerName("");
         setShowPreviewMode(true);
         setGameFinished(true);
         setIsNewHighScore(false);

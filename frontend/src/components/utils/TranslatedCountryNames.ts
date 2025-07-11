@@ -2160,12 +2160,12 @@ export const translatedCountryNames: Record<string, Record<string, string>> = {
         "ru": "Великобритания"
     },
     "United States": {
-        "de": "Vereinigte Staaten",
-        "en": "United States",
-        "pl": "Stany Zjednoczone",
-        "es": "Estados Unidos",
+        "de": "USA",
+        "en": "USA",
+        "pl": "USA",
+        "es": "EE. UU.",
         "fr": "États-Unis",
-        "it": "Stati Uniti",
+        "it": "USA",
         "ru": "США"
     },
     "Uruguay": {
