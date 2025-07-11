@@ -18,7 +18,7 @@ const formatDate = (date: string) => {
         hour: "2-digit",
         minute: "2-digit",
     };
-    return new Date(date).toLocaleDateString("de-DE", options);
+    return new Date(date + "Z").toLocaleString("de-DE", options);
 };
 
 export default function HighScore(props:Readonly<HighScoreProps>) {
