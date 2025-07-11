@@ -72,8 +72,13 @@ export default function Profile(props:Readonly<ProfileProps>) {
                                         {translatedGithubInfo["Visit Profile"][props.language]}
                                     </a>
                                 </p>
-                                <img className="profile-container-img" src={props.userDetails.avatar_url}
-                                     alt={`${props.userDetails.login}'s avatar`}/>
+                                {props.userDetails.avatar_url && (
+                                    <img
+                                        className="profile-container-img"
+                                        src={props.userDetails.avatar_url}
+                                        alt={props.userDetails.login}
+                                    />
+                                )}
                                 <p>{translatedGithubInfo["Account Created"][props.language]}: {new Date(props.userDetails.created_at).toLocaleDateString()}</p>
                                 <p>{translatedGithubInfo["Last Updated"][props.language]}: {new Date(props.userDetails.updated_at).toLocaleDateString()}</p>
                             </div>
