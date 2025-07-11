@@ -32,6 +32,8 @@ type GameProps = {
     winner: string;
     setWinner: React.Dispatch<React.SetStateAction<WinnerType>>;
     setShowLastCards: React.Dispatch<React.SetStateAction<boolean>>;
+    isRevealed: boolean;
+    setIsRevealed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Game(props: Readonly<GameProps>) {
@@ -47,14 +49,16 @@ export default function Game(props: Readonly<GameProps>) {
     const [selectedAttribute, setSelectedAttribute] = useState<keyof CountryModel | null>(null);
     const [tieCountrySave, setTieCountrySave] = useState<CountryModel[]>([]);
 
-    const [isRevealed, setIsRevealed] = useState<boolean>(false);
-
     const userIsoCode = currentUserCountry ? countryNameToIsoCode[currentUserCountry.countryName] : null;
     const cpuIsoCode = currentCpuCountry ? countryNameToIsoCode[currentCpuCountry.countryName] : null;
 
     const userFlagSrc = userIsoCode ? flagImages[userIsoCode] : null;
     const cpuFlagSrc = cpuIsoCode ? flagImages[cpuIsoCode] : null;
 
+    const {
+        isRevealed,
+        setIsRevealed,
+    } = props;
 
     function selectNextUserCountry() {
         if (props.userCountries.length > 0) {
