@@ -22,6 +22,7 @@
     width: 100%;  /* Jetzt auf 100%, sodass die Tabellen untereinander passen */
     max-width: 1000px; /* Optional: Limitiert die maximale Breite für bessere Darstellung */
     background-color: #f9f9f9;
+    margin-top: 10px;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 8px;
@@ -48,6 +49,14 @@
     border: 4px solid #66b3ff;
     border-radius: 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+    .high-score-table-compressed-h3 {
+        color: white !important;
+    }
+}
+
+
 
 
 .high-score-table-h3 {
@@ -152,7 +161,7 @@ tbody tr:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px;
     margin: 20px auto;
 }
 

@@ -140,12 +140,12 @@ export default function App() {
             <Route path="/play" element={<Play user={user} highScores={highScores} getHighScores={getHighScores} language={language}/>} />
             <Route path="/list-of-all-countries" element={<ListOfAllCountries user={user} favorites={favorites} toggleFavorite={toggleFavorite} allCountries={allCountries} getAllCountries={getAllCountries} language={language}/>} />
             <Route path="/country/:countryName" element={<Details user={user} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
-            <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores}/>} />
+            <Route path="/high-score" element={<HighScore highScores={highScores} getHighScores={getHighScores} language={language}/>} />
             <Route element={<ProtectedRoute user={user}/>}>
                 <Route path="/profile/*" element={<Profile user={user} userDetails={userDetails} handleNewCountrySubmit={handleNewCountrySubmit} handleUpdateCountry={handleUpdateCountry} handleDeleteCountry={handleDeleteCountry} favorites={favorites} toggleFavorite={toggleFavorite} language={language}/>} />
             </Route>
         </Routes>
-        <Footer />
+        <Footer language={language}/>
     </>
   )
 }

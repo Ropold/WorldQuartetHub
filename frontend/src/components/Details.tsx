@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {type CountryModel, DefaultCountry} from "./model/CountryModel.ts";
+import {type CountryModel, DefaultCountryFrance} from "./model/CountryModel.ts";
 import {DefaultUserDetails, type UserDetails} from "./model/UserDetailsModel.ts";
 import {useParams} from "react-router-dom";
 import {countryNameToIsoCode, flagImages} from "./utils/FlagImages.ts";
@@ -19,7 +19,7 @@ type DetailsProps = {
 
 export default function Details(props: Readonly<DetailsProps>) {
 
-    const [country, setCountry] = useState<CountryModel>(DefaultCountry);
+    const [country, setCountry] = useState<CountryModel>(DefaultCountryFrance);
     const [githubUser, setGithubUser] = useState<UserDetails>(DefaultUserDetails);
     const { countryName } = useParams<{ countryName: string }>();
     const isoCode = countryNameToIsoCode[country.countryName];

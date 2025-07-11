@@ -2,10 +2,12 @@ import type {HighScoreModel} from "./model/HighScoreModel.ts";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import "./styles/HighScore.css"
+import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
 
 type HighScoreProps = {
     highScores: { [key: number]: HighScoreModel[] };
     getHighScores: (count: number) => void;
+    language: string;
 }
 
 const formatDate = (date: string) => {
@@ -65,13 +67,13 @@ export default function HighScore(props:Readonly<HighScoreProps>) {
 
     const renderCompressedTable = (highScores: HighScoreModel[], cardType: string) => (
         <div className="high-score-table-compressed" onClick={() => handleTableSelect(cardType)}>
-            <h3 className="high-score-table-compressed-h3">{cardType} Cards</h3>
+            <h3 className="high-score-table-compressed-h3">{cardType} {translatedGameInfo["cards"][props.language]}</h3>
             <table>
                 <thead>
                 <tr>
                     <th>Rank</th>
-                    <th>Player</th>
-                    <th>Lost Cards</th>
+                    <th>{translatedGameInfo["Player"][props.language]}</th>
+                    <th>{translatedGameInfo["Lost Cards"][props.language]}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,17 +94,17 @@ export default function HighScore(props:Readonly<HighScoreProps>) {
 
         return (
             <div className="high-score-table">
-                <h3 className="high-score-table-h3">{cardType} Cards</h3>
+                <h3 className="high-score-table-h3">{cardType} {translatedGameInfo["cards"][props.language]}</h3>
                 <table>
                     <thead>
                     <tr>
                         <th>Rank</th>
-                        <th>Player-Name</th>
-                        <th>Date</th>
-                        <th>Card Count</th>
-                        <th>Lost Cards</th>
-                        <th>Authentication</th>
-                        <th>Time</th>
+                        <th>{translatedGameInfo["Player"][props.language]}</th>
+                        <th>{translatedGameInfo["Date"][props.language]}</th>
+                        <th>{translatedGameInfo["Card Count"][props.language]}</th>
+                        <th>{translatedGameInfo["Lost Cards"][props.language]}</th>
+                        <th>{translatedGameInfo["Authentication"][props.language]}</th>
+                        <th>{translatedGameInfo["Time"][props.language]}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -146,7 +148,7 @@ export default function HighScore(props:Readonly<HighScoreProps>) {
                 )}
             </div>
             {selectedTable !== null && (
-                <button onClick={handleBack} className="button-group-button">Back to Overview</button>
+                <button onClick={handleBack} className="button-group-button">{translatedGameInfo["Back to Overview"][props.language]}</button>
             )}
         </div>
     );

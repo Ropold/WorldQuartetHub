@@ -17,21 +17,39 @@ export type CountryModel = {
 };
 
 
-export const DefaultCountry: CountryModel = {
+export const DefaultCountryFrance: CountryModel = {
     id: 'FR',
-    countryName: 'Frankreich',
+    countryName: 'France',
     capitalCity: 'Paris',
-    populationInMillions: 67.75,
-    populationDensityPerKm2: 122,
-    capitalCityPopulation: 2161000,
-    gdpPerCapitaInUSD: 43500,
+    populationInMillions: 67.4,
+    populationDensityPerKm2: 106,
+    capitalCityPopulation: 2175601,
+    gdpPerCapitaInUSD: 46062,
     forestAreaPercentage: 31,
-    totalAreaInKm2: 551695,
-    roadNetworkLengthInKm: 1040000,
+    totalAreaInKm2: 632734,
+    roadNetworkLengthInKm: 1053215,
     averageAnnualTemperatureInC: 11.7,
-    annualPrecipitationInMm: 850,
+    annualPrecipitationInMm: 720,
     githubId: '154427648',
     imageUrl: 'https://example.com/france.jpg'
 };
+
+export const DefaultCountryPoland: CountryModel = {
+    id: 'PL',
+    countryName: 'Poland',
+    capitalCity: 'Warsaw',
+    populationInMillions: 37.8,
+    populationDensityPerKm2: 123,
+    capitalCityPopulation: 1794166,
+    gdpPerCapitaInUSD: 34103,
+    forestAreaPercentage: 31,
+    totalAreaInKm2: 312696,
+    roadNetworkLengthInKm: 420000,
+    averageAnnualTemperatureInC: 9.3,
+    annualPrecipitationInMm: 695,
+    githubId: '154427648',
+    imageUrl: 'https://example.com/poland.jpg'
+};
+
 
 

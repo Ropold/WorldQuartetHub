@@ -25,6 +25,21 @@
     border: 2px solid #ff9e00;
 }
 
+.game-cards-container-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    gap: 20px;
+    padding: 10px;
+    max-width: 600px;
+    margin: 10px auto 0;
+
+}
+
+.preview-teal{
+    width: 155px;
+    height: 135px;
+}
+
 .clickable {
     height: 110px;
     width: 135px;
@@ -51,6 +66,7 @@
     height: 100%;
     font-weight: 600;
     font-size: 1.1rem;
+    color:black;
 }
 
 .flag-tile {
@@ -104,9 +120,35 @@
     }
 }
 
-#selected-attribute {
+.selected-attribute {
     border: 3px solid #388e3c;
     animation: pulse-border 1.5s infinite;
+}
+
+.winner-border {
+    border: 3px solid #388e3c;
+    animation: pulse-border 1.5s infinite;
+}
+
+.tie-border {
+    border: 3px solid #999;
+    animation: pulse-border 1.5s infinite;
+}
+.loser-border{
+    border: 3px solid #d32f2f;
+    animation: pulse-border 1.5s infinite;
+}
+
+.explanation-border {
+    border: 3px solid #66b3ff;
+    animation: pulse-border 1.5s infinite;
+}
+
+.small-font{
+    font-size: 0.85rem;
+}
+.more-small-font{
+    font-size: 0.75rem;
 }
 
 
@@ -140,7 +182,7 @@
 
 
 .value-line-tile {
-    padding-top: 13px; /* optional: justierbarer Abstand */
+    padding-top: 7px; /* optional: justierbarer Abstand */
 }
 .card-count{
     font-weight: bold;

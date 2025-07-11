@@ -522,13 +522,13 @@ export const translatedCountryNames: Record<string, Record<string, string>> = {
         "ru": "Кипр"
     },
     "Czech Republic": {
-        "de": "Tschechische Republik",
-        "en": "Czech Republic",
+        "de": "Tschechien",
+        "en": "Czechia",
         "pl": "Czechy",
-        "es": "República Checa",
-        "fr": "République tchèque",
-        "it": "Repubblica Ceca",
-        "ru": "Чешская Республика"
+        "es": "Chequia",
+        "fr": "Tchéquie",
+        "it": "Cechia",
+        "ru": "Чехия"
     },
     "Denmark": {
         "de": "Dänemark",

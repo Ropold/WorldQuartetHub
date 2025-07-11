@@ -1,7 +1,7 @@
 import type {HighScoreModel} from "./model/HighScoreModel.ts";
 import {useEffect, useState} from "react";
 import type {CountryModel} from "./model/CountryModel.ts";
-import Preview from "./Preview.tsx";
+import GameExplanation from "./GameExplanation.tsx";
 import Game from "./Game.tsx";
 import axios from "axios";
 import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
@@ -49,15 +49,14 @@ export default function Play(props: Readonly<PlayProps>) {
         }
     }, [showPreviewMode, gameFinished]);
 
-    function getUserAndCpuCards(count: number) {
-        axios.get(`/api/world-quartet-hub/deal/${count}`)
-            .then((response) => {
-                setUserCountries(response.data.user as CountryModel[]);
-                setCpuCountries(response.data.cpu as CountryModel[]);
-            })
-            .catch((error) => {
-                console.error(`Error fetching cards for count ${count}:`, error);
-            });
+    async function getUserAndCpuCards(count: number) {
+        try {
+            const response = await axios.get(`/api/world-quartet-hub/deal/${count}`);
+            setUserCountries(response.data.user as CountryModel[]);
+            setCpuCountries(response.data.cpu as CountryModel[]);
+        } catch (error) {
+            console.error(`Error fetching cards for count ${count}:`, error);
+        }
     }
 
     function postHighScore() {
@@ -106,7 +105,6 @@ export default function Play(props: Readonly<PlayProps>) {
         }
     }
 
-
     function handleSaveHighScore() {
         if (playerName.trim().length < 3) {
             setPopupMessage("Your name must be at least 3 characters long!");
@@ -116,12 +114,8 @@ export default function Play(props: Readonly<PlayProps>) {
         postHighScore();
     }
 
-    useEffect(() => {
-        getUserAndCpuCards(gameCardCount);
-    }, [gameCardCount]);
-
-
-    function handleGameStart() {
+    async function handleGameStart() {
+        await getUserAndCpuCards(gameCardCount);
         setLostCardCount(0);
         setShowPreviewMode(false);
         setGameFinished(false);
@@ -137,11 +131,16 @@ export default function Play(props: Readonly<PlayProps>) {
         setShowPreviewMode(true);
         setGameFinished(true);
         setIsNewHighScore(false);
-        getUserAndCpuCards(gameCardCount)
         setWinner("");
         setLostCardCount(0);
         setTime(0);
         setShowWinAnimation(false);
+    }
+
+    function handleCancelHighScore() {
+        setShowNameInput(false);
+        setIsNewHighScore(false);
+        setPlayerName("");
     }
 
     const getWinClass = () => {
@@ -178,15 +177,18 @@ export default function Play(props: Readonly<PlayProps>) {
                         id="playerName"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Enter your name"
+                        placeholder={translatedGameInfo["Enter your name"][props.language]}
                     />
+                    <div>
                     <button
                         className="button-group-button"
                         id="button-border-animation"
                         type="submit"
                     >
-                        Save Highscore
+                        {translatedGameInfo["Save High Score"][props.language]}
                     </button>
+                    <button className="button-group-button margin-left-10" onClick={handleCancelHighScore}>{translatedGameInfo["Cancel"][props.language]}</button>
+                    </div>
                 </form>
             )}
 
@@ -250,7 +252,7 @@ export default function Play(props: Readonly<PlayProps>) {
                     </div>
 
 
-                    <Preview/>
+                    <GameExplanation language={props.language}/>
                 </>}
 
             {!showPreviewMode && (!gameFinished || showLastCards) && (
