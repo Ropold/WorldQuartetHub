@@ -57,7 +57,7 @@ export default function Details(props: Readonly<DetailsProps>) {
                     {translatedCapitalCities[country.capitalCity]?.[props.language] || country.capitalCity}
                 </p>
                 <p><strong>{translatedModelInfo.populationInMillions[props.language]}</strong>: {country.populationInMillions}</p>
-                <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2} km²</p>
+                <p><strong>{translatedModelInfo.populationDensityPerKm2[props.language]}</strong>: {country.populationDensityPerKm2} {translatedModelInfo["Density Units"][props.language]}</p>
                 <p><strong>{translatedModelInfo.capitalCityPopulation[props.language]}</strong>: {country.capitalCityPopulation.toLocaleString("de-DE")}</p>
                 <p><strong>{translatedModelInfo.gdpPerCapitaInUSD[props.language]}</strong>: {country.gdpPerCapitaInUSD.toLocaleString("de-DE")} $</p>
                 <p><strong>{translatedModelInfo.forestAreaPercentage[props.language]}</strong>: {country.forestAreaPercentage} %</p>
