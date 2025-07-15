@@ -9,3 +9,19 @@
     border: 2px solid black; /* Border um das Bild */
     border-radius: 5px;
 }
+
+.details-img-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.details-image-larger{
+    width: 600px;
+    max-height: 500px;
+    border: 2px solid black; /* Border um das Bild */
+    border-radius: 5px;
+    object-fit: cover;
+}

@@ -12,6 +12,7 @@ import cpuLogo from "../assets/cpu.jpg"
 import lostCardsLogo from "../assets/lost-cards.jpg"
 import roundWinner from "../assets/round-winner.svg";
 import {translatedGameInfo} from "./utils/TranslatedGameInfo.ts";
+import {regionImages} from "./utils/RegionImages.ts";
 
 type WinnerType = "user" | "cpu" | "" ;
 type RoundResult = "user" | "cpu" | "tie" | "idle";
@@ -52,6 +53,7 @@ export default function Game(props: Readonly<GameProps>) {
     const cpuIsoCode = currentCpuCountry ? countryNameToIsoCode[currentCpuCountry.countryName] : null;
 
     const userFlagSrc = userIsoCode ? flagImages[userIsoCode] : null;
+    const regionSrc = userIsoCode ? regionImages[userIsoCode] : null;
     const cpuFlagSrc = cpuIsoCode ? flagImages[cpuIsoCode] : null;
 
 
@@ -406,14 +408,21 @@ export default function Game(props: Readonly<GameProps>) {
                     </div>
                 </div>
 
-
                 {/* CPU-CARDS */}
                     {!isRevealed ? (
-                        <img
-                            src={headerLogo}
-                            alt="Verdeckt"
-                            className="cpu-cover-image"
-                        />
+                            <div className="revealed-image-container">
+                                {currentUserCountry && (
+                                        <p ><strong>
+                                            {translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName}
+                                             {translatedGameInfo["is marked on map"][props.language]}
+                                        </strong></p>
+                                )}
+                                <img
+                                src={regionSrc ?? headerLogo ?? undefined}
+                                alt="Verdeckt"
+                                className="cpu-cover-image"
+                            />
+                            </div>
                     ) : (
                             <div className="game-cards-container-cpu">
                                 <div className="flag-tile pastel-flag">
