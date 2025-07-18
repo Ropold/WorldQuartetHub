@@ -25,6 +25,16 @@
     border: 2px solid #ff9e00;
 }
 
+.revealed-image-container{
+    border: 2px solid #ff9e00;
+}
+
+.cpu-cover-image {
+    max-height: 490px;
+    max-width: 490px;
+    border-radius: 8px;
+}
+
 .game-cards-container-preview {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
@@ -32,7 +42,11 @@
     padding: 10px;
     max-width: 600px;
     margin: 10px auto 0;
-
+}
+.image-flag-tile-revealed{
+    height: 30px;
+    width: auto;
+    margin: 0 10px;
 }
 
 .preview-teal{
@@ -95,15 +109,6 @@
     border: 2px solid black;
     object-fit: contain;
     margin: 0;
-}
-
-.cpu-cover-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    margin-top:25px;
-    margin-left: 20px;
 }
 
 

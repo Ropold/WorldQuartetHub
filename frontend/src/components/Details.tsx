@@ -9,6 +9,7 @@ import "./styles/Profile.css"
 import {translatedCountryNames} from "./utils/TranslatedCountryNames.ts";
 import {translatedModelInfo} from "./utils/TranslatedModelInfo.ts";
 import {translatedCapitalCities} from "./utils/TranslatedCapitalCities.ts";
+import {regionImages} from "./utils/RegionImages.ts";
 
 type DetailsProps = {
     user: string;
@@ -24,6 +25,7 @@ export default function Details(props: Readonly<DetailsProps>) {
     const { countryName } = useParams<{ countryName: string }>();
     const isoCode = countryNameToIsoCode[country.countryName];
     const flagSrc = isoCode ? flagImages[isoCode] : null;
+    const regionSrc = isoCode ? regionImages[isoCode] : null;
     const isFavorite = props.favorites.includes(country.id);
 
     useEffect(() => {
@@ -66,21 +68,32 @@ export default function Details(props: Readonly<DetailsProps>) {
                 <p><strong>{translatedModelInfo.averageAnnualTemperatureInC[props.language]}</strong>: {country.averageAnnualTemperatureInC} °C</p>
                 <p><strong>{translatedModelInfo.annualPrecipitationInMm[props.language]}</strong>: {country.annualPrecipitationInMm.toLocaleString("de-DE")} mm</p>
 
-                {country.imageUrl && (
-                    <img
-                        className="details-image"
-                        src={country.imageUrl}
-                        alt={country.countryName}
-                    />
-                )}
+                <div className="details-img-container">
+                    {country.imageUrl && (
+                        <img
+                            className="details-image-larger"
+                            src={country.imageUrl}
+                            alt={country.countryName}
+                        />
+                    )}
 
-                {flagSrc && (
-                    <img
-                        className="details-image"
-                        src={flagSrc}
-                        alt={`${country.countryName} flag`}
-                    />
-                )}
+                    {flagSrc && (
+                        <img
+                            className="details-image"
+                            src={flagSrc}
+                            alt={`${country.countryName} flag`}
+                        />
+                    )}
+
+                    {regionSrc && (
+                        <img
+                            className="details-image-larger margin-top-20"
+                            src={regionSrc}
+                            alt={`${country.countryName} region`}
+                        />
+                    )}
+                </div>
+
 
                 {props.user !== "anonymousUser" && (
                     <div>
