@@ -6,6 +6,7 @@ import arRegionPic from "../../assets/country-region/Argentina.gif"
 import auRegionPic from "../../assets/country-region/Australia.gif"
 import atRegionPic from "../../assets/country-region/Austria.gif"
 import azRegionPic from "../../assets/country-region/Azerbaijan.gif"
+import baRegionPic from "../../assets/country-region/Bosnia and Herzegovina.gif"
 import bdRegionPic from "../../assets/country-region/Bangladesh.gif"
 import byRegionPic from "../../assets/country-region/Belarus.gif"
 import beRegionPic from "../../assets/country-region/Belgium.gif"
@@ -149,6 +150,7 @@ export const regionImages: Record<string, string> = {
     au: auRegionPic,
     at: atRegionPic,
     az: azRegionPic,
+    ba: baRegionPic,
     bd: bdRegionPic,
     by: byRegionPic,
     be: beRegionPic,

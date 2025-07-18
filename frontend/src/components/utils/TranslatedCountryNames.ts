@@ -1892,7 +1892,7 @@ export const translatedCountryNames: Record<string, Record<string, string>> = {
     "South Africa": {
         "de": "Südafrika",
         "en": "South Africa",
-        "pl": "Republika Południowej Afryki",
+        "pl": "Rep. Połud. Afryki",
         "es": "Sudáfrica",
         "fr": "Afrique du Sud",
         "it": "Sudafrica",

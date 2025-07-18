@@ -404,14 +404,5 @@ export const translatedGameInfo: Record<string, Record<string, string>> = {
         "fr": "Règles de comparaison des quartets – La valeur la plus élevée l'emporte toujours",
         "it": "Regole di confronto dei quartetti – Vince sempre il valore più alto",
         "ru": "Правила сравнения квартетов – всегда побеждает более высокая ценность"
-    },
-    "is marked on map":{
-        "en": "is marked on map",
-        "de": "ist auf der Karte markiert",
-        "pl": "jest zaznaczony na mapie",
-        "es": "está marcado en el mapa",
-        "fr": "est marqué sur la carte",
-        "it": "è segnato sulla mappa",
-        "ru": "отмечен на карте"
     }
 }

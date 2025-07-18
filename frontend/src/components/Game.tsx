@@ -413,15 +413,24 @@ export default function Game(props: Readonly<GameProps>) {
                             <div className="revealed-image-container">
                                 {currentUserCountry && (
                                         <p ><strong>
+                                            <img
+                                                src={userFlagSrc ?? currentUserCountry.imageUrl ?? headerLogo}
+                                                alt={`${currentUserCountry.countryName} flag`}
+                                                className="image-flag-tile-revealed"
+                                            />
                                             {translatedCountryNames[currentUserCountry.countryName]?.[props.language] ?? currentUserCountry.countryName}
-                                             {translatedGameInfo["is marked on map"][props.language]}
+                                            <img
+                                                src={userFlagSrc ?? currentUserCountry.imageUrl ?? headerLogo}
+                                                alt={`${currentUserCountry.countryName} flag`}
+                                                className="image-flag-tile-revealed"
+                                            />
                                         </strong></p>
                                 )}
                                 <img
-                                src={regionSrc ?? headerLogo ?? undefined}
-                                alt="Verdeckt"
-                                className="cpu-cover-image"
-                            />
+                                    src={regionSrc ?? headerLogo ?? undefined}
+                                    alt="Verdeckt"
+                                    className="cpu-cover-image"
+                                />
                             </div>
                     ) : (
                             <div className="game-cards-container-cpu">

@@ -573,7 +573,7 @@ export const countryNameToIsoCode: Record<string, string> = {
     "Cocos (Keeling) Islands": "cc",
     "Colombia": "co",
     "Comoros": "km",
-    "Congo, the Democratic Republic of the": "cd",
+    "Congo, the Democratic Republic of the": "cg",
     "Cook Islands": "ck",
     "Costa Rica": "cr",
     "Cote d'Ivoire": "ci",
