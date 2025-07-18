@@ -34,9 +34,6 @@
     max-width: 490px;
     border-radius: 8px;
 }
-.landscape-offset {
-    margin-top: 60px;
-}
 
 .game-cards-container-preview {
     display: grid;
