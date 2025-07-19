@@ -127,9 +127,33 @@ import zwRegionPic from "../../assets/country-region/Zimbabwe.gif"
 import itRegionPic from "../../assets/country-region/Italy.gif"
 import esRegionPic from "../../assets/country-region/Spain.gif"
 import frRegionPic from "../../assets/country-region/France.gif"
+import auRegionPic from "../../assets/country-region/Australia.gif"
+import crRegionPic from "../../assets/country-region/Costa Rica.gif"
+import cuRegionPic from "../../assets/country-region/Cuba.gif"
+import doRegionPic from "../../assets/country-region/Dominican Republic.gif"
+import svRegionPic from "../../assets/country-region/El Salvador.gif"
+import fjRegionPic from "../../assets/country-region/Fiji.gif"
+import gtRegionPic from "../../assets/country-region/Guatemala.gif"
+import htRegionPic from "../../assets/country-region/Haiti.gif"
+import hnRegionPic from "../../assets/country-region/Honduras.gif"
+import nzRegionPic from "../../assets/country-region/New Zealand.gif"
+import niRegionPic from "../../assets/country-region/Nicaragua.gif"
+import paRegionPic from "../../assets/country-region/Panama.gif"
 
 
 export const regionImages: Record<string, string> = {
+    au: auRegionPic,
+    cr: crRegionPic,
+    cu: cuRegionPic,
+    do: doRegionPic,
+    sv: svRegionPic,
+    fj: fjRegionPic,
+    gt: gtRegionPic,
+    ht: htRegionPic,
+    hn: hnRegionPic,
+    nz: nzRegionPic,
+    ni: niRegionPic,
+    pa: paRegionPic,
     it: itRegionPic,
     es: esRegionPic,
     fr: frRegionPic,
