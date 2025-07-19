@@ -135,9 +135,17 @@ import vnRegionPic from "../../assets/country-region/Vietnam.gif"
 import yeRegionPic from "../../assets/country-region/Yemen.gif"
 import zmRegionPic from "../../assets/country-region/Zambia.gif"
 import zwRegionPic from "../../assets/country-region/Zimbabwe.gif"
+import fjRegionPic from "../../assets/country-region/Fiji.gif"
+import itRegionPic from "../../assets/country-region/Italy.gif"
+import esRegionPic from "../../assets/country-region/Spain.gif"
+import frRegionPic from "../../assets/country-region/France.gif"
 
 
 export const regionImages: Record<string, string> = {
+    fj: fjRegionPic,
+    it: itRegionPic,
+    es: esRegionPic,
+    fr: frRegionPic,
     af: afRegionPic,
     al: alRegionPic,
     dz: dzRegionPic,
