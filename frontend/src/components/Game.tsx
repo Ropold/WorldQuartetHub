@@ -169,7 +169,6 @@ export default function Game(props: Readonly<GameProps>) {
         function handleTie() {
             const updatedTie = [...tieCountrySave, ...newCards];
             setTieCountrySave(updatedTie);
-            updateCardCounts(props.userCountries.length, props.cpuCountries.length);
             setRoundResult("tie");
             if (lastCpuCard) triggerGameEnd("user");
             if (lastUserCard) triggerGameEnd("cpu");
