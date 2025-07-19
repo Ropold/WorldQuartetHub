@@ -94,7 +94,6 @@ export default function Details(props: Readonly<DetailsProps>) {
                     )}
                 </div>
 
-
                 {props.user !== "anonymousUser" && (
                     <div>
                         <button
