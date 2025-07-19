@@ -379,11 +379,11 @@ export const translatedCapitalCities: Record<string, Record<string, string>> = {
     },
     "Santiago": {
         "en": "Santiago",
-        "de": "Santiago de Chile",
+        "de": "Santiago",
         "pl": "Santiago",
         "es": "Santiago",
         "fr": "Santiago",
-        "it": "Santiago del Cile",
+        "it": "Santiago",
         "ru": "Сантьяго"
     },
     "Beijing": {
@@ -625,9 +625,9 @@ export const translatedCapitalCities: Record<string, Record<string, string>> = {
         "de": "Addis Abeba",
         "pl": "Addis Abeba",
         "es": "Adís Abeba",
-        "fr": "Addis-Abeba",
+        "fr": "Addis Abeba",
         "it": "Addis Abeba",
-        "ru": "Аддис-Абеба"
+        "ru": "Аддис Абеба"
     },
     "Europe": {
         "en": "Europe",
@@ -642,7 +642,7 @@ export const translatedCapitalCities: Record<string, Record<string, string>> = {
         "en": "Stanley",
         "de": "Stanley",
         "pl": "Stanley",
-        "es": "Puerto Stanley",
+        "es": "Stanley",
         "fr": "Stanley",
         "it": "Stanley",
         "ru": "Стэнли"
@@ -811,7 +811,7 @@ export const translatedCapitalCities: Record<string, Record<string, string>> = {
     },
     "Guatemala City": {
         "en": "Guatemala City",
-        "de": "Guatemala-Stadt",
+        "de": "Guatemala Stadt",
         "pl": "Gwatemala",
         "es": "Ciudad de Guatemala",
         "fr": "Guatemala",
@@ -1890,13 +1890,13 @@ export const translatedCapitalCities: Record<string, Record<string, string>> = {
         "ru": "Мадрид"
     },
     "Sri Jayawardenepura Kotte": {
-        "en": "Sri Jayawardenepura Kotte",
-        "de": "Sri Jayawardenepura Kotte",
-        "pl": "Sri Dźajawardanapura Kotte",
-        "es": "Sri Jayawardenepura Kotte",
-        "fr": "Sri Jayawardenepura Kotte",
-        "it": "Sri Jayawardenepura Kotte",
-        "ru": "Шри-Джаяварденепура-Котте"
+        "en": "Sri J. Kotte",
+        "de": "Sri J. Kotte",
+        "pl": "Sri J. Kotte",
+        "es": "Sri J. Kotte",
+        "fr": "Sri J. Kotte",
+        "it": "Sri J. Kotte",
+        "ru": "Шри Д. Котте"
     },
     "Khartoum": {
         "en": "Khartoum",
