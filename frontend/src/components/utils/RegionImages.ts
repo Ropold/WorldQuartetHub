@@ -36,9 +36,7 @@ import svRegionPic from "../../assets/country-region/El Salvador.gif"
 import erRegionPic from "../../assets/country-region/Eritrea.gif"
 import eeRegionPic from "../../assets/country-region/Estonia.gif"
 import etRegionPic from "../../assets/country-region/Ethiopia.gif"
-import fjRegionPic from "../../assets/country-region/Fiji.gif"
 import fiRegionPic from "../../assets/country-region/Finland.gif"
-import frRegionPic from "../../assets/country-region/France.gif"
 import gaRegionPic from "../../assets/country-region/Gabon.gif"
 import gmRegionPic from "../../assets/country-region/Gambia.gif"
 import geRegionPic from "../../assets/country-region/Georgia.gif"
@@ -56,7 +54,6 @@ import irRegionPic from "../../assets/country-region/Iran.gif"
 import iqRegionPic from "../../assets/country-region/Iraq.gif"
 import ieRegionPic from "../../assets/country-region/Ireland.gif"
 import ilRegionPic from "../../assets/country-region/Israel.gif"
-import itRegionPic from "../../assets/country-region/Italy.gif"
 import jpRegionPic from "../../assets/country-region/Japan.gif"
 import joRegionPic from "../../assets/country-region/Jordan.gif"
 import kzRegionPic from "../../assets/country-region/Kazakhstan.gif"
@@ -114,7 +111,6 @@ import siRegionPic from "../../assets/country-region/Slovenia.gif"
 import soRegionPic from "../../assets/country-region/Somalia.gif"
 import zaRegionPic from "../../assets/country-region/South Africa.gif"
 import krRegionPic from "../../assets/country-region/South Korea.gif"
-import esRegionPic from "../../assets/country-region/Spain.gif"
 import lkRegionPic from "../../assets/country-region/Sri Lanka.gif"
 import sdRegionPic from "../../assets/country-region/Sudan.gif"
 import seRegionPic from "../../assets/country-region/Sweden.gif"
@@ -180,9 +176,7 @@ export const regionImages: Record<string, string> = {
     er: erRegionPic,
     ee: eeRegionPic,
     et: etRegionPic,
-    fj: fjRegionPic,
     fi: fiRegionPic,
-    fr: frRegionPic,
     ga: gaRegionPic,
     gm: gmRegionPic,
     ge: geRegionPic,
@@ -200,7 +194,6 @@ export const regionImages: Record<string, string> = {
     iq: iqRegionPic,
     ie: ieRegionPic,
     il: ilRegionPic,
-    it: itRegionPic,
     jp: jpRegionPic,
     jo: joRegionPic,
     kz: kzRegionPic,
@@ -258,7 +251,6 @@ export const regionImages: Record<string, string> = {
     so: soRegionPic,
     za: zaRegionPic,
     kr: krRegionPic,
-    es: esRegionPic,
     lk: lkRegionPic,
     sd: sdRegionPic,
     se: seRegionPic,
